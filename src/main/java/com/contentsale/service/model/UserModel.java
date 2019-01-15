@@ -6,10 +6,12 @@ package com.contentsale.service.model;
 public class UserModel {
     private Integer id;
     private String name;
-    private Byte gender;
-    private Integer sex;
+    private Byte type;
+    private String salt;
 
     private String encryptPassword;
+
+    private String ticket;
 
     public Integer getId() {
         return id;
@@ -27,20 +29,20 @@ public class UserModel {
         this.name = name;
     }
 
-    public Byte getGender() {
-        return gender;
+    public Byte getType() {
+        return type;
     }
 
-    public void setGender(Byte gender) {
-        this.gender = gender;
+    public void setType(Byte type) {
+        this.type = type;
     }
 
-    public Integer getSex() {
-        return sex;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getEncryptPassword() {
@@ -51,6 +53,12 @@ public class UserModel {
         this.encryptPassword = encryptPassword;
     }
 
+    public String getTicket() {
+        return ticket;
+    }
 
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
 }
 

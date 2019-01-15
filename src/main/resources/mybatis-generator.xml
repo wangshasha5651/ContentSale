@@ -8,7 +8,7 @@
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!-- 数据库库链接地址、账号密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/test"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/contentsale"
                         userId="root"
                         password="123">
         </jdbcConnection>
@@ -30,18 +30,31 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 生成对应表及类名 -->
-        <table tableName="user_info" domainObjectName="UserDO"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
-        <table tableName="user_password" domainObjectName="UserPasswordDO"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+        <!--
+      <table tableName="user_info" domainObjectName="UserDO"
+             enableCountByExample="false"
+             enableUpdateByExample="false"
+             enableDeleteByExample="false"
+             enableSelectByExample="false"
+             selectByExampleQueryId="false">
 
+      </table>
+
+      <table tableName="user_password" domainObjectName="UserPasswordDO"
+             enableCountByExample="false"
+             enableUpdateByExample="false"
+             enableDeleteByExample="false"
+             enableSelectByExample="false"
+             selectByExampleQueryId="false">
+      </table>
+
+      <table tableName="login_ticket" domainObjectName="LoginTicketDO"
+             enableCountByExample="false"
+             enableUpdateByExample="false"
+             enableDeleteByExample="false"
+             enableSelectByExample="false"
+             selectByExampleQueryId="false">
+      </table>
+       -->
     </context>
 </generatorConfiguration>
