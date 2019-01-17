@@ -12,6 +12,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Created by wss on 2019/1/14.
+ */
+
 @Component
 public class UserUtils {
     public static UserPasswordDO convertPasswordFromModel(UserModel userModel){

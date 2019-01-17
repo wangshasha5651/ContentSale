@@ -1,6 +1,8 @@
 package com.contentsale.common.config;
 
-
+/**
+ * Created by wss on 2019/1/14.
+ */
 import com.contentsale.interceptor.PassportInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,9 @@ public class ContentSaleConfiguration extends WebMvcConfigurationSupport {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/publish").setViewName("publish");
+        registry.addViewController("/publishSubmit").setViewName("publishSubmit");
+
 
         registry.addViewController("/t").setViewName("test");
     }
@@ -24,7 +29,8 @@ public class ContentSaleConfiguration extends WebMvcConfigurationSupport {
     // 注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(passportInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(passportInterceptor).addPathPatterns("/**").
+                excludePathPatterns("/user/login", "/login");
         super.addInterceptors(registry);
     }
 

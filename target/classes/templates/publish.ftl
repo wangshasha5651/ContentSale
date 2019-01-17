@@ -10,7 +10,7 @@
         </ul>
 
         <div class="div-pubic">
-            <form id="form-public" method="post">
+            <form id="form-public" action="/item/create" method="post" onsubmit="return checkPub(this)">
                 <table class="table-publish">
                     <tbody>
                     <tr class="tr-publish">
@@ -18,7 +18,7 @@
                             <span>标题：</span>
                         </td>
                         <td>
-                            <input class="input-publish" placeholder="2-80字符"/>
+                            <input name="title" class="input-publish" placeholder="2-80字符"/>
                         </td>
                         <td rowspan="3">
                             <div class="img-preshow-publish div-img"></div>
@@ -31,7 +31,7 @@
                             <span>摘要：</span>
                         </td>
                         <td>
-                            <input  class="input-publish" placeholder="2-140字符"/>
+                            <input name="summary"  class="input-publish" placeholder="2-140字符" />
                         </td>
                     </tr>
                     <tr class="tr-publish">
@@ -39,8 +39,10 @@
                             <span>图片：</span>
                         </td>
                         <td>
-                            <input type="radio" name="single-radio" value="1" onclick="radioClick();" checked>图片地址&nbsp;
-                            <input type="radio" name="single-radio" value="2" onclick="radioClick();">本地上传
+                            <form id="form-upload-img" action="/item/uploadImage" method="post">
+                                <input type="radio" name="single-radio" value="1" onclick="radioClick();" checked>图片地址&nbsp;
+                                <input type="radio" name="single-radio" value="2" onclick="radioClick();">本地上传
+                            </form>
                         </td>
                     </tr>
                     <tr class="tr-publish">
@@ -48,10 +50,10 @@
                             <span></span>
                         </td>
                         <td>
-                            <div id="div-img-url"><input class="input-publish" placeholder="图片地址"/></div>
+                            <div id="div-img-url"><input name="imgUrl" class="input-publish" placeholder="图片地址" /></div>
                             <div id="div-btn-file" style="display: none">
                                 <button class="btn btn-default">选择文件</button>&nbsp;未选择任何文件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn-upload btn btn-default btn-buy">上传</button>
+                                <button type="submit" class="btn-upload btn btn-default btn-buy">上传</button>
                             </div>
                         </td>
                         <td>
@@ -63,7 +65,7 @@
                             <span>正文：</span>
                         </td>
                         <td colspan="2">
-                            <input class="input-publish input-long-text" placeholder="2-1000个字符"/>
+                            <input name="description"  class="input-publish input-long-text" placeholder="2-1000个字符" />
                         </td>
 
                     </tr>
@@ -72,7 +74,7 @@
                             <span class="title-short-text">价格：</span>
                         </td>
                         <td>
-                            <input class="input-publish input-short-text"/>&nbsp;元
+                            <input name="price" class="input-publish input-short-text" />&nbsp;元
                         </td>
 
                     </tr>
@@ -81,7 +83,7 @@
 
                         </td>
                         <td>
-                            <button class="btn-publish btn btn-default btn-buy">发布</button>
+                            <button id="btnPub" type="submit" class="btn-publish btn btn-default btn-buy">发布</button>
                         </td>
 
                     </tr>

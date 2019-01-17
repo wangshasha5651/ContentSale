@@ -12,10 +12,12 @@ import com.contentsale.service.UserService;
 import com.contentsale.service.model.UserModel;
 import com.contentsale.utils.UserUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.validator.internal.engine.ValidatorImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.validation.Validator;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -36,6 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private LoginTicketDOMapper loginTicketDOMapper;
+
 
     @Override
     public UserModel gerUserById(Integer id) {
@@ -75,6 +78,13 @@ public class UserServiceImpl implements UserService {
 
         return userModel;
 
+    }
+
+    @Override
+    public void logout(String ticket) {
+        LoginTicketDO loginTicketDO = loginTicketDOMapper.selectByTicket(ticket);
+        loginTicketDO.setStatus((byte)1);
+        loginTicketDOMapper.updateByPrimaryKeySelective(loginTicketDO);
     }
 
     // 为用户生成ticket

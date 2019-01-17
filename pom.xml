@@ -84,6 +84,11 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.7</version>
     </dependency>
+    <!-- validator -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -158,7 +163,7 @@
             <!--允许移动生成文件-->
             <verbose>true</verbose>
             <!--允许自动覆盖文件-->
-            <overwrite>true</overwrite>
+            <overwrite>false</overwrite>
             <configurationFile> <!--mybatis配置文件路径-->
               src/main/resources/mybatis-generator.xml
             </configurationFile>
@@ -177,5 +182,15 @@
 
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
+/**
+ * Created by wss on 2019/1/15.
+ */
+
 @Component
 public class PassportInterceptor implements HandlerInterceptor {
 
@@ -33,14 +37,15 @@ public class PassportInterceptor implements HandlerInterceptor {
         String ticket = null;
 
         // 查找客户端请求中是否包含ticket
-        if(request.getCookies() != null){
-            for(Cookie cookie : request.getCookies()){
-                if(cookie.getName().equals("ticket")){
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals("ticket")) {
                     ticket = cookie.getValue();
                     break;
                 }
             }
         }
+
 
         // 若包含，则验证是否在服务端数据库中有对应ticket
         if(ticket != null){
@@ -48,7 +53,7 @@ public class PassportInterceptor implements HandlerInterceptor {
 
             // 如果tciket无效
             if(loginTicket == null || loginTicket.getExpired().before(new Date()) || loginTicket.getStatus() != 0){
-                return false;
+                return true;
             }
 
             // 如果tciket有效

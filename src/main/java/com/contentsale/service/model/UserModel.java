@@ -1,14 +1,24 @@
 package com.contentsale.service.model;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * Created by wss on 2019/1/9.
  */
 public class UserModel {
+
+
     private Integer id;
+
+
+   //@NotBlank(message = "用户名不能为空")
     private String name;
+
     private Byte type;
+
     private String salt;
 
+    //@NotBlank(message = "密码不能为空")
     private String encryptPassword;
 
     private String ticket;

@@ -1,5 +1,7 @@
 package com.contentsale.controller.viewobject;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by wss on 2019/1/9.
  */
@@ -32,4 +34,5 @@ public class UserVO {
     public void setType(Byte type) {
         this.type = type;
     }
+
 }

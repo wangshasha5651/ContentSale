@@ -12,12 +12,12 @@
         </#if>-->
         <div class="table-container" style="position:relative;">
             <div class="login-table-panel panel-body" style="position:absolute;z-index:1;">
-                    <form action="/user/login" method="post">
+                <form action="/user/login" method="post" onsubmit="return checkLogin(this)">
                     <table class="tb-login">
                         <tr>
                             <td class="td-login" align="right"><span class="span-login">用户名:</span></td>
                             <td class="td-login">
-                                <input name="username" type="text" class="input-login form-control" placeholder="" aria-describedby="basic-addon1" autofocus>
+                                <input name="username" type="text" class="input-login form-control" placeholder="" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
@@ -45,15 +45,18 @@
                     </table>
                 </form>
             </div>
-            <div class="layer" style="position:absolute;z-index:2;width:220px;height: 60px;margin-top:20%;margin-left:20%">
-                <#if (viewInfo.getData().getErrMsg())! == "用户名为空">
-                    <div class="div-alert-info" style="width:150px;height: 60px;border-radius: 20px;vertical-align: middle"><span>用户名不为空</span></div>
-                <#elseif (viewInfo.getData().getErrMsg())! == "密码为空">
-                    <div class="div-alert-info"><span>密码不为空！</span></div>
-                <#elseif (viewInfo.getData().getErrMsg())! == "登录失败">
-                    <div class="div-alert-info"><span>登录失败！</span></div>
+
+            <div id="prompt-info" class="prompt-layer">
+                <#-- <#if (viewInfo.getData().getErrMsg())! == "用户名不为空"> -->
+                <div id="prompt-name-null" class="div-prompt-info" style="display: none"><span class="span-prompt">用户名不为空</span></div>
+                <#-- <#elseif (viewInfo.getData().getErrMsg())! == "密码不为空"> -->
+                <div id="prompt-pwd-null" class="div-prompt-info" style="display: none"><span class="span-prompt">密码不为空！</span></div>
+                <#-- <#elseif (viewInfo.getData().getErrMsg())! == "登录失败"> -->
+                <#if (viewInfo.getData().getErrMsg())! == "登录失败">
+                    <div id="prompt-fail" class="div-prompt-info"><span class="span-prompt">登录失败！</span></div>
                 </#if>
             </div>
+
         </div>
     </div>
 

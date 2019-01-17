@@ -13,12 +13,13 @@
 
     </div>
 
-    <div class="img-container" style="position:relative;">
-        <img class="item-img" style="width:200px; height:200px;position:absolute;left:0;top:0;z-index:1;" src="http://p3.music.126.net/dqR0Cx3V7Eh0a6NX9OwUXg==/109951163338309990.jpg?param=368y368" alt="SICP">
-        <div class="layer" style="width: 100px;height: 100px;position:absolute;left:0;top:0;z-index:2;background-color: #737373">
-        </div>
-    </div>
 
+
+    <label>图片</label>
+    <div class="upload-img">
+        <input id="img-upload" type="file" name="img" accept="image/*">
+        <img id="img-show" src="" class="img-polaroid" width="170" height="170" alt="上传图片" title="上传图片">
+    </div>
 
 
 

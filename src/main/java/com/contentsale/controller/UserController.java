@@ -13,6 +13,7 @@ import com.contentsale.dataobject.UserPasswordDO;
 import com.contentsale.service.UserService;
 import com.contentsale.service.model.UserModel;
 import com.contentsale.utils.UserUtils;
+import com.contentsale.validator.ValidatorImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.BeanUtils;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -34,10 +36,10 @@ import java.util.Map;
  * Created by wss on 2019/1/9.
  */
 
-@Controller("login")
-@RequestMapping("/")
+@Controller("user")
+@RequestMapping("/user")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true") //Access-Control-Allow-Origin
-public class LoginController extends BaseController {
+public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
@@ -52,11 +54,12 @@ public class LoginController extends BaseController {
     private LoginTicketDOMapper loginTicketDOMapper;
 
 
-    @RequestMapping(value="/user/login",method = {RequestMethod.POST})
+    @RequestMapping(value="/login",method = {RequestMethod.POST})
 //    @ResponseBody
-    public String login2(@RequestParam("username") String username,
+    public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
-                        HttpServletResponse response, RedirectAttributesModelMap modelMap) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+                        HttpServletResponse response,
+                        RedirectAttributesModelMap modelMap) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
 
         //入参校验
         if(StringUtils.isEmpty(username)){
@@ -70,10 +73,9 @@ public class LoginController extends BaseController {
         UserModel userModel = userService.validateLogin(username, password);
 
         if(!userModel.getTicket().equals("") && userModel.getTicket() != null){
-            // 向客户端下发ticket
+            // 下发ticket
             Cookie cookie = new Cookie("ticket", userModel.getTicket());
-           // cookie.setMaxAge(60*10);
-            cookie.setPath("/");  //设置cookie是全站有效的
+            cookie.setPath("/");
             response.addCookie(cookie);
         }
 
@@ -83,6 +85,11 @@ public class LoginController extends BaseController {
         return "redirect:/";
     }
 
+    @RequestMapping(value="/logout",method = {RequestMethod.GET})
+    public String logout(@CookieValue("ticket") String ticket) {
+        userService.logout(ticket);
+        return "redirect:/login";
+    }
 
 
 
