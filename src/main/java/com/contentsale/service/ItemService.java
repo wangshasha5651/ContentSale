@@ -22,6 +22,4 @@ public interface ItemService {
     // 商品详情浏览
     ItemModel getItemById(Integer id);
 
-    // 保存客户端上传的商品图片
-    public String saveImage(MultipartFile file) throws IOException;
 }

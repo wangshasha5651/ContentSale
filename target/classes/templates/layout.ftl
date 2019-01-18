@@ -5,6 +5,7 @@
     <head>
 
         <title>内容销售Demo</title>
+        <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src="/static/js/jquery.min.js"></script>
@@ -22,7 +23,7 @@
     <#nested>
 
     </div>
-    <#include "footer.ftl">
+   <#-- <#include "footer.ftl">-->
 
     </body>
 
@@ -111,9 +112,12 @@
             }
 
             if(form.imgUrl.value == '' || form.imgUrl.value.replace(/(^\s*)|(\s*$)/g, '') == '' ){
-                alert("图片地址不为空！");
-                form.imgUrl.focus();
-                return false;
+                var imgSrc = $("#selectPic").attr("src");
+                if(imgSrc == "" || imgSrc==null){
+                    alert("图片地址不为空！");
+                    form.imgUrl.focus();
+                    return false;
+                }
             }
 
             if(form.description.value == '' || form.description.value.replace(/(^\s*)|(\s*$)/g, '') == '' ){
@@ -156,17 +160,89 @@
 
         }
 
-        $('#img-upload').change(function(e){
-            var input = $("#img-upload");
-            var file = input[0].files[0];//获取input上传的文件
-            if(!file.name){
-                alert("未选择图片");
-            }else{
-                //高版本浏览器对文件上传路径进行了安全处理，无法直接通过获取input的value进行访问，故转化为获取图片的url进行安全访问
-                var url = window.URL.createObjectURL(file);//将上传的文件转化为url
-                $("#img-show").attr('src', url);//更新img的src属性
-            };
+        // 选择图片并显示
+        var imgurl = "";
+
+        function getPhoto(node) {
+            var imgURL = "";
+            try{
+                var file = null;
+                if(node.files && node.files[0] ){
+                    file = node.files[0];
+                }else if(node.files && node.files.item(0)) {
+                    file = node.files.item(0);
+                }
+
+                //Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径
+
+                try{
+                    imgURL =  file.getAsDataURL();
+                }catch(e){
+                    imgRUL = window.URL.createObjectURL(file);
+                }
+
+            }catch(e){
+                if (node.files && node.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgURL = e.target.result;
+                    };
+                    reader.readAsDataURL(node.files[0]);
+                }
+            }
+            creatImg(imgRUL);//显示图片
+            return imgURL;
+        }
+
+        function creatImg(imgRUL){
+            document.getElementById("selectPic").src = imgRUL;
+            $('#selectPic').viewer({
+                url: 'src',
+            });
+        }
+
+        function test(){
+            var a = new FormData();
+            a.append("image", $("#fileId")[0].files[0]);
+            $.ajax({
+                url:"http://localhost:8080/item/uploadImage",
+                xhrFields:{
+                    withCredentials:true
+                },
+                type: "POST",
+                cache: false,
+                data: a,
+                processData: false,
+                contentType:false,
+                async: false,
+                success: function (result) {
+                    if(result == ""){
+                        alert("文件格式不符，上传失败！");
+                    }else{
+                        alert("上传成功！");
+                        document.getElementById("imgUrl").value = result;
+                    }
+                },
+                error : function(result) {
+                    alert("上传失败！");
+                }
+                //cache 上传文件不需要缓存，所以设置false
+                //processData 因为data值是FormData对象，不需要对数据处理
+                //contentType 因为是由form表单构造的FormData对象，且已声明了属性enctype，所以为false
+            })
+        }
+
+        $(function() {
+            if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
+                $(window).load(function(){
+                    $('input:not(input[type=submit])').each(function(){
+                        var outHtml = this.outerHTML;
+                        $(this).append(outHtml);
+                    });
+                });
+            }
         });
+
 
 
     </script>

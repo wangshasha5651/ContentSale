@@ -21,7 +21,8 @@ public enum EmBusinessError implements CommonError{
     ITEM_SUMMARY_EMPTY(30002,"商品摘要不为空"),
     ITEM_IMG_EMPTY(30003,"商品图片不为空"),
     ITEM_DESCRIPTION_EMPTY(30004,"商品正文不为空"),
-    ITEM_PRICE_EMPTY(30005,"商品价格不为空");
+    ITEM_PRICE_EMPTY(30005,"商品价格不为空"),
+    DOWNLOAD_IMG_FAIL(30003,"图片下载失败");
 
 
   //  USER_NOT_EXIST(20004,"用户不存在");

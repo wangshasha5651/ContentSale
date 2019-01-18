@@ -14,13 +14,15 @@
     </div>
 
 
+    <form action=""  method="post" enctype="multipart/form-data">
+                <input type="file" id="fileId" name="image" value="请上传图片" />
+                <input type="hidden" id="hiddId" name="id" value="1"/>
+                <input class="btn-login btn btn-default" type="button" id="submit" value="上传" onclick="test()"/>
+            </form>
 
-    <label>图片</label>
-    <div class="upload-img">
-        <input id="img-upload" type="file" name="img" accept="image/*">
-        <img id="img-show" src="" class="img-polaroid" width="170" height="170" alt="上传图片" title="上传图片">
-    </div>
 
+
+    </form>
 
 
 </@defaultLayout.layout>

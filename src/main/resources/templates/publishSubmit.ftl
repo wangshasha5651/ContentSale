@@ -14,7 +14,7 @@
             </div>
 
             <div class="div-publish-next">
-                <a class="publish-href" href="#">[查看内容]</a>&nbsp; <a class="publish-href" href="/">[返回首页]</a>
+                <a class="publish-href" href="/item/showDetail?id=${(viewInfo.getData().getId())!}">[查看内容]</a>&nbsp; <a class="publish-href" href="/">[返回首页]</a>
             </div>
         </div>
     </div>

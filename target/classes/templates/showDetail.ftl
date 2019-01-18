@@ -5,24 +5,23 @@
 <@defaultLayout.layout>
     <!--body整体-->
     <div class="container" xmlns="http://www.w3.org/1999/html">
-        <div style="margin-left: 123px">
+        <div class="div-detail">
             <table>
                 <tbody>
                 <tr>
                     <td rowspan="6">
-                        <div style="width: 250px;height: 250px;background-color: #FFFFFF;border: 1px solid #DBDBDB;"></div>
-                        <img src="" style="width: 250px;height: 250px;display: none"/>
+                        <img class="detail-img" src="${(item.getImgUrl())!}"/>
                     </td>
                     <td rowspan="6">
-                        <div style="width: 30px;"></div>
+                        <div class="blank-for-layout"></div>
                     </td>
-                    <td><div style="margin-top: -6px"><span style="font-size: 22px;">test</span></div></td>
+                    <td><div class="div-detail-title"><span class="detail-title">${(item.getTitle())!}</span></div></td>
                 </tr>
                 <tr>
-                    <td><span style="font-size: 13px">test摘要</span></td>
+                    <td><span class="detail-summary">${(item.getSummary())!}</span></td>
                 </tr>
                 <tr>
-                    <td><span>￥</span> <span class="span-detail-price">12</span></td>
+                    <td><span>￥</span> <span class="span-detail-price">${(item.getPrice())!}</span></td>
                 </tr>
                 <tr>
                     <td>
@@ -32,9 +31,12 @@
                         <button id="moreNum" class="btn-quantity-change" type="button"><span class="span-quantity-change">+</span></button>
                     </td>
                 </tr>
-                <tr>
-                    <td><button type="button" class="btn-edit btn btn-default btn-buy">编&nbsp;辑</button></td>
-                </tr>
+                <#if user??>
+                    <tr>
+                        <td><button type="button" class="btn-edit btn btn-default btn-buy">编&nbsp;辑</button></td>
+                    </tr>
+                </#if>
+
                 </tbody>
 
 
@@ -44,13 +46,11 @@
 
         </div>
 
-
-
         <ul class="nav-detail nav nav-tabs">
             <span class="bought-text-head">详细信息</span>
         </ul>
-        <div style="margin-left: 123px;margin-top: 30px">
-            <span>内容内容内容内容内容内容</span>
+        <div class="div-detail-description">
+            <span>${(item.getDescription())!}</span>
         </div>
 
     </div>

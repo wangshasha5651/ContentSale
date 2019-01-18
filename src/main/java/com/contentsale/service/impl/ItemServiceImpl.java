@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * Created by wss on 2019/1/16.
@@ -56,29 +57,17 @@ public class ItemServiceImpl implements ItemService {
         return this.getItemById(itemModel.getId());
     }
 
-    @Override
-    public String saveImage(MultipartFile file) throws IOException{
-        // 判断得到的是不是图片
-        int dotPos = file.getOriginalFilename().lastIndexOf(".");
-        if(dotPos < 0){
-            return null;
-        }
-        String fileExt = file.getOriginalFilename().substring(dotPos+1).toLowerCase();
-        // 文件格式不符
-        if(!ItemUtils.isFileAllowed(fileExt)){
-            return null;
-        }
-
-        String fileName = UUID.randomUUID().toString().replaceAll("-", "") + fileExt;
-        Files.copy(file.getInputStream(), new File(ItemUtils.IMAGE_DIR + fileName).toPath(),
-                StandardCopyOption.REPLACE_EXISTING);
-
-        return ItemUtils.CONTENT_SALE_DOMAIN + "image?name=" + fileName;
-    }
 
     @Override
     public List<ItemModel> listItem() {
-        return null;
+        List<ItemDO> itemDOList = itemDOMapper.listItem();
+
+        List<ItemModel> itemModelList = itemDOList.stream().map(itemDO -> {
+           ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
+           return itemModel;
+        }).collect(Collectors.toList());
+
+        return itemModelList;
     }
 
     @Override

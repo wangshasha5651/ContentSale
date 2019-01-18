@@ -17,10 +17,10 @@ public class ContentSaleConfiguration extends WebMvcConfigurationSupport {
     //添加地址映射
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/publish").setViewName("publish");
         registry.addViewController("/publishSubmit").setViewName("publishSubmit");
+        registry.addViewController("/showDetail").setViewName("showDetail");
 
 
         registry.addViewController("/t").setViewName("test");

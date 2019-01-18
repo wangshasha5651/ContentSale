@@ -1,12 +1,19 @@
 package com.contentsale.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.contentsale.controller.viewobject.ItemVO;
 import com.contentsale.dataobject.ItemDO;
 import com.contentsale.service.model.ItemModel;
+import com.qiniu.http.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.io.*;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.UUID;
 
 /**
  * Created by wss on 2019/1/17.
@@ -14,9 +21,6 @@ import java.math.BigDecimal;
 
 @Component
 public class ItemUtils {
-
-    public static String CONTENT_SALE_DOMAIN = "http://127.0.0.1:8080/";
-    public static String IMAGE_DIR = "E:/upload/";
 
     public static String[] IMAGE_FILE_EXT = new String[]{"png", "bmp", "jpg", "jpeg"};
     public static boolean isFileAllowed(String fileExt){
@@ -27,6 +31,8 @@ public class ItemUtils {
         }
         return false;
     }
+
+
 
     public static ItemDO convertItemDOFromItemModel(ItemModel itemModel){
         if(itemModel == null){
