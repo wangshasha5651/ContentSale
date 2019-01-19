@@ -60,7 +60,33 @@
         </div>
     </div>
 
+    <script>
 
+        setTimeout("document.getElementById('prompt-fail').style.display='none'",1000);
+
+        function checkLogin(form) {
+            // if($("#excelErrorDiv")){
+            //     $("#excelErrorDiv").hide();
+            // }
+
+            if(form.username.value == ''){
+                document.getElementById("prompt-name-null").style.display="block";
+                setTimeout("document.getElementById('prompt-name-null').style.display='none'",1000);
+                form.username.value.focus;
+                return false;
+            }
+
+            if(form.password.value == ''){
+                document.getElementById("prompt-pwd-null").style.display="block";
+                setTimeout("document.getElementById('prompt-pwd-null').style.display='none'",1000);
+                form.username.value.focus;
+                return false;
+            }
+
+        }
+
+
+    </script>
 
 </@defaultLayout.layout>
 

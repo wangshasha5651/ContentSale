@@ -18,7 +18,7 @@
                         <li style="padding-top: 10px"><span class="span-nav-text">买家你好，${(user.getName())!}！</span></li><li role="presentation"><a href="/user/logout"><span class="span-nav-text">[退出]</span></a></li>
                         <li role="presentation" class="nav-buyer-pills-each"><a href="/"><span class="span-nav-text">首页</span></a></li><li style="padding-top: 9px">|</li>
                         <li role="presentation" ><a href="#"><span class="span-nav-text">财务</span></a></li><li style="padding-top: 9px">|</li>
-                        <li role="presentation" ><a href="#"><span class="span-nav-text">购物车</span></a></li>
+                        <li role="presentation" ><a href="/cart/show"><span class="span-nav-text">购物车</span></a></li>
                     </ul>
                 <#elseif (user.getType())! == 0>
                     <ul class="nav-seller nav nav-pills">

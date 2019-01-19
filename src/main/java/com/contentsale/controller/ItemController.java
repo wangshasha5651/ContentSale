@@ -35,9 +35,6 @@ public class ItemController extends BaseController {
     @Autowired
     private CloudServiceImpl cloudService;
 
-    private static String QINIU_IMAGE_DOMAIN = "http://plitybg9g.bkt.clouddn.com/";
-
-
     // 创建商品的controller
     @RequestMapping(value="/item/create",method = {RequestMethod.POST})
     public String createItem(@RequestParam("title") String title,
@@ -45,6 +42,7 @@ public class ItemController extends BaseController {
                                        @RequestParam("imgUrl") String imgUrl,
                                        @RequestParam("description") String description,
                                        @RequestParam("price") BigDecimal price,
+                                       @RequestParam("singleRadio") Integer singleRadio,
                                        RedirectAttributesModelMap modelMap) throws BusinessException {
 
         //入参校验
@@ -64,15 +62,13 @@ public class ItemController extends BaseController {
             throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
         }
 
-
-        //当客户端传来的是图片的URL时，下载图片
-        if(imgUrl.length() >= QINIU_IMAGE_DOMAIN.length() && !StringUtils.equals(imgUrl.substring(0,33), QINIU_IMAGE_DOMAIN)){
+        if(singleRadio == 1){
+            //当客户端传来的是图片的URL时，下载图片
             String cloudUrl = cloudService.downloadImageByUrl(imgUrl);
             if(cloudUrl != null){
                 imgUrl = cloudUrl;
             }
         }
-
 
         // 封装service请求用来创建商品
         ItemModel itemModel = new ItemModel();

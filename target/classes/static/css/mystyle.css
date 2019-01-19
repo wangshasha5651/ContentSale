@@ -403,3 +403,42 @@ input:-webkit-autofill {
     margin-left: 123px;
     margin-top: 30px
 }
+.btn-add-cart:focus{
+    outline:0;
+}
+.div-detail-all{
+    position:absolute;
+    left:0;top:0;z-index:1;
+}
+.div-bg-confirm{
+    position:absolute;left:-500;top:-500;z-index:2;width:2300px;height: 1350px;background-color:rgba(0,0,0,0.7);
+}
+
+/* 确认框 */
+.div-confirm{
+    position:absolute;width: 300px;height:200px;left:900px;top:800px;z-index:3;background-color: #FFFFFF;border-radius: 5px;opacity:1;
+}
+
+.h4-text{
+    margin-top: 15px;
+    margin-left: 20px;
+    font-size: medium
+}
+.hr-line{
+    width:280px;
+    height:5px
+}
+.confirm-text{
+    font-size: medium;
+    margin-left: 30px
+}
+.btn-confirm{
+    margin-left: 30px;
+    margin-top: 30px;
+    width:100px;
+}
+.btn-cancel{
+    margin-left: 30px;
+    margin-top: 30px;
+    width:100px;
+}

@@ -21,6 +21,8 @@ public class ContentSaleConfiguration extends WebMvcConfigurationSupport {
         registry.addViewController("/publish").setViewName("publish");
         registry.addViewController("/publishSubmit").setViewName("publishSubmit");
         registry.addViewController("/showDetail").setViewName("showDetail");
+        registry.addViewController("/showDetail").setViewName("showDetail");
+        registry.addViewController("/cart/show").setViewName("settleAccount");
 
 
         registry.addViewController("/t").setViewName("test");

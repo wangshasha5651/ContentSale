@@ -37,8 +37,8 @@
                             <span>图片：</span>
                         </td>
                         <td>
-                                <input type="radio" name="single-radio" value="1" onclick="radioClick();" checked>图片地址&nbsp;
-                                <input type="radio" name="single-radio" value="2" onclick="radioClick();">本地上传
+                                <input type="radio" name="singleRadio" value="1" onclick="radioClick();" checked>图片地址&nbsp;
+                                <input type="radio" name="singleRadio" value="2" onclick="radioClick();">本地上传
                         </td>
                     </tr>
                     <tr class="tr-publish">
@@ -50,7 +50,7 @@
                             <div id="div-btn-file" style="display: none">
                                 <!-- <form id="form-upload-img" action="/item/uploadImage" method="post"> -->
                                     <input class="input-file form-control" id="fileId" type="file" name="entImg" onchange="getPhoto(this)"/>
-                                    <button type="submit" class="btn-upload btn btn-default btn-buy" onclick="test()">上传</button>
+                                    <button type="submit" class="btn-upload btn btn-default btn-buy" onclick="upload()">上传</button>
                                 <!-- </form> -->
                             </div>
                         </td>
@@ -92,7 +92,160 @@
         </div>
     </div>
 
+    <script>
+        function radioClick(){
 
+            var show="";
+            var apm = document.getElementsByName("singleRadio");
+            for(var i=0;i<apm.length;i++){
+                if(apm[i].checked)
+                    show = apm[i].value;
+            }
+
+            switch (show){
+                case '1':
+                    document.getElementById("div-img-url").style.display="block";
+                    document.getElementById("div-btn-file").style.display="none";
+                    break;
+                case '2':
+                    document.getElementById("div-img-url").style.display="none";
+                    document.getElementById("div-btn-file").style.display="block";
+                    break;
+            }
+        }
+
+
+        // 选择图片并显示
+        var imgurl = "";
+
+        function getPhoto(node) {
+            var imgURL = "";
+            try{
+                var file = null;
+                if(node.files && node.files[0] ){
+                    file = node.files[0];
+                }else if(node.files && node.files.item(0)) {
+                    file = node.files.item(0);
+                }
+
+                //Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径
+
+                try{
+                    imgURL =  file.getAsDataURL();
+                }catch(e){
+                    imgRUL = window.URL.createObjectURL(file);
+                }
+
+            }catch(e){
+                if (node.files && node.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgURL = e.target.result;
+                    };
+                    reader.readAsDataURL(node.files[0]);
+                }
+            }
+            creatImg(imgRUL);//显示图片
+            return imgURL;
+        }
+
+        function creatImg(imgRUL){
+            document.getElementById("selectPic").src = imgRUL;
+            $('#selectPic').viewer({
+                url: 'src',
+            });
+        }
+
+        function upload(){
+            var a = new FormData();
+            a.append("image", $("#fileId")[0].files[0]);
+            $.ajax({
+                url:"http://localhost:8080/item/uploadImage",
+                xhrFields:{
+                    withCredentials:true
+                },
+                type: "POST",
+                cache: false,
+                data: a,
+                processData: false,
+                contentType:false,
+                async: false,
+                success: function (result) {
+                    if(result == ""){
+                        alert("文件格式不符，上传失败！");
+                    }else{
+                        alert("上传成功！");
+                        document.getElementById("imgUrl").value = result;
+                    }
+                },
+                error : function(result) {
+                    alert("上传失败！");
+                }
+                //cache 上传文件不需要缓存，所以设置false
+                //processData 因为data值是FormData对象，不需要对数据处理
+                //contentType 因为是由form表单构造的FormData对象，且已声明了属性enctype，所以为false
+            })
+        }
+
+
+        function checkPub(form) {
+
+            // form.title.value.replace(/(^\s*)|(\s*$)/g, '') 是为了去除空格，防止没有任何内容的字符串
+            if(form.title.value == '' || form.title.value.replace(/(^\s*)|(\s*$)/g, '') == ''){
+                alert("标题不为空！");
+                form.title.focus();
+                return false;
+            }
+            if(form.title.value.length < 2 || form.title.value.length > 80){
+                alert("标题长度为2-80！");
+                form.title.focus();
+                return false;
+            }
+
+            if(form.summary.value == '' || form.summary.value.replace(/(^\s*)|(\s*$)/g, '') == '' ){
+                alert("摘要不为空！");
+                form.summary.focus();
+                return false;
+            }
+            if(form.summary.value.length < 2 || form.summary.value.length > 140){
+                alert("摘要长度为2-140！");
+                form.summary.focus();
+                return false;
+            }
+
+            if(form.imgUrl.value == '' || form.imgUrl.value.replace(/(^\s*)|(\s*$)/g, '') == '' ){
+                var imgSrc = $("#selectPic").attr("src");
+                if(imgSrc == "" || imgSrc==null){
+                    alert("图片地址不为空！");
+                    form.imgUrl.focus();
+                    return false;
+                }
+            }
+
+            if(form.description.value == '' || form.description.value.replace(/(^\s*)|(\s*$)/g, '') == '' ){
+                alert("正文不为空！");
+                form.description.focus();
+                return false;
+            }
+            if(form.description.value.length < 2 || form.description.value.length > 1000){
+                alert("正文长度为2-1000！");
+                form.description.focus();
+                return false;
+            }
+
+            if(form.price.value == '' || form.price.value.replace(/(^\s*)|(\s*$)/g, '') == ''){
+                alert("价格不为空！");
+                form.price.focus();
+                return false;
+            }
+            if(form.price.value <= 0){
+                alert("价格不符合要求！");
+                form.price.focus();
+                return false;
+            }
+        }
+
+    </script>
 
 
 </@defaultLayout.layout>
