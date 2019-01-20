@@ -1,9 +1,11 @@
 package com.contentsale.service;
 
+import com.contentsale.common.error.BusinessException;
 import com.contentsale.controller.viewobject.CartVO;
 import com.contentsale.service.model.CartModel;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wss on 2019/1/19.
@@ -14,6 +16,8 @@ public interface CartService {
     CartModel addToCart(CartModel cartModel);
 
     List<CartModel> listCartItem(Integer userId);
+
+    Boolean deleteCartItem(List<Map<String, String>> paramList) throws BusinessException;
 
     CartModel getCartItemById(Integer id);
 }

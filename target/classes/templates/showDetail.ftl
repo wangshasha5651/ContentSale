@@ -7,7 +7,7 @@
 
 
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="container" style="margin-bottom: 30px">
 
         <div class="all-in" style="position: relative;">
             <div class="div-detail-all">
@@ -39,51 +39,58 @@
                                </tr>
                                <#if user??>
                                    <#if (user.getType())! == 1>
-                                       <tr>
-                                           <td><button type="button" class="btn-add-cart btn btn-default btn-buy" onclick="showConfirmDialog()">加入购物车</button></td>
-                                       </tr>
+                                       <#if boughtList?? >
+                                           <#if boughtList?seq_contains(item.getId()) == true>
+                                               <tr>
+                                                   <td><button type="button" class="btn-add-cart btn btn-default btn-buy" disabled="disabled">已购买</button>
+                                                       <#if priceMap??><span style="color:#9D9D9D">&nbsp;&nbsp;当时购买的价格：￥${(priceMap[(item.getId())?c])!}</span></#if>
+                                                   </td>
+                                               </tr>
+                                           <#else>
+                                               <tr>
+                                                   <td><button type="button" class="btn-add-cart btn btn-default btn-buy" onclick="showConfirmDialog()">加入购物车</button></td>
+                                               </tr>
+                                           </#if>
+                                       </#if>
                                    <#elseif (user.getType())! == 0>
                                        <tr>
-                                           <td><button type="button" class="btn-edit btn btn-default btn-buy">编&nbsp;辑</button></td>
+                                           <td><a href="/item/edit?id=${(item.getId())!}"><button type="button" class="btn-edit btn btn-default btn-buy">编&nbsp;辑</button></a></td>
                                        </tr>
                                    </#if>
-
                                </#if>
-                               </tbody>
-                           </table>
-                       </div>
+                        </tbody>
+                    </table>
+               </div>
 
-                       <ul class="nav-detail nav nav-tabs">
-                           <span class="bought-text-head">详细信息</span>
-                       </ul>
-                       <div class="div-detail-description">
-                           <span>${(item.getDescription())!}</span>
-                       </div>
-                   </div>
+                <ul class="nav-detail nav nav-tabs">
+                    <span class="bought-text-head">详细信息</span>
+                </ul>
+                <div class="div-detail-description">
+                    <span>${(item.getDescription())!}</span>
+                </div>
+            </div>
 
-                   <div id="div-bg-confirm" style="position:absolute;left:-500;top:-500;z-index:2;width:2300px;height: 1350px;background-color:rgba(0,0,0,0.7);display: none">
+                <div id="div-bg-confirm" style="position:absolute;left:-500;top:-500;z-index:2;width:2300px;height: 1350px;background-color:rgba(0,0,0,0.7);display: none">
 
-                   <div id="div-confirm" style="position:absolute;width: 300px;height:200px;left:900px;top:800px;z-index:3;background-color: #FFFFFF;border-radius: 5px;opacity:1;display: none">
-                       <form id="form-addToCart" method="post" action="/cart/add">
-                           <div style="display: none">
-                               <input id="itemTitle" name="itemTitle" value="${(item.getTitle())!}" />
-                               <input id="itemId" name="itemId" value="${(item.getId())!}" />
-                               <input id="cart-num" name="quantity" value="1" />
-                               <input id="currentPrice" name="currentPrice" value="${(item.getPrice())!}" />
-                           </div>
+                    <div id="div-confirm" style="position:absolute;width: 300px;height:200px;left:900px;top:800px;z-index:3;background-color: #FFFFFF;border-radius: 5px;opacity:1;display: none">
+                        <form id="form-addToCart" method="post" <#if (user.getType())! == 1> action="/cart/add" <#else> action="/edit?id=${(item.getId())!}" </#if> >
+                            <div style="display: none">
+                                <input id="itemTitle" name="itemTitle" value="${(item.getTitle())!}" />
+                                <input id="itemId" name="itemId" value="${(item.getId())!}" />
+                                <input id="cart-num" name="quantity" value="1" />
+                                <input id="currentPrice" name="currentPrice" value="${(item.getPrice())!}" />
+                            </div>
 
-                           <h4 class="h4-text">提示</h4>
-                           <hr class="hr-line"/>
-                           <p class="confirm-text">确定加入购物车吗？</p>
-                           <button class="btn-confirm btn btn-default btn-buy" onclick="add()">确定</button>
-                           <button class="btn-cancel btn btn-default" onclick="dispearConfirmDialog();return false;">取消</button>
-                       </form>
+                            <h4 class="h4-text">提示</h4>
+                            <hr class="hr-line"/>
+                            <p class="confirm-text">确定加入购物车吗？</p>
+                            <button class="btn-confirm btn btn-default btn-buy" onclick="add()">确定</button>
+                            <button class="btn-cancel btn btn-default" onclick="dispearConfirmDialog();return false;">取消</button>
+                        </form>
+                    </div>
+                </div>
 
-                   </div>
-
-                   </div>
         </div> <!-- all-in -->
-
     </div><!-- container -->
 
     <script>

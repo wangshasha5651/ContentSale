@@ -19,7 +19,13 @@ public interface ItemService {
     // 商品列表浏览
     List<ItemModel> listItem();
 
-    // 商品详情浏览
+    // 未购买商品的列表浏览
+    List<ItemModel> listNotBoughtItem();
+
+    // 获取商品详情
     ItemModel getItemById(Integer id);
+
+    // 修改商品信息
+    Boolean editItem(ItemModel itemModel) throws BusinessException;
 
 }

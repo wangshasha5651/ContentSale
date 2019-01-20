@@ -60,16 +60,22 @@ public class CartController extends BaseController {
 
         List<CartModel> cartModelList = cartService.listCartItem(hostHolder.getUser().getId());
 
-        // 使用stream api将list内的itemModel转化为itemVO
-        List<CartVO> cartVOList = cartModelList.stream().map(cartModel -> {
-            CartVO cartVO = CartUtils.convertVOFromModel(cartModel);
-            return cartVO;
-        }).collect(Collectors.toList());
+        // 判断购物车是否为空
+        if(cartModelList == null || cartModelList.size() == 0){
+            modelAndView.setViewName("settleAccount");
+            return modelAndView;
+        }else{
+            // 使用stream api将list内的itemModel转化为itemVO
+            List<CartVO> cartVOList = cartModelList.stream().map(cartModel -> {
+                CartVO cartVO = CartUtils.convertVOFromModel(cartModel);
+                return cartVO;
+            }).collect(Collectors.toList());
 
-        modelAndView.addObject("cartList", cartVOList);
-        modelAndView.setViewName("settleAccount");
+            modelAndView.addObject("cartList", cartVOList);
+            modelAndView.setViewName("settleAccount");
 
-        return modelAndView;
+            return modelAndView;
+        }
     }
 
 }

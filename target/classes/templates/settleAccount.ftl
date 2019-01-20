@@ -3,46 +3,63 @@
 
 <#-- 调用布局指令 -->
 <@defaultLayout.layout>
-    <div class="container">
-        <ul class="nav nav-tabs">
-            <span class="bought-text-head">已添加到购物车的内容</span>
-        </ul>
-    </div>
-    <table id="cart-table" class="table-bought table table-striped" >
-        <thead>
-        <tr class="table-bought-th">
-            <th style="display: none">id</th>
-            <th>内容名称</th>
-            <th>数量</th>
-            <th>价格</th>
-        </tr>
-        </thead>
-        <tbody>
-            <#list cartList as item>
-                <tr>
-                    <td style="display: none"><span id="id${item_index+1}">${(item.getItemId())!}</span></td>
-                    <td><span id="title${item_index+1}">${(item.getItemTitle())!}</td>
-                    <td>
-                        <button id="lessNum" class="btn-quantity-change" type="button" onclick="change(-1)"><span class="span-quantity-change">-</span></button>
-                        <span id="nowNum${item_index+1}">${(item.getQuantity())!}</span>
-                        <button id="moreNum" class="btn-quantity-change" type="button" onclick="change(1)"><span class="span-quantity-change">+</span></button>
-                    </td>
-                    <td><span id="nowPrice${item_index+1}">${(item.getCurrentPrice())!}</span><span id="eachPrice" style="display:none">${(item.getCurrentPrice())!}</span></td>
-                </tr>
-            </#list>
-        </tbody>
-    </table>
-    <div class="div-settle-btn">
-        <button type="button" class="btn-exit btn btn-default" onclick="back()">退&nbsp;出</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn-buy btn btn-default" onclick="buy()">购&nbsp;买</button>
-    </div>
+    <div class="container" style="margin-bottom: 30px">
+        <div class="all-in" style="position: relative;">
+            <div class="div-detail-all">
+                <ul class="nav nav-tabs">
+                    <span class="bought-text-head">已添加到购物车的内容</span>
+                </ul>
+
+                <table id="cart-table" class="table-bought table table-striped" style="margin-left: 123px">
+                    <thead>
+                    <tr class="table-bought-th">
+                        <th style="display: none">id</th>
+                        <th>内容名称</th>
+                        <th>数量</th>
+                        <th>价格</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <#if cartList?? >
+                            <#list cartList as item>
+                                <tr>
+                                    <td style="display: none"><span id="id${item_index+1}">${(item.getItemId())!}</span></td>
+                                    <td><span id="title${item_index+1}">${(item.getItemTitle())!}</td>
+                                    <td>
+                                        <button id="lessNum" class="btn-quantity-change" type="button" onclick="change(-1, ${item_index+1})"><span class="span-quantity-change">-</span></button>
+                                        <span id="nowNum${item_index+1}">${(item.getQuantity())!}</span>
+                                        <button id="moreNum" class="btn-quantity-change" type="button" onclick="change(1, ${item_index+1})"><span class="span-quantity-change">+</span></button>
+                                    </td>
+                                    <td><span id="nowPrice${item_index+1}">￥${(item.getCurrentPrice())!}</span><span id="eachPrice" style="display:none">${(item.getCurrentPrice())!}</span></td>
+                                </tr>
+                            </#list>
+                        </#if>
+                    </tbody>
+                </table>
+                <div class="div-settle-btn" style="margin-left: 400px">
+                    <button type="button" class="btn-exit btn btn-default" onclick="back()">退&nbsp;出</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn-buy btn btn-default" <#if cartList?? >onclick="showConfirmDialog()" </#if>>购&nbsp;买</button>
+                </div>
+            </div>
 
 
+            <div id="div-bg-confirm" style="position:absolute;left:-500;top:-500;z-index:2;width:2300px;height: 1350px;background-color:rgba(0,0,0,0.7);display: none">
+
+                <div id="div-confirm" style="position:absolute;width: 300px;height:200px;left:900px;top:800px;z-index:3;background-color: #FFFFFF;border-radius: 5px;opacity:1;display: none">
+                    <h4 class="h4-text">提示</h4>
+                    <hr class="hr-line"/>
+                    <p class="confirm-text">确定全部购买吗？</p>
+                    <button class="btn-confirm btn btn-default btn-buy" onclick="buy()">确定</button>
+                    <button class="btn-cancel btn btn-default" onclick="dispearConfirmDialog();return false;">取消</button>
+                </div>
+            </div>
+        </div> <!-- all in -->
+    </div>
     <script>
 
-        var change = function(num){
+        var change = function(num, idnum){
             //数量的变化
-            var span = document.getElementById('nowNum'),
+            var span = document.getElementById('nowNum' + idnum),
                 spanNum = span.innerText*1;
 
             spanNum += num;
@@ -71,10 +88,22 @@
         function back() {
             window.history.back(-1);
         }
-        
+
+        function showConfirmDialog() {
+            document.getElementById("div-bg-confirm").style.display="block";
+            document.getElementById("div-confirm").style.display="block";
+        }
+        function dispearConfirmDialog() {
+            document.getElementById("div-bg-confirm").style.display="none";
+            document.getElementById("div-confirm").style.display="none";
+        }
+
+
         function buy() {
+            document.getElementById("div-bg-confirm").style.display="none";
+            document.getElementById("div-confirm").style.display="none";
+
             var table = document.getElementById("cart-table");
-            alert($("#title"+1).text());
 
             var list=[];
 
@@ -86,21 +115,18 @@
                     obj.quantity = $("#nowNum"+i).text();
                     obj.price = $("#nowPrice"+i).text();
                     list.push(obj);
-
                 }
             }
 
-
-            alert(123);
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:8080/buy',
-                dataType: 'json',
                 contentType: 'application/json;charset=UTF-8',
                 traditional: true,
                 data: JSON.stringify({cartList: list}),
                 success: function(res){
-                    alert(res);
+                    alert("购买成功");
+                    window.location.href="http://localhost:8080/finance/show";
                 }
             });
         }

@@ -1,19 +1,14 @@
 package com.contentsale.utils;
 
-import com.alibaba.fastjson.JSONObject;
 import com.contentsale.controller.viewobject.ItemVO;
 import com.contentsale.dataobject.ItemDO;
 import com.contentsale.service.model.ItemModel;
-import com.qiniu.http.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
 import java.math.BigDecimal;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.UUID;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by wss on 2019/1/17.
@@ -64,5 +59,24 @@ public class ItemUtils {
         BeanUtils.copyProperties(itemModel, itemVO);
 
         return itemVO;
+    }
+
+    public static List<ItemVO> convertVOListFromModelList(List<ItemModel> itemModelList){
+
+        List<ItemVO> itemVOList = itemModelList.stream().map(itemModel -> {
+            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
+            return itemVO;
+        }).collect(Collectors.toList());
+
+        return itemVOList;
+    }
+
+    public static List<ItemModel> convertModelListFromDOList(List<ItemDO> itemDOList){
+        List<ItemModel> itemModelList = itemDOList.stream().map(itemDO -> {
+            ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
+            return itemModel;
+        }).collect(Collectors.toList());
+
+        return itemModelList;
     }
 }

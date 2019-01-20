@@ -1,17 +1,23 @@
 package com.contentsale.service.impl;
 
+import com.contentsale.common.error.BusinessException;
+import com.contentsale.common.error.EmBusinessError;
 import com.contentsale.controller.viewobject.CartVO;
 import com.contentsale.dao.CartDOMapper;
 import com.contentsale.dataobject.CartDO;
+import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.CartService;
 import com.contentsale.service.model.CartModel;
 import com.contentsale.utils.CartUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -23,6 +29,9 @@ public class CartServiceImpl implements CartService {
 
     @Autowired
     private CartDOMapper cartDOMapper;
+
+    @Autowired
+    private HostHolder hostHolder;
 
     @Override
     @Transactional // 在事务中进行
@@ -55,6 +64,7 @@ public class CartServiceImpl implements CartService {
         return this.getCartItemById(cartModel.getId());
     }
 
+    // 查看购物车
     @Override
     public List<CartModel> listCartItem(Integer userId) {
 
@@ -68,6 +78,27 @@ public class CartServiceImpl implements CartService {
 
         return cartModelList;
     }
+
+    @Override
+    @Transactional // 在事务中进行
+    public Boolean deleteCartItem(List<Map<String, String>> paramList) throws BusinessException {
+
+
+        for(Map<String, String> param : paramList){
+            // 参数校验
+            if(param.get("id") == null || StringUtils.isEmpty(param.get("id"))){
+                return false;
+            }
+            Integer itemId = Integer.valueOf(param.get("id"));
+            try{
+                cartDOMapper.deleteByUserAndItem(hostHolder.getUser().getId(), itemId);
+            }catch (Exception e){
+                throw new BusinessException(EmBusinessError.SQL_ERROR);
+            }
+        }
+        return true;
+    }
+
 
     @Override
     public CartModel getCartItemById(Integer id) {

@@ -8,6 +8,7 @@ public enum EmBusinessError implements CommonError{
     // 通用错误类型10001
     PARAMETER_VALIDATION_ERROR(10001,"参数不合法"),
     UNKNOWN_ERROR(10002,"未知错误"),
+    SQL_ERROR(10002,"数据库操作异常"),
 
 
     // 20000开头为登录相关错误定义
@@ -22,8 +23,12 @@ public enum EmBusinessError implements CommonError{
     ITEM_IMG_EMPTY(30003,"商品图片不为空"),
     ITEM_DESCRIPTION_EMPTY(30004,"商品正文不为空"),
     ITEM_PRICE_EMPTY(30005,"商品价格不为空"),
-    DOWNLOAD_IMG_FAIL(30003,"图片下载失败");
+    DOWNLOAD_IMG_FAIL(30003,"图片下载失败"),
 
+
+    // 40000开头为创建order相关错误定义
+    ORDER_FINANCE_ERROR(40001,"下单时财务服务出错"),
+    ORDER_CART_ERROR(40002,"下单时购物车服务出错");
 
   //  USER_NOT_EXIST(20004,"用户不存在");
 

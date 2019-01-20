@@ -3,11 +3,11 @@
 
 <#-- 调用布局指令 -->
 <@defaultLayout.layout>
-<div class="container">
+<div class="container" style="margin-bottom: 30px">
     <ul class="nav nav-tabs">
         <span class="bought-text-head">已购买的内容</span>
     </ul>
-</div>
+
     <table class="table-bought table table-striped" >
         <thead>
         <tr class="table-bought-th">
@@ -19,27 +19,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><a href="#"><img class="img-caiwu-small" src="http://p3.music.126.net/dqR0Cx3V7Eh0a6NX9OwUXg==/109951163338309990.jpg?param=368y368"></a></td>
-            <td><a class="hyperlink-bought-title" href="#"><span>测试</span></a></td>
-            <td><span>2018-12-29 17:27</span></td>
-            <td><span>1</span></td>
-            <td><span class="symbolRMB">¥</span> <span>120.88</span></td>
-        </tr>
-        <tr>
-            <td><a href="#"><img class="img-caiwu-small" src="http://p3.music.126.net/dqR0Cx3V7Eh0a6NX9OwUXg==/109951163338309990.jpg?param=368y368"></a></td>
-            <td><a class="hyperlink-bought-title" href="#"><span>SICP</span></a></td>
-            <td><span>2018-12-29 17:27</span></td>
-            <td><span>1</span></td>
-            <td><span class="symbolRMB">¥</span> <span>120.88</span></td>
-        </tr>
-        <tr>
-            <td><a href="#"><img class="img-caiwu-small" src="http://p3.music.126.net/dqR0Cx3V7Eh0a6NX9OwUXg==/109951163338309990.jpg?param=368y368"></a></td>
-            <td><a class="hyperlink-bought-title" href="#"><span>测试</span></a></td>
-            <td><span>2018-12-29 17:27</span></td>
-            <td><span>1</span></td>
-            <td><span class="symbolRMB">¥</span> <span>120.88</span></td>
-        </tr>
+            <#if financeList?? >
+                <#list financeList as item>
+                    <tr>
+                        <td><a href="/showDetail?id=${(item.getItemId())!}"><img class="img-caiwu-small" src="${(item.getItemImgUrl())!}"></a></td>
+                        <td><a class="hyperlink-bought-title" href="#"><span>${(item.getItemName())!}</span></a></td>
+                        <td><span>${(item.getPaymentTime())!}</span></td>
+                        <td><span>${(item.getQuantity())!}</span></td>
+                        <td><span class="symbolRMB">¥</span> <span>${(item.getEachPrice())!}</span></td>
+                    </tr>
+                </#list>
+                <tr style="background-color: #F0F0F0">
+                    <td colspan="5"><span style="margin-left: 713px">总计： </span><span class="symbolRMB">¥</span> <span>${(allItemPrice)!}</span></td>
+                </tr>
+            </#if>
         </tbody>
     </table>
+</div>
 </@defaultLayout.layout>

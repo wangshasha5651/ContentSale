@@ -35,6 +35,8 @@ public class ItemModel {
     @NotBlank(message = "商品图片不能为空")
     private String imgUrl;
 
+    private Integer sellerId;
+
 
     public Integer getId() {
         return id;
@@ -90,5 +92,13 @@ public class ItemModel {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
     }
 }
