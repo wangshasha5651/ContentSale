@@ -27,7 +27,7 @@
                                    <td><span class="detail-summary">${(item.getSummary())!}</span></td>
                                </tr>
                                <tr>
-                                   <td><span>￥</span> <span class="span-detail-price">${(item.getPrice())!}</span></td>
+                                   <td><span>￥</span> <span class="span-detail-price">${(item.getPrice())?string("0.##")!}</span></td>
                                </tr>
                                <tr>
                                    <td>
@@ -54,7 +54,7 @@
                                        </#if>
                                    <#elseif (user.getType())! == 0>
                                        <tr>
-                                           <td><a href="/item/edit?id=${(item.getId())!}"><button type="button" class="btn-edit btn btn-default btn-buy">编&nbsp;辑</button></a></td>
+                                           <td><a href="/edit?id=${(item.getId())!}"><button type="button" class="btn-edit btn btn-default btn-buy">编&nbsp;辑</button></a></td>
                                        </tr>
                                    </#if>
                                </#if>
@@ -78,7 +78,7 @@
                                 <input id="itemTitle" name="itemTitle" value="${(item.getTitle())!}" />
                                 <input id="itemId" name="itemId" value="${(item.getId())!}" />
                                 <input id="cart-num" name="quantity" value="1" />
-                                <input id="currentPrice" name="currentPrice" value="${(item.getPrice())!}" />
+                                <input id="currentPrice" name="currentPrice" value="${(item.getPrice())?string("0.##")!}" />
                             </div>
 
                             <h4 class="h4-text">提示</h4>
@@ -106,9 +106,16 @@
             document.getElementById("div-bg-confirm").style.display="none";
             document.getElementById("div-confirm").style.display="none";
 
-             $("#form-addToCart").ajaxForm(function(data){
-                 alert("成功加入购物车！");
-                 location.reload();
+
+             $("#form-addToCart").ajaxForm(function(res){
+                 if(res == "success"){
+                     alert("成功加入购物车！");
+                     location.reload();
+                 }else{
+                     alert("加入购物车失败！");
+                     location.reload();
+                 }
+
              });
         }
 

@@ -42,13 +42,15 @@ public class ItemController extends BaseController {
 
     // 创建商品
     @RequestMapping(value="/item/create",method = {RequestMethod.POST})
-    public String createItem(@RequestParam("title") String title,
-                                       @RequestParam("summary") String summary,
-                                       @RequestParam("imgUrl") String imgUrl,
-                                       @RequestParam("description") String description,
-                                       @RequestParam("price") BigDecimal price,
-                                       @RequestParam("singleRadio") Integer singleRadio,
-                                       RedirectAttributesModelMap modelMap) throws BusinessException {
+    @ResponseBody
+    public ModelAndView createItem(@RequestParam("title") String title,
+                             @RequestParam("summary") String summary,
+                             @RequestParam("imgUrl") String imgUrl,
+                             @RequestParam("description") String description,
+                             @RequestParam("price") BigDecimal price,
+                             @RequestParam("singleRadio") Integer singleRadio,
+                             RedirectAttributesModelMap modelMap,
+                             ModelAndView modelAndView) throws BusinessException {
 
         //入参校验
         if(StringUtils.isEmpty(title)){
@@ -88,8 +90,9 @@ public class ItemController extends BaseController {
         ItemVO itemVO = ItemUtils.convertVOFromModel(itemModelForReturn);
 
         modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(itemVO));
-
-        return "redirect:/publishSubmit";
+        modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
+        modelAndView.setViewName("publishSubmit");
+        return modelAndView;
     }
 
 
@@ -110,7 +113,7 @@ public class ItemController extends BaseController {
 
     // 显示商品详情
     @RequestMapping(value="/showDetail", method = {RequestMethod.GET})
-    public ModelAndView uploadImage(@RequestParam("id") Integer id, ModelAndView modelAndView){
+    public ModelAndView show(@RequestParam("id") Integer id, ModelAndView modelAndView){
 
         ItemModel itemModel = itemService.getItemById(id);
 
@@ -154,7 +157,7 @@ public class ItemController extends BaseController {
     }
 
     // 获取商品信息发至编辑页
-    @RequestMapping(value="/item/edit", method = {RequestMethod.GET})
+    @RequestMapping(value="/edit", method = {RequestMethod.GET})
     @ResponseBody
     public ModelAndView getItem(Integer id,ModelAndView modelAndView){
 
@@ -170,13 +173,15 @@ public class ItemController extends BaseController {
 
     // 修改商品信息
     @RequestMapping(value="/item/edit",method = {RequestMethod.POST})
-    public String editItem(@RequestParam("title") String titleToEdit,
-                             @RequestParam("summary") String summaryToEdit,
-                             @RequestParam("imgUrl") String imgUrlToEdit,
-                             @RequestParam("description") String descriptionToEdit,
-                             @RequestParam("price") BigDecimal priceToEdit,
-                             @RequestParam("singleRadio") Integer singleRadio,
-                             RedirectAttributesModelMap modelMap) throws BusinessException {
+    @ResponseBody
+    public ModelAndView editItem(@RequestParam("id") String id,
+                           @RequestParam("title") String titleToEdit,
+                           @RequestParam("summary") String summaryToEdit,
+                           @RequestParam("imgUrl") String imgUrlToEdit,
+                           @RequestParam("description") String descriptionToEdit,
+                           @RequestParam("price") BigDecimal priceToEdit,
+                           @RequestParam("singleRadio") Integer singleRadio,
+                           ModelAndView modelAndView) throws BusinessException {
         //入参校验
         if(StringUtils.isEmpty(titleToEdit)){
             throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
@@ -204,6 +209,7 @@ public class ItemController extends BaseController {
 
         // 封装service请求用来编辑商品
         ItemModel itemModel = new ItemModel();
+        itemModel.setId(Integer.valueOf(id));
         itemModel.setTitle(titleToEdit);
         itemModel.setSummary(summaryToEdit);
         itemModel.setImgUrl(imgUrlToEdit);
@@ -212,7 +218,24 @@ public class ItemController extends BaseController {
         itemModel.setSellerId(hostHolder.getUser().getId());
 
         itemService.editItem(itemModel);
+        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
 
-        return "redirect:/editSubmit";
+        modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
+        modelAndView.setViewName("editSubmit");
+
+        return modelAndView;
+    }
+
+    // 删除商品
+    @RequestMapping(value="/item/delete", method = {RequestMethod.GET})
+    @ResponseBody
+    public String delete(@RequestParam("id") Integer id) throws BusinessException {
+
+        Boolean deleteResult = itemService.deleteItem(id);
+        if(!deleteResult.equals(Boolean.TRUE)){
+            return "fail";
+        }
+
+        return "success";
     }
 }

@@ -38,7 +38,7 @@
                         </td>
                         <td>
                                 <input type="radio" name="singleRadio" value="1" onclick="radioClick();" checked>图片地址&nbsp;
-                                <input type="radio" name="singleRadio" value="2" onclick="radioClick();">本地上传
+                                <input id="upload-radio" type="radio" name="singleRadio" value="2" onclick="radioClick();">本地上传
                         </td>
                     </tr>
                     <tr class="tr-publish">
@@ -50,7 +50,7 @@
                             <div id="div-btn-file" style="display: none">
                                 <!-- <form id="form-upload-img" action="/item/uploadImage" method="post"> -->
                                     <input class="input-file form-control" id="fileId" type="file" name="entImg" onchange="getPhoto(this)"/>
-                                    <button type="submit" class="btn-upload btn btn-default btn-buy" onclick="upload()">上传</button>
+                                    <button type="button" class="btn-upload btn btn-default btn-buy" onclick="upload()">上传</button>
                                 <!-- </form> -->
                             </div>
                         </td>
@@ -93,6 +93,7 @@
     </div>
 
     <script>
+        var isUploadClick = 0;
         function radioClick(){
 
             var show="";
@@ -157,6 +158,7 @@
         }
 
         function upload(){
+            isUploadClick = 1;
             var a = new FormData();
             a.append("image", $("#fileId")[0].files[0]);
             $.ajax({
@@ -189,7 +191,6 @@
 
 
         function checkPub(form) {
-
             // form.title.value.replace(/(^\s*)|(\s*$)/g, '') 是为了去除空格，防止没有任何内容的字符串
             if(form.title.value == '' || form.title.value.replace(/(^\s*)|(\s*$)/g, '') == ''){
                 alert("标题不为空！");
@@ -219,6 +220,9 @@
                     alert("图片地址不为空！");
                     form.imgUrl.focus();
                     return false;
+                }else{
+                    document.getElementById("imgUrl").value = imgSrc;
+                    $("input[name='singleRadio'][value=2]").attr("checked",true);
                 }
             }
 
@@ -242,6 +246,12 @@
                 alert("价格不符合要求！");
                 form.price.focus();
                 return false;
+            }
+            if(document.getElementById("upload-radio").checked){
+                if(isUploadClick == 0){
+                    alert("请先上传图片");
+                    return false;
+                }
             }
         }
 

@@ -10,7 +10,7 @@
         </ul>
 
         <div class="div-pubic">
-            <form id="form-public" action="/item/create" method="post" onsubmit="return checkPub(this)" enctype="multipart/form-data">
+            <form id="form-public" method="post" action="/item/edit" onsubmit="return checkPub(this)" enctype="multipart/form-data">
                 <table class="table-publish">
                     <tbody>
                     <tr class="tr-publish">
@@ -18,7 +18,8 @@
                             <span>标题：</span>
                         </td>
                         <td>
-                            <input name="title" class="input-publish" placeholder="2-80字符" aria-describedby="basic-addon1" value="${(item.getTitle())!}"/>
+                            <input name="id" value="${(item.getId())!}" style="display: none;"/>
+                            <input id="title" name="title" class="input-publish" placeholder="2-80字符" aria-describedby="basic-addon1" value="${(item.getTitle())!}"/>
                         </td>
                         <td rowspan="3">
                             <img id="selectPic" class="img-preshow-publish" src="${(item.getImgUrl())!}"/>
@@ -29,7 +30,7 @@
                             <span>摘要：</span>
                         </td>
                         <td>
-                            <input name="summary"  class="input-publish" placeholder="2-140字符" aria-describedby="basic-addon1" value="${(item.getSummary())!}"/>
+                            <input id="summary" name="summary"  class="input-publish" placeholder="2-140字符" aria-describedby="basic-addon1" value="${(item.getSummary())!}"/>
                         </td>
                     </tr>
                     <tr class="tr-publish">
@@ -50,7 +51,7 @@
                             <div id="div-btn-file" style="display: none">
                                 <!-- <form id="form-upload-img" action="/item/uploadImage" method="post"> -->
                                 <input class="input-file form-control" id="fileId" type="file" name="entImg" onchange="getPhoto(this)"/>
-                                <button type="submit" class="btn-upload btn btn-default btn-buy" onclick="upload()">上传</button>
+                                <button type="button" class="btn-upload btn btn-default btn-buy" onclick="upload()">上传</button>
                                 <!-- </form> -->
                             </div>
                         </td>
@@ -63,7 +64,7 @@
                             <span>正文：</span>
                         </td>
                         <td colspan="2">
-                            <input name="description"  class="input-publish input-long-text" placeholder="2-1000个字符" aria-describedby="basic-addon1" value="${(item.getDescription())!}"/>
+                            <input id="description" name="description"  class="input-publish input-long-text" placeholder="2-1000个字符" aria-describedby="basic-addon1" value="${(item.getDescription())!}"/>
                         </td>
 
                     </tr>
@@ -72,7 +73,7 @@
                             <span class="title-short-text">价格：</span>
                         </td>
                         <td>
-                            <input name="price" class="input-publish input-short-text" aria-describedby="basic-addon1" value="${(item.getPrice())!}"/>&nbsp;元
+                            <input id="price" name="price" class="input-publish input-short-text" aria-describedby="basic-addon1" value="${(item.getPrice())?c!}"/>&nbsp;元
                         </td>
 
                     </tr>
@@ -114,9 +115,6 @@
             }
         }
 
-
-        // 选择图片并显示
-        var imgurl = "";
 
         function getPhoto(node) {
             var imgURL = "";
@@ -187,7 +185,6 @@
             })
         }
 
-
         function checkPub(form) {
 
             // form.title.value.replace(/(^\s*)|(\s*$)/g, '') 是为了去除空格，防止没有任何内容的字符串
@@ -219,6 +216,9 @@
                     alert("图片地址不为空！");
                     form.imgUrl.focus();
                     return false;
+                }else{
+                    document.getElementById("imgUrl").value = imgSrc;
+                    $("input[name='singleRadio'][value=2]").attr("checked",true);
                 }
             }
 
@@ -244,7 +244,6 @@
                 return false;
             }
         }
-
     </script>
 
 

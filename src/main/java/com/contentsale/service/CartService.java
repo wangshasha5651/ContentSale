@@ -3,6 +3,7 @@ package com.contentsale.service;
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.controller.viewobject.CartVO;
 import com.contentsale.service.model.CartModel;
+import com.contentsale.service.model.OrderItemModel;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public interface CartService {
 
     List<CartModel> listCartItem(Integer userId);
 
-    Boolean deleteCartItem(List<Map<String, String>> paramList) throws BusinessException;
+    Boolean deleteCartItem(List<OrderItemModel> orderItemModelList) throws BusinessException;
 
     CartModel getCartItemById(Integer id);
 }

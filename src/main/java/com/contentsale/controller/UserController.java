@@ -37,7 +37,7 @@ import java.util.Map;
  */
 
 @Controller("user")
-@RequestMapping("/user")
+@RequestMapping("/")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true") //Access-Control-Allow-Origin
 public class UserController extends BaseController {
 
@@ -54,7 +54,7 @@ public class UserController extends BaseController {
     private LoginTicketDOMapper loginTicketDOMapper;
 
 
-    @RequestMapping(value="/login",method = {RequestMethod.POST})
+    @RequestMapping(value="/user/login",method = {RequestMethod.POST})
 //    @ResponseBody
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -85,7 +85,7 @@ public class UserController extends BaseController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="/logout",method = {RequestMethod.GET})
+    @RequestMapping(value="/user/logout",method = {RequestMethod.GET})
     public String logout(@CookieValue("ticket") String ticket) {
         userService.logout(ticket);
         return "redirect:/login";

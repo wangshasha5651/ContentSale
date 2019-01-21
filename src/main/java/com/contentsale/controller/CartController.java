@@ -50,7 +50,7 @@ public class CartController extends BaseController {
 
             modelAndView.addObject("cartVO", cartVO);
 
-        return "添加购物车成功";
+        return "success";
     }
 
     // 查看购物车

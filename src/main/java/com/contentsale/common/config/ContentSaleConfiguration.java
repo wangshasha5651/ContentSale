@@ -21,8 +21,8 @@ public class ContentSaleConfiguration extends WebMvcConfigurationSupport {
         registry.addViewController("/publish").setViewName("publish");
         registry.addViewController("/publishSubmit").setViewName("publishSubmit");
         registry.addViewController("/showDetail").setViewName("showDetail");
-        registry.addViewController("/showDetail").setViewName("showDetail");
         registry.addViewController("/cart/show").setViewName("settleAccount");
+        registry.addViewController("/editSubmit").setViewName("editSubmit");
 
 
         registry.addViewController("/t").setViewName("test");
@@ -32,7 +32,7 @@ public class ContentSaleConfiguration extends WebMvcConfigurationSupport {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(passportInterceptor).addPathPatterns("/**").
-                excludePathPatterns("/user/login", "/login");
+                excludePathPatterns("/user/login", "/login", "/user/logout");
         super.addInterceptors(registry);
     }
 

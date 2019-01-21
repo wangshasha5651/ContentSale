@@ -8,7 +8,7 @@
         <span class="bought-text-head">已购买的内容</span>
     </ul>
 
-    <table class="table-bought table table-striped" >
+    <table class="table-bought table table-striped" style="margin-left: 123px">
         <thead>
         <tr class="table-bought-th">
             <th class="td-img">内容图片</th>

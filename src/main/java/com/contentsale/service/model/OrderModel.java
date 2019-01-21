@@ -4,6 +4,7 @@ import javafx.scene.layout.BackgroundImage;
 import org.omg.PortableInterceptor.INACTIVE;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by wss on 2019/1/19.
@@ -12,33 +13,35 @@ import java.math.BigDecimal;
 // 用户下单的交易模型
 public class OrderModel {
 
-    // 交易订单号
-    private String id;
+    // 订单序号
+    private Integer id;
+
+    // 交易订单流水号
+    private String orderNo;
 
     // 购买的用户id
     private Integer userId;
 
-    // 商家id
-    private Integer sellerId;
+    // 订单总额
+    private BigDecimal totalPayment;
 
-    // 购买时的单价
-    private BigDecimal itemPrice;
+    // 创建日期
+    private Date createTime;
 
-    // 购买的商品id
-    private Integer itemId;
-
-    // 购买的数量
-    private Integer amount;
-
-    // 交易金额
-    private BigDecimal orderPrice;
-
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     public Integer getUserId() {
@@ -49,43 +52,19 @@ public class OrderModel {
         this.userId = userId;
     }
 
-    public Integer getSellerId() {
-        return sellerId;
+    public BigDecimal getTotalPayment() {
+        return totalPayment;
     }
 
-    public void setSellerId(Integer sellerId) {
-        this.sellerId = sellerId;
+    public void setTotalPayment(BigDecimal totalPayment) {
+        this.totalPayment = totalPayment;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public BigDecimal getOrderPrice() {
-        return orderPrice;
-    }
-
-    public void setOrderPrice(BigDecimal orderPrice) {
-        this.orderPrice = orderPrice;
-    }
-
-    public BigDecimal getItemPrice() {
-        return itemPrice;
-    }
-
-    public void setItemPrice(BigDecimal itemPrice) {
-        this.itemPrice = itemPrice;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

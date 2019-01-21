@@ -17,16 +17,16 @@
 
 
     </head>
-    <body>
-    <#include "header.ftl">
 
+    <#include "header.ftl">
+        <body style="margin-bottom: 100px;">
     <#-- 在这里嵌入main content -->
     <#nested>
 
+        </body>
+    <#-- <#include "footer.ftl"> -->
 
-    <#include "footer.ftl">
 
-    </body>
 
     </html>
 </#macro>

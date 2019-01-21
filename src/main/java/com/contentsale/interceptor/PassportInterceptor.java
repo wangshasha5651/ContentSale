@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -87,9 +89,9 @@ public class PassportInterceptor implements HandlerInterceptor {
                     hostHolder.setItemBoughtList(buyerItemIdList);
                 }
                 // 买家所有商品购买时的价格map
-                Map<String, String> priceMap = new HashMap<>();
+                Map<String, BigDecimal> priceMap = new HashMap<>();
                 for(FinanceDO financeDO : buyerFinanceDOList){
-                    priceMap.put(financeDO.getItemId().toString(), new BigDecimal(financeDO.getEachPrice()).toString());
+                    priceMap.put(financeDO.getItemId().toString(), new BigDecimal(financeDO.getEachPrice()));
                 }
                 hostHolder.setPriceMap(priceMap);
             }else{

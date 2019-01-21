@@ -40,13 +40,13 @@ public class HostHolder {
     }
 
     // 价格映射
-    private static ThreadLocal<Map<String, String>> priceMap = new ThreadLocal<>();
+    private static ThreadLocal<Map<String, BigDecimal>> priceMap = new ThreadLocal<>();
 
-    public Map<String, String> getPriceMap(){
+    public Map<String, BigDecimal> getPriceMap(){
         return priceMap.get();
     }
 
-    public void setPriceMap(Map<String, String> map){
+    public void setPriceMap(Map<String, BigDecimal> map){
         priceMap.set(map);
     }
 

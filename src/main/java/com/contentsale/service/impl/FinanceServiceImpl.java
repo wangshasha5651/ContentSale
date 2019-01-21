@@ -1,5 +1,7 @@
 package com.contentsale.service.impl;
 
+import com.contentsale.common.error.BusinessException;
+import com.contentsale.common.error.EmBusinessError;
 import com.contentsale.dao.FinanceDOMapper;
 import com.contentsale.dao.ItemDOMapper;
 import com.contentsale.dataobject.FinanceDO;
@@ -7,11 +9,14 @@ import com.contentsale.dataobject.ItemDO;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.FinanceService;
 import com.contentsale.service.model.FinanceModel;
+import com.contentsale.service.model.ItemModel;
+import com.contentsale.service.model.OrderItemModel;
 import com.contentsale.utils.FinanceUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -31,49 +36,39 @@ public class FinanceServiceImpl implements FinanceService {
     private HostHolder hostHolder;
 
     @Autowired
-    private ItemDOMapper itemDOMapper;
-
-    @Autowired
     private FinanceDOMapper financeDOMapper;
 
+    @Autowired
+    private ItemServiceImpl itemService;
 
     // 新增财务条目
     @Override
-    @Transactional // 在事务中进行
-    public List<FinanceModel> createFinaceItem(List<Map<String, String>> paramList) {
-
-
+    @Transactional(propagation = Propagation.REQUIRED) // 在事务中进行
+    public List<FinanceModel> createFinaceItem(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
         List<FinanceDO> financeDOList = new ArrayList<>();
-        for(Map<String, String> param : paramList){
-            // 入参校验
-            if(param.get("id") == null || StringUtils.isEmpty(param.get("id"))){
-                return null;
-            }
-            if(param.get("quantity") == null || StringUtils.isEmpty(param.get("quantity"))){
-                return null;
-            }
-            if(param.get("price") == null || StringUtils.isEmpty(param.get("price"))){
-                return null;
-            }
+        for(OrderItemModel orderItemModel : orderItemModelList){
 
-            //转成DataObject
-            ItemDO itemDO = itemDOMapper.selectByPrimaryKey(Integer.valueOf(param.get("id")));
+            //校验商品是否合法
+            ItemModel itemModel = itemService.getItemById(orderItemModel.getItemId());
+            if(itemModel == null){
+                throw new BusinessException(EmBusinessError.USER_NOT_EXIST);
+            }
 
             FinanceDO financeDO = new FinanceDO();
 
-            financeDO.setItemId(itemDO.getId());
-            financeDO.setItemName(itemDO.getTitle());
-            financeDO.setItemImgUrl(itemDO.getImgUrl());
+            financeDO.setItemId(itemModel.getId());
+            financeDO.setItemName(itemModel.getTitle());
+            financeDO.setItemImgUrl(itemModel.getImgUrl());
             financeDO.setPaymentTime(new Date());
-            Integer quantity = Integer.valueOf(param.get("quantity"));
-            Double eachPrice = Double.valueOf(param.get("price"));
+            Integer quantity = orderItemModel.getQuantity();
+            Double eachPrice = orderItemModel.getCurrenrEachPrice().doubleValue();
             Double totalPrice = eachPrice * quantity;
             financeDO.setQuantity(quantity);
             financeDO.setEachPrice(eachPrice);
             financeDO.setTotalPrice(totalPrice);
             financeDO.setBuyerId(hostHolder.getUser().getId());
-            financeDO.setSellerId(itemDO.getSellerId());
+            financeDO.setSellerId(itemModel.getSellerId());
 
             financeDOList.add(financeDO);
         }

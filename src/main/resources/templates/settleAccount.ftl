@@ -30,7 +30,7 @@
                                         <span id="nowNum${item_index+1}">${(item.getQuantity())!}</span>
                                         <button id="moreNum" class="btn-quantity-change" type="button" onclick="change(1, ${item_index+1})"><span class="span-quantity-change">+</span></button>
                                     </td>
-                                    <td><span id="nowPrice${item_index+1}">￥${(item.getCurrentPrice())!}</span><span id="eachPrice" style="display:none">${(item.getCurrentPrice())!}</span></td>
+                                    <td>￥<span id="nowPrice${item_index+1}">${(item.getCurrentPrice())?string("0.##")!}</span><span id="eachPrice" style="display:none">${(item.getCurrentPrice())?string("0.##")!}</span></td>
                                 </tr>
                             </#list>
                         </#if>
@@ -125,8 +125,13 @@
                 traditional: true,
                 data: JSON.stringify({cartList: list}),
                 success: function(res){
-                    alert("购买成功");
-                    window.location.href="http://localhost:8080/finance/show";
+                    if(res == "success"){
+                        alert("购买成功");
+                        window.location.href="http://localhost:8080/finance/show";
+                    }else{
+                        alert("购买出错了")
+                    }
+
                 }
             });
         }

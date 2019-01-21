@@ -27,10 +27,12 @@ public enum EmBusinessError implements CommonError{
 
 
     // 40000开头为创建order相关错误定义
-    ORDER_FINANCE_ERROR(40001,"下单时财务服务出错"),
-    ORDER_CART_ERROR(40002,"下单时购物车服务出错");
+    ORDER_CHANGE_SALES_ERROR(40001,"下单时商品销量更改服务出错"),
+    ORDER_FINANCE_ERROR(40002,"下单时财务服务出错"),
+    ORDER_CART_ERROR(40003,"下单时购物车服务出错"),
+    USER_NOT_EXIST(40004, "用户不存在"),
+    ORDER_CREATE_ERROR(40003,"创建订单出错");
 
-  //  USER_NOT_EXIST(20004,"用户不存在");
 
 
     private int errCode;

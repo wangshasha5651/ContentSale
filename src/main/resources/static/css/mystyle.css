@@ -121,6 +121,7 @@ input:-webkit-autofill {
     transform: rotate(45deg);
 }
 
+
 /************/
 .table-item-show{
     margin-left:9.7%;
@@ -142,6 +143,10 @@ input:-webkit-autofill {
     font-size: large;
     font-weight: bold;
 }
+
+
+
+
 
 /* 登录页面 */
 .login-panel{

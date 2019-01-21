@@ -8,11 +8,13 @@ import com.contentsale.dataobject.CartDO;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.CartService;
 import com.contentsale.service.model.CartModel;
+import com.contentsale.service.model.OrderItemModel;
 import com.contentsale.utils.CartUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -80,16 +82,13 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @Transactional // 在事务中进行
-    public Boolean deleteCartItem(List<Map<String, String>> paramList) throws BusinessException {
+    @Transactional(propagation = Propagation.REQUIRED) // 在事务中进行
+    public Boolean deleteCartItem(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
 
-        for(Map<String, String> param : paramList){
-            // 参数校验
-            if(param.get("id") == null || StringUtils.isEmpty(param.get("id"))){
-                return false;
-            }
-            Integer itemId = Integer.valueOf(param.get("id"));
+        for(OrderItemModel orderItemModel : orderItemModelList){
+
+            Integer itemId = orderItemModel.getItemId();
             try{
                 cartDOMapper.deleteByUserAndItem(hostHolder.getUser().getId(), itemId);
             }catch (Exception e){

@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="div-item-title">
                                                 <span>${item.getTitle()!}<br/></span>
-                                                <span>￥</span> <span class="span-item-price">${item.getPrice()!}</span>
+                                                <span>￥</span> <span class="span-item-price">${(item.getPrice())?string("0.##")!}</span>
                                             </div>
                                         </div>
                                     </div>

@@ -7,15 +7,19 @@ import com.contentsale.dataobject.ItemDO;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.ItemService;
 import com.contentsale.service.model.ItemModel;
+import com.contentsale.service.model.OrderItemModel;
 import com.contentsale.utils.ItemUtils;
 import com.contentsale.validator.ValidationResult;
 import com.contentsale.validator.ValidatorImpl;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -98,6 +102,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Boolean editItem(ItemModel itemModel) throws BusinessException {
+
         // 入参校验
         ValidationResult result = validator.validate(itemModel);
         if(result.isHasError()){
@@ -118,4 +123,41 @@ public class ItemServiceImpl implements ItemService {
         // 返回结果标识
         return Boolean.TRUE;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED) // 在事务中进行
+    public Boolean changeSales(List<OrderItemModel> orderItemModelList) throws BusinessException {
+
+        for(OrderItemModel orderItemModel : orderItemModelList){
+
+            Integer itemId = orderItemModel.getItemId();
+            Integer quantity = orderItemModel.getQuantity();
+
+            try{
+                ItemDO itemDO = itemDOMapper.selectByPrimaryKey(itemId);
+                itemDO.setSales(itemDO.getSales() + quantity);
+
+                itemDOMapper.updateByPrimaryKeySelective(itemDO);
+            }catch (Exception e){
+                throw new BusinessException(EmBusinessError.SQL_ERROR);
+            }
+        }
+
+        return Boolean.TRUE;
+    }
+
+    @Override
+    @Transactional // 在事务中进行
+    public Boolean deleteItem(Integer id) throws BusinessException {
+
+        try{
+            itemDOMapper.deleteByPrimaryKey(id);
+        }catch(Exception e){
+            throw new BusinessException(EmBusinessError.SQL_ERROR);
+        }
+
+        return Boolean.TRUE;
+    }
+
+
 }
