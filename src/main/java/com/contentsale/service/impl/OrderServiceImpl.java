@@ -2,16 +2,16 @@ package com.contentsale.service.impl;
 
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.common.error.EmBusinessError;
-import com.contentsale.dao.OrderDOMapper;
+import com.contentsale.dao.OrderAllDOMapper;
 import com.contentsale.dao.OrderItemDOMapper;
 import com.contentsale.dao.SequenceDOMapper;
-import com.contentsale.dataobject.OrderDO;
+import com.contentsale.dataobject.OrderAllDO;
 import com.contentsale.dataobject.OrderItemDO;
 import com.contentsale.dataobject.SequenceDO;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.OrderService;
 import com.contentsale.service.model.OrderItemModel;
-import com.contentsale.service.model.OrderModel;
+import com.contentsale.service.model.OrderAllModel;
 import com.contentsale.utils.OrderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,37 +37,37 @@ public class OrderServiceImpl implements OrderService {
     private OrderItemDOMapper orderItemDOMapper;
 
     @Autowired
-    private OrderDOMapper orderDOMapper;
+    private OrderAllDOMapper orderAllDOMapper;
 
     @Autowired
     private HostHolder hostHolder;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public OrderModel createOrder(List<OrderItemModel> orderItemModelList) throws BusinessException {
+    public OrderAllModel createOrder(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
         String orderNo = generateOrderNo();
 
         BigDecimal totalPayment = createOrderItem(orderItemModelList, orderNo);
 
-        OrderModel orderModel = new OrderModel();
-        orderModel.setOrderNo(orderNo);
-        orderModel.setUserId(hostHolder.getUser().getId());
-        orderModel.setTotalPayment(totalPayment);
-        orderModel.setCreateTime(new Date());
+        OrderAllModel orderAllModel = new OrderAllModel();
+        orderAllModel.setOrderNo(orderNo);
+        orderAllModel.setUserId(hostHolder.getUser().getId());
+        orderAllModel.setTotalPayment(totalPayment);
+        orderAllModel.setCreateTime(new Date());
 
         //插入数据库
-        OrderDO orderDO = OrderUtils.convertDOFromModel(orderModel);
+        OrderAllDO orderAllDO = OrderUtils.convertDOFromModel(orderAllModel);
         try{
-            orderDOMapper.insertSelective(orderDO);
+            orderAllDOMapper.insertSelective(orderAllDO);
 
         }catch(Exception e){
             throw new BusinessException(EmBusinessError.SQL_ERROR);
         }
 
-        orderModel.setId(orderDO.getId());
+        orderAllModel.setId(orderAllDO.getId());
 
-        return this.getOrderModelById(orderModel.getId());
+        return this.getOrderModelById(orderAllModel.getId());
     }
 
 
@@ -137,14 +137,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderModel getOrderModelById(Integer id) {
-        OrderDO orderDO = orderDOMapper.selectByPrimaryKey(id);
-        if(orderDO == null){
+    public OrderAllModel getOrderModelById(Integer id) {
+
+        OrderAllDO orderAllDO = orderAllDOMapper.selectByPrimaryKey(id);
+        if(orderAllDO == null){
             return null;
         }
 
-        OrderModel orderModel = OrderUtils.convertModelFromDO(orderDO);
+        OrderAllModel orderAllModel = OrderUtils.convertModelFromDO(orderAllDO);
 
-        return orderModel;
+        return orderAllModel;
     }
 }

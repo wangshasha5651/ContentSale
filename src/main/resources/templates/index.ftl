@@ -4,6 +4,20 @@
 
 	<#-- 调用布局指令 -->
 	<@defaultLayout.layout>
+		<script>
+			function showBtn() {
+				$(".item-border").mouseenter(function(){
+					$(this).children(".div-btn-delete").show();
+				});
+			}
+
+			function hideBtn() {
+				$(".item-border").mouseleave(function(){
+					$(this).children(".div-btn-delete").hide();
+				});
+			}
+
+		</script>
 		<!--body整体-->
 		<div class="container" style="margin-bottom: 50px">
 			<div class="all-in" style="position: relative;">
@@ -29,10 +43,13 @@
 									<#if (item_index + 1) % 4 ==1><tr class="tr-item-show"></#if>
 										<td class="td-item-show">
 											<div class="row" >
-
-													<div class="item-border col-sm-6 col-md-4">
+												<#assign flag = 0>
+													<#if soldList?seq_contains(item.getId()) == false>
+														<#assign flag = flag + 1>
+													</#if>
+													<div id="card" class="item-border col-sm-6 col-md-4" <#if flag == 1> onmouseover="showBtn()" onmouseout="hideBtn()" </#if> >
 														<a class="item-href" href="/showDetail?id=${(item.getId())!}">
-														<div id="thumbnail${item_index+1}" class="thumbnail">
+														<div id="thumbnail" class="thumbnail">
 															<div class="img-container">
 																<img class="item-img" src="${(item.getImgUrl())!}">
 																<#if boughtList?? >
@@ -63,7 +80,7 @@
 														</a>
 														<#if soldList?? >
 															<#if soldList?seq_contains(item.getId()) == false>
-																<div id="div-delete" class="div-btn-delete">
+																<div id="div-delete" class="div-btn-delete" style="display: none">
 																	<button class="btn btn-default btn-publish btn-buy" type="button" onclick="del(${(item.getId())!})" style="height: 30px;margin-left: 140px;margin-top: -60px;">删&nbsp;除</button>
 																</div>
 															</#if>
@@ -94,7 +111,11 @@
 	</div>
 
 		<script>
-			// var delNo = 0;
+			// $(document).ready(function(){
+			// 	$(".item-border").mouseenter(function(){
+			// 		$(this).children(".div-btn-delete").show();
+			// 	});
+			// });
 
 			function showConfirmDialog(num) {
 				delNo = num; //变更要删除的编号
@@ -127,6 +148,8 @@
 					}
 				});
 			}
+			
+
 		</script>
 
 	</@defaultLayout.layout>

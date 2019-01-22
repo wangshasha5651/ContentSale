@@ -2,10 +2,10 @@ package com.contentsale.utils;
 
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.common.error.EmBusinessError;
-import com.contentsale.dataobject.OrderDO;
+import com.contentsale.dataobject.OrderAllDO;
 import com.contentsale.dataobject.OrderItemDO;
 import com.contentsale.service.model.OrderItemModel;
-import com.contentsale.service.model.OrderModel;
+import com.contentsale.service.model.OrderAllModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 
@@ -62,26 +62,26 @@ public class OrderUtils {
         return orderItemDO;
     }
 
-    public static OrderDO convertDOFromModel(OrderModel orderModel){
-        if(orderModel == null){
+    public static OrderAllDO convertDOFromModel(OrderAllModel orderAllModel){
+        if(orderAllModel == null){
             return null;
         }
-        OrderDO orderDO = new OrderDO();
-        BeanUtils.copyProperties(orderModel, orderDO);
+        OrderAllDO orderAllDO = new OrderAllDO();
+        BeanUtils.copyProperties(orderAllModel, orderAllDO);
 
         // 由于数据库中price是double类型，model中定义为bigdecimal，直接用BeanUtils的copyProperties方法的可能会有精度损失
-        orderDO.setTotalPayment(orderModel.getTotalPayment().doubleValue());
+        orderAllDO.setTotalPayment(orderAllModel.getTotalPayment().doubleValue());
 
 
-        return orderDO;
+        return orderAllDO;
     }
 
-    public static OrderModel convertModelFromDO(OrderDO orderDO){
-        OrderModel orderModel = new OrderModel();
-        BeanUtils.copyProperties(orderDO, orderModel);
+    public static OrderAllModel convertModelFromDO(OrderAllDO orderAllDO){
+        OrderAllModel orderAllModel = new OrderAllModel();
+        BeanUtils.copyProperties(orderAllDO, orderAllModel);
 
-        orderModel.setTotalPayment(new BigDecimal(orderDO.getTotalPayment()));
+        orderAllModel.setTotalPayment(new BigDecimal(orderAllDO.getTotalPayment()));
 
-        return orderModel;
+        return orderAllModel;
     }
 }

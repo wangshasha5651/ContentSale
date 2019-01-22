@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.common.error.EmBusinessError;
 
-import com.contentsale.dao.SequenceDOMapper;
-import com.contentsale.dataobject.SequenceDO;
 import com.contentsale.service.CartService;
 import com.contentsale.service.FinanceService;
 import com.contentsale.service.ItemService;
@@ -13,7 +11,7 @@ import com.contentsale.service.impl.OrderServiceImpl;
 import com.contentsale.service.model.FinanceModel;
 import com.contentsale.service.model.OrderItemModel;
 
-import com.contentsale.service.model.OrderModel;
+import com.contentsale.service.model.OrderAllModel;
 import com.contentsale.utils.OrderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -77,8 +73,8 @@ public class OrderController extends BaseController {
         }
 
         // 创建订单
-        OrderModel orderModel = orderService.createOrder(orderItemModelList);
-        if(orderModel == null){
+        OrderAllModel orderAllModel = orderService.createOrder(orderItemModelList);
+        if(orderAllModel == null){
             throw new BusinessException(EmBusinessError.ORDER_CREATE_ERROR);
         }
 

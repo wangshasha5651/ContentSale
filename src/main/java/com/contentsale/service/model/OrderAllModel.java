@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 // 用户下单的交易模型
-public class OrderModel {
+public class OrderAllModel {
 
     // 订单序号
     private Integer id;
