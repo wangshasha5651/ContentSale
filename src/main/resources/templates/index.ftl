@@ -44,8 +44,10 @@
 										<td class="td-item-show">
 											<div class="row" >
 												<#assign flag = 0>
-													<#if soldList?seq_contains(item.getId()) == false>
-														<#assign flag = flag + 1>
+													<#if soldList??>
+														<#if soldList?seq_contains(item.getId()) == false>
+															<#assign flag = flag + 1>
+														</#if>
 													</#if>
 													<div id="card" class="item-border col-sm-6 col-md-4" <#if flag == 1> onmouseover="showBtn()" onmouseout="hideBtn()" </#if> >
 														<a class="item-href" href="/showDetail?id=${(item.getId())!}">

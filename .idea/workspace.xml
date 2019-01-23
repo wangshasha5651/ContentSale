@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f40194b2-e576-4f3f-b796-105566a41539" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/dao/OrderAllDOMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/dao/OrderDOMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/OrderDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/OrderAllDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderAllModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/OrderDOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/OrderAllDOMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-generator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-generator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,13 +30,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="45" column="61" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="66">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -52,8 +45,8 @@
       <list>
         <option value="Enum" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,13 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/dao/ItemDOMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/ItemModel.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/header.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapping/CartDOMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/dao/CartDOMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/viewobject/FinanceVO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapping/ItemDOMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/FinanceUtils.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/FinanceDOMapper.xml" />
@@ -147,13 +133,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/OrderDOMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/OrderAllDOMapper.xml" />
+        <option value="$PROJECT_DIR$/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/contentsale/TestLog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/TestLog.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" />
       </list>
     </option>
   </component>
@@ -186,10 +179,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="281" />
-    <option name="y" value="53" />
-    <option name="width" value="1400" />
-    <option name="height" value="988" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="965" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -247,116 +240,7 @@
               <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="common" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="common" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dao" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dataobject" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="impl" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -370,22 +254,23 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548124201317" />
-    <property name="last_opened_file_path" value="D:/JetBrains/Idea Workplace/contentsale" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548213979317" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\templates" />
-      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\GitRepo\contentsale\src\main\resources\static\js" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static\css" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\templates" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitRepo\contentsale\src\main\resources" />
+      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\templates" />
+      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -410,6 +295,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestLog.testLog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="contentsale" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.contentsale.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.contentsale" />
+      <option name="MAIN_CLASS_NAME" value="com.contentsale.TestLog" />
+      <option name="METHOD_NAME" value="testLog" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -441,11 +342,13 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
+      <item itemvalue="JUnit.TestLog.testLog" />
       <item itemvalue="Maven.mybatis-generator" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.TestLog.testLog" />
       </list>
     </recent_temporary>
   </component>
@@ -480,7 +383,9 @@
       <workItem from="1547890075968" duration="2705000" />
       <workItem from="1547894670652" duration="41799000" />
       <workItem from="1548033427939" duration="40582000" />
-      <workItem from="1548078100828" duration="9227000" />
+      <workItem from="1548078100828" duration="18580000" />
+      <workItem from="1548211365347" duration="2105000" />
+      <workItem from="1548213669120" duration="300000" />
     </task>
     <task id="LOCAL-00001" summary="first commit: 初始化项目&#10;1.前端: 使用bootstrap初始化写了大致的几个页面&#10;2.后端: &#10;  1) 写了 UserService中的login接口&#10;  2) 为登录功能创建了拦截器interceptor进而HostHolder，用于在有效时间内记住用户&#10;  3) 使用逆向工程 mybatis generate创建DO mapper&#10;  4) 创建通用的ExceptionHandler&#10;  5) 使用ViewObject、Model、DAO、DO的结构来为不同层提供数据&#10;  6) 定义了CommonReturnType和枚举类型的错误信息标识，用于向返回结构一致的数据">
       <created>1547562110221</created>
@@ -517,11 +422,38 @@
       <option name="project" value="LOCAL" />
       <updated>1548079755919</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1.修复因Order表名和数据库关键字引起歧义导致的插入记录失败的错误&#10;2.实现主页对于未售出商品进行删除的前端js">
+      <created>1548124334605</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1548124334605</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 45m 34s.xml">
+      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 45m 56s.xml">
+      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 46m 29s.xml">
+      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 50m 13s.xml">
+      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 51m 26s.xml">
+      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestLog_testLog - 2019.01.23 at 11h 02m 09s.xml">
+      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340837000" />
+    <option name="totallyTimeSpent" value="352595000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -536,7 +468,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85141" visible="true" weight="0.18336888" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.85141" visible="true" weight="0.18336888" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -546,15 +478,15 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.18329719" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2494577" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.34164858" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3362256" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50159913" side_tool="true" weight="0.18329719" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286334" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.09436008" />
       <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
@@ -581,7 +513,8 @@
     <MESSAGE value="1.购物车模块数据库结构的设计&#10;2.详情页面的商品加入购物车（前端+后端）&#10;3.购物车页面的展示（前端+后端）" />
     <MESSAGE value="1.购物车页面：&#10;  购买逻辑以及各种前端需求&#10;2.财务展示页：&#10;  列出所有该用户已买的商品，并计算并显示所有商品总价，点击某一项进入详情页面（前 端+后端）&#10;3.首页：(前端+后端)&#10;  1)首页对于卖家和买家的不同呈现(打上已购买、已售出的标签)  &#10;  2)买家点击首页的未购买标签，显示所有没有购买的商品&#10;4.商品详情页：(前端+后端)&#10;  1)买家若已经购买了，则显示当时购买的价格，并且购买不可用（显示“已购买”）&#10;  2)卖家对于所有商品可以点击编辑修改商品信息&#10;5.编辑商品详情页面：（只完成后端，前端js需调试排错）" />
     <MESSAGE value="1.修复各种疏忽引起的bug&#10;2.增加了交易订单的数据库设计以及逻辑实现&#10;3.卖家在商品主页可对未售出商品进行删除，并能查看销量" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.修复各种疏忽引起的bug&#10;2.增加了交易订单的数据库设计以及逻辑实现&#10;3.卖家在商品主页可对未售出商品进行删除，并能查看销量" />
+    <MESSAGE value="1.修复因Order表名和数据库关键字引起歧义导致的插入记录失败的错误&#10;2.实现主页对于未售出商品进行删除的前端js" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.修复因Order表名和数据库关键字引起歧义导致的插入记录失败的错误&#10;2.实现主页对于未售出商品进行删除的前端js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -623,64 +556,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publishSubmit.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CloudServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/edit.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="188" selection-start-line="188" selection-end-line="188" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/publish.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="253" column="17" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/footer.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/viewobject/ItemVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="25" />
-          <folding>
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#736#737#0" expanded="true" />
-            <element signature="e#782#783#0" expanded="true" />
-            <element signature="e#816#817#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/mystyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layout.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -708,101 +583,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://MAVEN/com.contentsale:contentsale:1.0-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>com.contentsale:contentsale:1.0-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="" y="">com.contentsale:contentsale:1.0-SNAPSHOT</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0/org.apache.logging.log4j:log4j-api:jar:2.10.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE/org.springframework:spring-jcl:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.yaml:snakeyaml:jar:1.19</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-core:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.12.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE/org.springframework:spring-beans:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-aop:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-context:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-expression:jar:5.0.9.RELEASE</node>
-            <node x="" y="">mysql:mysql-connector-java:jar:5.1.41</node>
-            <node x="" y="">com.alibaba:druid:jar:1.1.3</node>
-            <node x="" y="">com.alibaba:druid:jar:1.1.3/com.alibaba:jconsole:jar:1.8.0</node>
-            <node x="" y="">com.alibaba:druid:jar:1.1.3/com.alibaba:tools:jar:1.8.0</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/com.zaxxer:HikariCP:jar:2.7.9</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE/org.springframework:spring-tx:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.1</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis:mybatis:jar:3.4.5</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis:mybatis-spring:jar:1.3.1</node>
-            <node x="" y="">junit:junit:jar:4.11</node>
-            <node x="" y="">junit:junit:jar:4.11/org.hamcrest:hamcrest-core:jar:1.3</node>
-            <node x="" y="">org.mybatis.generator:mybatis-generator-core:jar:1.3.5</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE/org.freemarker:freemarker:jar:2.3.28</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE/org.springframework:spring-context-support:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE/org.attoparser:attoparser:jar:2.0.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE/org.unbescape:unbescape:jar:1.1.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.slf4j:slf4j-api:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf.extras:thymeleaf-extras-java8time:jar:3.0.1.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.apache.commons:commons-lang3:jar:3.7</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/javax.validation:validation-api:jar:2.0.1.Final</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/com.fasterxml:classmate:jar:1.3.4</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.squareup.okhttp3:okhttp:jar:3.2.0</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.squareup.okhttp3:okhttp:jar:3.2.0/com.squareup.okio:okio:jar:1.6.0</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.google.code.gson:gson:jar:2.8.5</node>
-            <node x="" y="">com.alibaba:fastjson:jar:1.2.50</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.2834793491864833" x="1118.0" y="585.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>All</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/FinanceDOMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1210">
           <caret line="62" column="32" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="32" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/UserModel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1030,45 +816,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="177" column="39" lean-forward="true" selection-start-line="177" selection-start-column="39" selection-end-line="177" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/OrderDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dao/OrderDOMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="57" column="73" selection-start-line="57" selection-start-column="73" selection-end-line="57" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/OrderDO.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dao/OrderDOMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderDOMapper.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderItemDOMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="102" column="25" lean-forward="true" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1133,13 +887,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/log4j.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/contentsale/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/contentsale/TestLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://MAVEN/com.contentsale:contentsale:1.0-SNAPSHOT">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>com.contentsale:contentsale:1.0-SNAPSHOT</OriginalElement>
+          <nodes>
+            <node x="" y="">com.contentsale:contentsale:1.0-SNAPSHOT</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0/org.apache.logging.log4j:log4j-api:jar:2.10.0</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE/org.springframework:spring-jcl:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.yaml:snakeyaml:jar:1.19</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-core:jar:2.9.6</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.6</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.6</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.6</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.34</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:8.5.34</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:8.5.34</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.12.Final</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE/org.springframework:spring-beans:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-aop:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-context:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-expression:jar:5.0.9.RELEASE</node>
+            <node x="" y="">mysql:mysql-connector-java:jar:5.1.41</node>
+            <node x="" y="">com.alibaba:druid:jar:1.1.3</node>
+            <node x="" y="">com.alibaba:druid:jar:1.1.3/com.alibaba:jconsole:jar:1.8.0</node>
+            <node x="" y="">com.alibaba:druid:jar:1.1.3/com.alibaba:tools:jar:1.8.0</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/com.zaxxer:HikariCP:jar:2.7.9</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE/org.springframework:spring-tx:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.1</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis:mybatis:jar:3.4.5</node>
+            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis:mybatis-spring:jar:1.3.1</node>
+            <node x="" y="">junit:junit:jar:4.11</node>
+            <node x="" y="">junit:junit:jar:4.11/org.hamcrest:hamcrest-core:jar:1.3</node>
+            <node x="" y="">org.mybatis.generator:mybatis-generator-core:jar:1.3.5</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE/org.freemarker:freemarker:jar:2.3.28</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE/org.springframework:spring-context-support:jar:5.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE/org.attoparser:attoparser:jar:2.0.4.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE/org.unbescape:unbescape:jar:1.1.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.slf4j:slf4j-api:jar:1.7.25</node>
+            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf.extras:thymeleaf-extras-java8time:jar:3.0.1.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.0.5.RELEASE</node>
+            <node x="" y="">org.apache.commons:commons-lang3:jar:3.7</node>
+            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final</node>
+            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/javax.validation:validation-api:jar:2.0.1.Final</node>
+            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final</node>
+            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/com.fasterxml:classmate:jar:1.3.4</node>
+            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1</node>
+            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.squareup.okhttp3:okhttp:jar:3.2.0</node>
+            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.squareup.okhttp3:okhttp:jar:3.2.0/com.squareup.okio:okio:jar:1.6.0</node>
+            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.google.code.gson:gson:jar:2.8.5</node>
+            <node x="" y="">com.alibaba:fastjson:jar:1.2.50</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0834793491864831" x="2677.0" y="379.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/TestLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="156" column="38" selection-start-line="156" selection-start-column="38" selection-end-line="156" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="45" column="61" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="343">
+          <caret line="53" column="94" lean-forward="true" selection-start-line="53" selection-start-column="94" selection-end-line="53" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
