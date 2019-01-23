@@ -11,6 +11,8 @@ import com.contentsale.service.impl.CloudServiceImpl;
 import com.contentsale.service.model.ItemModel;
 import com.contentsale.utils.ItemUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true")
 public class ItemController extends BaseController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
 
     @Autowired
     private ItemService itemService;
@@ -52,46 +56,51 @@ public class ItemController extends BaseController {
                              RedirectAttributesModelMap modelMap,
                              ModelAndView modelAndView) throws BusinessException {
 
-        //入参校验
-        if(StringUtils.isEmpty(title)){
-            throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
-        }
-        if(StringUtils.isEmpty(summary)){
-            throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
-        }
-        if(StringUtils.isEmpty(imgUrl)){
-            throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
-        }
-        if(StringUtils.isEmpty(description)){
-            throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
-        }
-        if(price == null){
-            throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
-        }
-
-        if(singleRadio == 1){
-            //当客户端传来的是图片的URL时，下载图片
-            String cloudUrl = cloudService.downloadImageByUrl(imgUrl);
-            if(cloudUrl != null){
-                imgUrl = cloudUrl;
+        try{
+            //入参校验
+            if(StringUtils.isEmpty(title)){
+                throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
             }
+            if(StringUtils.isEmpty(summary)){
+                throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
+            }
+            if(StringUtils.isEmpty(imgUrl)){
+                throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
+            }
+            if(StringUtils.isEmpty(description)){
+                throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
+            }
+            if(price == null){
+                throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
+            }
+
+            if(singleRadio == 1){
+                //当客户端传来的是图片的URL时，下载图片
+                String cloudUrl = cloudService.downloadImageByUrl(imgUrl);
+                if(cloudUrl != null){
+                    imgUrl = cloudUrl;
+                }
+            }
+
+            // 封装service请求用来创建商品
+            ItemModel itemModel = new ItemModel();
+            itemModel.setTitle(title);
+            itemModel.setSummary(summary);
+            itemModel.setImgUrl(imgUrl);
+            itemModel.setDescription(description);
+            itemModel.setPrice(price);
+            itemModel.setSellerId(hostHolder.getUser().getId());
+
+            ItemModel itemModelForReturn = itemService.createItem(itemModel);
+            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModelForReturn);
+
+            modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(itemVO));
+            modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
+            modelAndView.setViewName("publishSubmit");
+        }catch(Exception e){
+            logger.error("发布商品异常：" + e.getMessage());
         }
 
-        // 封装service请求用来创建商品
-        ItemModel itemModel = new ItemModel();
-        itemModel.setTitle(title);
-        itemModel.setSummary(summary);
-        itemModel.setImgUrl(imgUrl);
-        itemModel.setDescription(description);
-        itemModel.setPrice(price);
-        itemModel.setSellerId(hostHolder.getUser().getId());
-
-        ItemModel itemModelForReturn = itemService.createItem(itemModel);
-        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModelForReturn);
-
-        modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(itemVO));
-        modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
-        modelAndView.setViewName("publishSubmit");
         return modelAndView;
     }
 
@@ -107,6 +116,7 @@ public class ItemController extends BaseController {
             }
             return fileUrl;
         }catch(Exception e){
+            logger.error("发布商品时，上传图片异常：" + e.getMessage());
             return "";
         }
     }
@@ -115,13 +125,17 @@ public class ItemController extends BaseController {
     @RequestMapping(value="/showDetail", method = {RequestMethod.GET})
     public ModelAndView show(@RequestParam("id") Integer id, ModelAndView modelAndView){
 
-        ItemModel itemModel = itemService.getItemById(id);
+        try{
+            ItemModel itemModel = itemService.getItemById(id);
 
-        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
+            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
 
-        modelAndView.addObject("item", itemVO);
+            modelAndView.addObject("item", itemVO);
 
-        modelAndView.setViewName("showDetail");
+            modelAndView.setViewName("showDetail");
+        }catch (Exception e){
+            logger.error("查看商品详情异常：" + e.getMessage());
+        }
 
         return modelAndView;
     }
@@ -160,13 +174,16 @@ public class ItemController extends BaseController {
     @RequestMapping(value="/edit", method = {RequestMethod.GET})
     @ResponseBody
     public ModelAndView getItem(Integer id,ModelAndView modelAndView){
+        try{
+            ItemModel itemModel = itemService.getItemById(id);
 
-        ItemModel itemModel = itemService.getItemById(id);
+            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
 
-        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
-
-        modelAndView.addObject("item", itemVO);
-        modelAndView.setViewName("edit");
+            modelAndView.addObject("item", itemVO);
+            modelAndView.setViewName("edit");
+        }catch (Exception e){
+            logger.error("编辑商品时，获取商品信息异常：" + e.getMessage());
+        }
 
         return modelAndView;
     }
@@ -182,46 +199,50 @@ public class ItemController extends BaseController {
                            @RequestParam("price") BigDecimal priceToEdit,
                            @RequestParam("singleRadio") Integer singleRadio,
                            ModelAndView modelAndView) throws BusinessException {
-        //入参校验
-        if(StringUtils.isEmpty(titleToEdit)){
-            throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
-        }
-        if(StringUtils.isEmpty(summaryToEdit)){
-            throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
-        }
-        if(StringUtils.isEmpty(imgUrlToEdit)){
-            throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
-        }
-        if(StringUtils.isEmpty(descriptionToEdit)){
-            throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
-        }
-        if(priceToEdit == null){
-            throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
-        }
-
-        if(singleRadio == 1){
-            //当客户端传来的是图片的URL时，下载图片
-            String cloudUrl = cloudService.downloadImageByUrl(imgUrlToEdit);
-            if(cloudUrl != null){
-                imgUrlToEdit = cloudUrl;
+        try{
+            //入参校验
+            if(StringUtils.isEmpty(titleToEdit)){
+                throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
             }
+            if(StringUtils.isEmpty(summaryToEdit)){
+                throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
+            }
+            if(StringUtils.isEmpty(imgUrlToEdit)){
+                throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
+            }
+            if(StringUtils.isEmpty(descriptionToEdit)){
+                throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
+            }
+            if(priceToEdit == null){
+                throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
+            }
+
+            if(singleRadio == 1){
+                //当客户端传来的是图片的URL时，下载图片
+                String cloudUrl = cloudService.downloadImageByUrl(imgUrlToEdit);
+                if(cloudUrl != null){
+                    imgUrlToEdit = cloudUrl;
+                }
+            }
+
+            // 封装service请求用来编辑商品
+            ItemModel itemModel = new ItemModel();
+            itemModel.setId(Integer.valueOf(id));
+            itemModel.setTitle(titleToEdit);
+            itemModel.setSummary(summaryToEdit);
+            itemModel.setImgUrl(imgUrlToEdit);
+            itemModel.setDescription(descriptionToEdit);
+            itemModel.setPrice(priceToEdit);
+            itemModel.setSellerId(hostHolder.getUser().getId());
+
+            itemService.editItem(itemModel);
+            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
+
+            modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
+            modelAndView.setViewName("editSubmit");
+        }catch (Exception e){
+            logger.error("编辑商品异常：" + e.getMessage());
         }
-
-        // 封装service请求用来编辑商品
-        ItemModel itemModel = new ItemModel();
-        itemModel.setId(Integer.valueOf(id));
-        itemModel.setTitle(titleToEdit);
-        itemModel.setSummary(summaryToEdit);
-        itemModel.setImgUrl(imgUrlToEdit);
-        itemModel.setDescription(descriptionToEdit);
-        itemModel.setPrice(priceToEdit);
-        itemModel.setSellerId(hostHolder.getUser().getId());
-
-        itemService.editItem(itemModel);
-        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
-
-        modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
-        modelAndView.setViewName("editSubmit");
 
         return modelAndView;
     }
@@ -230,10 +251,13 @@ public class ItemController extends BaseController {
     @RequestMapping(value="/item/delete", method = {RequestMethod.GET})
     @ResponseBody
     public String delete(@RequestParam("id") Integer id) throws BusinessException {
-
-        Boolean deleteResult = itemService.deleteItem(id);
-        if(!deleteResult.equals(Boolean.TRUE)){
-            return "fail";
+        try{
+            Boolean deleteResult = itemService.deleteItem(id);
+            if(!deleteResult.equals(Boolean.TRUE)){
+                return "fail";
+            }
+        }catch (Exception e){
+            logger.error("删除商品异常：" + e.getMessage());
         }
 
         return "success";

@@ -43,7 +43,7 @@ public class FinanceServiceImpl implements FinanceService {
 
     // 新增财务条目
     @Override
-    @Transactional(propagation = Propagation.REQUIRED) // 在事务中进行
+    @Transactional(propagation = Propagation.NESTED)  //在SettleAccount的子事务中进行
     public List<FinanceModel> createFinaceItem(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
         List<FinanceDO> financeDOList = new ArrayList<>();

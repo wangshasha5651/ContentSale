@@ -125,7 +125,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED) // 在事务中进行
+    @Transactional(propagation = Propagation.NESTED)  //在SettleAccount的子事务中进行
     public Boolean changeSales(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
         for(OrderItemModel orderItemModel : orderItemModelList){

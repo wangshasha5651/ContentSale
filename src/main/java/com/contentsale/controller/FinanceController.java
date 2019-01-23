@@ -6,6 +6,8 @@ import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.FinanceService;
 import com.contentsale.service.model.FinanceModel;
 import com.contentsale.utils.FinanceUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +28,8 @@ import java.util.stream.Collectors;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true")
 public class FinanceController {
 
+    private static final Logger logger = LoggerFactory.getLogger(FinanceController.class);
+
     @Autowired
     private FinanceService financeService;
 
@@ -37,23 +41,27 @@ public class FinanceController {
     @ResponseBody
     public ModelAndView listFinance(ModelAndView modelAndView){
 
-        List<FinanceModel> financeModelList = financeService.listFinanceItem(hostHolder.getUser().getId());
+        try{
+            List<FinanceModel> financeModelList = financeService.listFinanceItem(hostHolder.getUser().getId());
 
-        List<FinanceVO> financeVOList = FinanceUtils.convertVOListFromModelList(financeModelList);
+            List<FinanceVO> financeVOList = FinanceUtils.convertVOListFromModelList(financeModelList);
 
-        // 防止上一次查询的财务总价未清零
-        FinanceVO.setAllItemPrice(new BigDecimal(0));
-        for(FinanceVO financeVOForCalcu : financeVOList){
-            // 累加单类商品总额
-            FinanceVO.setAllItemPrice(FinanceVO.getAllItemPrice().add(financeVOForCalcu.getTotalPrice()));
+            // 防止上一次查询的财务总价未清零
+            FinanceVO.setAllItemPrice(new BigDecimal(0));
+            for(FinanceVO financeVOForCalcu : financeVOList){
+                // 累加单类商品总额
+                FinanceVO.setAllItemPrice(FinanceVO.getAllItemPrice().add(financeVOForCalcu.getTotalPrice()));
+            }
+
+            modelAndView.addObject("financeList", financeVOList);
+            modelAndView.addObject("allItemPrice", FinanceVO.getAllItemPrice());
+            // 对此次查询得到的财务总价清零
+            FinanceVO.setAllItemPrice(new BigDecimal(0));
+
+            modelAndView.setViewName("itemBought");
+        }catch (Exception e){
+            logger.error("查看财务项目异常：" + e.getMessage());
         }
-
-        modelAndView.addObject("financeList", financeVOList);
-        modelAndView.addObject("allItemPrice", FinanceVO.getAllItemPrice());
-        // 对此次查询得到的财务总价清零
-        FinanceVO.setAllItemPrice(new BigDecimal(0));
-
-        modelAndView.setViewName("itemBought");
 
         return modelAndView;
     }

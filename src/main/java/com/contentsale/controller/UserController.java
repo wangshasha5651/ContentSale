@@ -16,6 +16,8 @@ import com.contentsale.utils.UserUtils;
 import com.contentsale.validator.ValidatorImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.security.MD5Encoder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +43,9 @@ import java.util.Map;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true") //Access-Control-Allow-Origin
 public class UserController extends BaseController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+
     @Autowired
     private UserService userService;
 
@@ -61,27 +66,31 @@ public class UserController extends BaseController {
                         HttpServletResponse response,
                         RedirectAttributesModelMap modelMap) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
 
-        //入参校验
-        if(StringUtils.isEmpty(username)){
-            throw new BusinessException(EmBusinessError.LOGIN_USERNAME_EMPTY);
+        try {
+            //入参校验
+            if (StringUtils.isEmpty(username)) {
+                throw new BusinessException(EmBusinessError.LOGIN_USERNAME_EMPTY);
+            }
+            if (StringUtils.isEmpty(password)) {
+                throw new BusinessException(EmBusinessError.LOGIN_PASSWORD_EMPTY);
+            }
+
+            //用户登录服务，验证登录是否成功
+            UserModel userModel = userService.validateLogin(username, password);
+
+            if (!userModel.getTicket().equals("") && userModel.getTicket() != null) {
+                // 下发ticket
+                Cookie cookie = new Cookie("ticket", userModel.getTicket());
+                cookie.setPath("/");
+                response.addCookie(cookie);
+            }
+
+            UserVO userVO = UserUtils.convertVOFromModel(userModel);
+            modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(userVO));
+        }catch (Exception e){
+            logger.error("登录异常：" + e.getMessage());
         }
-        if(StringUtils.isEmpty(password)){
-            throw new BusinessException(EmBusinessError.LOGIN_PASSWORD_EMPTY);
-        }
 
-        //用户登录服务，验证登录是否成功
-        UserModel userModel = userService.validateLogin(username, password);
-
-        if(!userModel.getTicket().equals("") && userModel.getTicket() != null){
-            // 下发ticket
-            Cookie cookie = new Cookie("ticket", userModel.getTicket());
-            cookie.setPath("/");
-            response.addCookie(cookie);
-        }
-
-        UserVO userVO = UserUtils.convertVOFromModel(userModel);
-
-        modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(userVO));
         return "redirect:/";
     }
 
@@ -90,47 +99,6 @@ public class UserController extends BaseController {
         userService.logout(ticket);
         return "redirect:/login";
     }
-
-
-
-
-    @RequestMapping("/get")
-    @ResponseBody
-    public CommonReturnType getUser(@RequestParam(name = "id") Integer id) throws BusinessException {
-        //调用service服务获取对应的用户对象并返回给前端
-        UserModel userModel = userService.gerUserById(id);
-
-        //若获取的对应用户信息不存在
-        if (userModel == null) {
-            throw new BusinessException(EmBusinessError.USER_LOGIN_FAIL);
-        }
-
-        //将核心领域模型用户对象转换为可供UI使用的viewobject
-        UserVO userVO = UserUtils.convertVOFromModel(userModel);
-
-        //返回通用对象
-        return CommonReturnType.create(userVO);
-    }
-
-
-
-//    @RequestMapping(value = "/t")
-//    public String index(ModelAndView modelAndView, RedirectAttributesModelMap modelMap) {
-//
-//        modelAndView.setViewName("test");
-//
-//
-//        UserModel userModel = userService.gerUserById(1);
-//        UserVO userVO = UserUtils.convertVOFromModel(userModel);
-//
-//        modelAndView.addObject("userModel", userModel);
-//        modelAndView.addObject("CommonReturnType", CommonReturnType.create(userVO));
-//
-////        modelAndView.addObject("username", "wss");
-//        modelMap.addFlashAttribute("username","buyer");
-//        return "redirect:/";
-//    }
-
 }
 
 

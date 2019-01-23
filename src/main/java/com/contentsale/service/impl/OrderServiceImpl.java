@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
     private HostHolder hostHolder;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.NESTED)  //在SettleAccount的子事务中进行
     public OrderAllModel createOrder(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
         String orderNo = generateOrderNo();
@@ -60,7 +60,6 @@ public class OrderServiceImpl implements OrderService {
         OrderAllDO orderAllDO = OrderUtils.convertDOFromModel(orderAllModel);
         try{
             orderAllDOMapper.insertSelective(orderAllDO);
-
         }catch(Exception e){
             throw new BusinessException(EmBusinessError.SQL_ERROR);
         }

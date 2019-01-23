@@ -82,7 +82,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED) // 在事务中进行
+    @Transactional(propagation = Propagation.NESTED)  //在SettleAccount的子事务中进行
     public Boolean deleteCartItem(List<OrderItemModel> orderItemModelList) throws BusinessException {
 
 
