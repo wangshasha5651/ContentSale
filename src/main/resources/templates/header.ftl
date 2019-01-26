@@ -6,7 +6,7 @@
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-examplle-navbar-collapse-1">
             <span>${(session.getAttribute("ticket"))!}</span>
 
 
@@ -14,7 +14,7 @@
             <#if user??>
             <#-- <#if (viewInfo.getStatus())! == "success"> -->
                 <#if (user.getType())! == 1>
-                    <ul class="nav-buyer nav nav-pills">
+                    <ul class="nav-buyer nav nav-pills" >
                         <li style="padding-top: 10px"><span class="span-nav-text">买家你好，${(user.getName())!}！</span></li><li role="presentation"><a href="/user/logout"><span class="span-nav-text">[退出]</span></a></li>
                         <li role="presentation" class="nav-buyer-pills-each"><a href="/"><span class="span-nav-text">首页</span></a></li><li style="padding-top: 9px">|</li>
                         <li role="presentation" ><a href="/finance/show"><span class="span-nav-text">财务</span></a></li><li style="padding-top: 9px">|</li>

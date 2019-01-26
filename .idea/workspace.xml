@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f40194b2-e576-4f3f-b796-105566a41539" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/header.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/mystyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/header.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="532">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,14 +40,50 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="1316">
+              <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1008">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="644">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/header.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/mystyle.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -72,7 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>test</find>
       <find>style</find>
       <find>itemTitle</find>
       <find>item.getTitle</find>
@@ -102,6 +131,7 @@
       <find>footer</find>
       <find>itemDOMapper</find>
       <find>getUser</find>
+      <find>span-nav-text</find>
     </findStrings>
     <dirStrings>
       <dir>D:\JetBrains\Idea Workplace\contentsale</dir>
@@ -116,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/FinanceUtils.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/FinanceDOMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/viewobject/ItemVO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/dao/FinanceDOMapper.java" />
@@ -127,7 +156,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/config/ContentSaleConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/model/HostHolder.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/edit.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/publish.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/footer.ftl" />
@@ -156,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/test/java/com/contentsale/TestLog.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/TestLog.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" />
@@ -167,6 +194,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/header.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" />
       </list>
     </option>
   </component>
@@ -199,10 +229,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-3" />
+    <option name="y" value="17" />
+    <option name="width" value="1933" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -213,82 +243,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="impl" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="contentsale" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,7 +255,10 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548233556894" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="DockerRegistry" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -430,6 +390,8 @@
       <workItem from="1548213669120" duration="700000" />
       <workItem from="1548219966360" duration="1415000" />
       <workItem from="1548230397391" duration="3139000" />
+      <workItem from="1548474682807" duration="1403000" />
+      <workItem from="1548481286280" duration="414000" />
     </task>
     <task id="LOCAL-00001" summary="first commit: 初始化项目&#10;1.前端: 使用bootstrap初始化写了大致的几个页面&#10;2.后端: &#10;  1) 写了 UserService中的login接口&#10;  2) 为登录功能创建了拦截器interceptor进而HostHolder，用于在有效时间内记住用户&#10;  3) 使用逆向工程 mybatis generate创建DO mapper&#10;  4) 创建通用的ExceptionHandler&#10;  5) 使用ViewObject、Model、DAO、DO的结构来为不同层提供数据&#10;  6) 定义了CommonReturnType和枚举类型的错误信息标识，用于向返回结构一致的数据">
       <created>1547562110221</created>
@@ -504,7 +466,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357549000" />
+    <option name="totallyTimeSpent" value="359366000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,10 +478,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.85141" visible="true" weight="0.18763326" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85141" visible="true" weight="0.1930295" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -529,8 +491,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.34164858" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3362256" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.1898017" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3362256" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
@@ -554,6 +516,42 @@
       <window_info anchor="right" id="Bean Validation" order="8" />
       <window_info anchor="right" id="Database" order="9" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.85141" visible="true" weight="0.19034852" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Structure" order="5" sideWeight="0.14857143" side_tool="true" weight="0.20255864" />
+      <window_info id="Favorites" order="6" sideWeight="0.14859003" side_tool="true" weight="0.20255864" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.07932011" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3362256" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286334" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50159913" side_tool="true" weight="0.18329719" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.09436008" />
+      <window_info anchor="bottom" id="Problems" order="11" />
+      <window_info anchor="bottom" id="Spring" order="12" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven" order="7" weight="0.15138593" />
+      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="right" id="Database" order="9" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -602,20 +600,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/FinanceDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1210">
-          <caret line="62" column="32" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/UserModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderItemModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="728">
@@ -951,34 +935,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="53" column="94" lean-forward="true" selection-start-line="53" selection-start-column="94" selection-end-line="53" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1056,15 +1016,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        <state relative-caret-position="532">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1316">
+          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/header.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/mystyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>9</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>contentsale</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
