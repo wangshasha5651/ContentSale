@@ -21,8 +21,6 @@ public class UserModel {
     //@NotBlank(message = "密码不能为空")
     private String encryptPassword;
 
-    private String ticket;
-
     public Integer getId() {
         return id;
     }
@@ -63,12 +61,5 @@ public class UserModel {
         this.encryptPassword = encryptPassword;
     }
 
-    public String getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
 }
 

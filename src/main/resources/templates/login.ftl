@@ -52,7 +52,7 @@
                 <#-- <#elseif (viewInfo.getData().getErrMsg())! == "密码不为空"> -->
                 <div id="prompt-pwd-null" class="div-prompt-info" style="display: none"><span class="span-prompt">密码不为空！</span></div>
                 <#-- <#elseif (viewInfo.getData().getErrMsg())! == "登录失败"> -->
-                <#if (viewInfo.getData().getErrMsg())! == "登录失败">
+                <#if (viewInfo.getStatus())! == "fail">
                     <div id="prompt-fail" class="div-prompt-info"><span class="span-prompt">登录失败！</span></div>
                 </#if>
             </div>

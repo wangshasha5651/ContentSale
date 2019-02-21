@@ -48,14 +48,6 @@
              selectByExampleQueryId="false">
       </table>
 
-      <table tableName="login_ticket" domainObjectName="LoginTicketDO"
-             enableCountByExample="false"
-             enableUpdateByExample="false"
-             enableDeleteByExample="false"
-             enableSelectByExample="false"
-             selectByExampleQueryId="false">
-      </table>
-
         <table tableName="item" domainObjectName="ItemDO"
                enableCountByExample="false"
                enableUpdateByExample="false"

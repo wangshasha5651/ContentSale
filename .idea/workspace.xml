@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f40194b2-e576-4f3f-b796-105566a41539" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f40194b2-e576-4f3f-b796-105566a41539" name="Default Changelist" comment="1.登录以及保持登录用session和redis缓存优化&#10;2.购物车用redis缓存优化&#10;  添加到购物车先添加到缓存（已完成），后期再保存到数据库（未完成）&#10;  查看购物车先查找缓存，若缓存没有再访问数据库&#10;3.写了一部分事件生产者和消费者模型（不一定用）">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/async/handler/OrderHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/common/Const.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/utils/JsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/dao/CartDOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/dao/CartDOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/dao/LoginTicketDOMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/LoginTicketDO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/UserModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/CartDOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/CartDOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/LoginTicketDOMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/header.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/common/error/EmBusinessError.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/common/error/EmBusinessError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/controller/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/controller/BaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/dao/LoginTicketDOMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/dataobject/LoginTicketDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/interceptor/PassportInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/interceptor/PassportInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/service/model/UserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/service/model/UserModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/LoginTicketDOMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-generator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-generator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/mystyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/header.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,22 +69,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1316">
-              <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+            <state relative-caret-position="-316">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,37 +81,86 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="1650">
+              <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#366#367#0" expanded="true" />
+                <element signature="e#398#399#0" expanded="true" />
+                <element signature="e#442#443#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#356#357#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#650#651#0" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#839#840#0" expanded="true" />
+                <element signature="e#991#992#0" expanded="true" />
+                <element signature="e#1021#1022#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventProducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/header.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+            <state relative-caret-position="388">
+              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/mystyle.css">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventConsumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+            <state relative-caret-position="432">
+              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="498">
+              <caret line="208" column="5" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/handler/OrderHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#364#365#0" expanded="true" />
+                <element signature="e#409#410#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,8 +170,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="HTML File" />
+        <option value="JavaFXApplication" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -102,13 +180,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>style</find>
-      <find>itemTitle</find>
-      <find>item.getTitle</find>
-      <find>&lt;input</find>
-      <find>cart-num</find>
-      <find>lessNum</find>
-      <find>checkLogin</find>
       <find>prompt-name-null</find>
       <find>div-bg-confirm</find>
       <find>/3333</find>
@@ -132,6 +203,13 @@
       <find>itemDOMapper</find>
       <find>getUser</find>
       <find>span-nav-text</find>
+      <find>viewInfo</find>
+      <find>loginTicketDOMapper</find>
+      <find>ticket</find>
+      <find>get</find>
+      <find>change</find>
+      <find>selectByItemId</find>
+      <find>setType</find>
     </findStrings>
     <dirStrings>
       <dir>D:\JetBrains\Idea Workplace\contentsale</dir>
@@ -146,57 +224,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mapping/FinanceDOMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/viewobject/ItemVO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/dao/FinanceDOMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/ItemUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/editSubmit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/publishSubmit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/itemBought.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/config/ContentSaleConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/model/HostHolder.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/edit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/publish.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/footer.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/layout.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/showDetail.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/haveNotBought.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/settleAccount.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderItemModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/ItemService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/FinanceService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/SequenceDOMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/dao/SequenceDOMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/OrderService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/OrderItemDOMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/OrderDOMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapping/OrderAllDOMapper.xml" />
         <option value="$PROJECT_DIR$/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/contentsale/TestLog.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/TestLog.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/ItemController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/header.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/mystyle.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/config/ContentSaleConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/UserModel.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/header.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/Const.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/CartDOMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/dao/CartDOMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/App.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/contentsale/JedisTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/JsonUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/model/CartModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/async/handler/OrderHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventProducer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/contentsale/async/EventConsumer.java" />
       </list>
     </option>
   </component>
@@ -243,8 +321,91 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="async" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="async" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="handler" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -252,8 +413,8 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548233556894" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550755211385" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../contentsale" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -261,17 +422,17 @@
     <property name="settings.editor.selected.configurable" value="DockerRegistry" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitRepo\contentsale\src\main\resources" />
+      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\templates" />
+      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\GitRepo\contentsale\src\main\resources\static\js" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static\css" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\templates" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static" />
       <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\GitRepo\contentsale\src\main\resources" />
-      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\templates" />
-      <recent name="D:\JetBrains\Idea Workplace\contentsale\src\main\resources\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -297,6 +458,35 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JedisAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.contentsale.utils.JedisAdapter" />
+      <module name="contentsale" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.contentsale.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JedisTest.testObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="contentsale" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.contentsale.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.contentsale" />
+      <option name="MAIN_CLASS_NAME" value="com.contentsale.JedisTest" />
+      <option name="METHOD_NAME" value="testObject" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -346,10 +536,14 @@
       <item itemvalue="Application.App" />
       <item itemvalue="JUnit.TestLog.testLog" />
       <item itemvalue="Maven.mybatis-generator" />
+      <item itemvalue="Application.JedisAdapter" />
+      <item itemvalue="JUnit.JedisTest.testObject" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.JedisTest.testObject" />
+        <item itemvalue="Application.JedisAdapter" />
         <item itemvalue="JUnit.TestLog.testLog" />
       </list>
     </recent_temporary>
@@ -392,6 +586,7 @@
       <workItem from="1548230397391" duration="3139000" />
       <workItem from="1548474682807" duration="1403000" />
       <workItem from="1548481286280" duration="414000" />
+      <workItem from="1550654547484" duration="42522000" />
     </task>
     <task id="LOCAL-00001" summary="first commit: 初始化项目&#10;1.前端: 使用bootstrap初始化写了大致的几个页面&#10;2.后端: &#10;  1) 写了 UserService中的login接口&#10;  2) 为登录功能创建了拦截器interceptor进而HostHolder，用于在有效时间内记住用户&#10;  3) 使用逆向工程 mybatis generate创建DO mapper&#10;  4) 创建通用的ExceptionHandler&#10;  5) 使用ViewObject、Model、DAO、DO的结构来为不同层提供数据&#10;  6) 定义了CommonReturnType和枚举类型的错误信息标识，用于向返回结构一致的数据">
       <created>1547562110221</created>
@@ -446,27 +641,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 45m 34s.xml">
-      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 37m 22s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 45m 56s.xml">
-      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 38m 55s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 46m 29s.xml">
-      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 47m 39s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 50m 13s.xml">
-      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 49m 25s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLog_testLog - 2019.01.23 at 10h 51m 26s.xml">
-      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 51m 01s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestLog_testLog - 2019.01.23 at 11h 02m 09s.xml">
-      <configuration name="TestLog.testLog" configurationId="JUnit" />
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 52m 47s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 54m 19s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 54m 32s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 54m 38s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JedisTest_testObject - 2019.02.21 at 16h 59m 17s.xml">
+      <configuration name="JedisTest.testObject" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359366000" />
+    <option name="totallyTimeSpent" value="401888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -478,28 +685,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85141" visible="true" weight="0.1930295" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.84803003" visible="true" weight="0.19509594" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info id="Structure" order="5" sideWeight="0.14857143" side_tool="true" weight="0.20255864" />
-      <window_info id="Favorites" order="6" sideWeight="0.14859003" side_tool="true" weight="0.20255864" />
-      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Structure" order="5" sideWeight="0.15104896" side_tool="true" weight="0.19509594" />
+      <window_info id="Favorites" order="6" sideWeight="0.15196998" side_tool="true" visible="true" weight="0.19509594" />
+      <window_info id="Web" order="7" sideWeight="0.15104896" side_tool="true" weight="0.19509594" />
+      <window_info anchor="bottom" id="Thumbnails" weight="0.22451194" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840087" visible="true" weight="0.1898017" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3362256" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.22776572" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.1670282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50159913" side_tool="true" weight="0.18329719" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.09436008" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.4219089" />
       <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
@@ -564,7 +771,8 @@
     <MESSAGE value="1.修复各种疏忽引起的bug&#10;2.增加了交易订单的数据库设计以及逻辑实现&#10;3.卖家在商品主页可对未售出商品进行删除，并能查看销量" />
     <MESSAGE value="1.修复因Order表名和数据库关键字引起歧义导致的插入记录失败的错误&#10;2.实现主页对于未售出商品进行删除的前端js" />
     <MESSAGE value="修改index.ftl代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改index.ftl代码" />
+    <MESSAGE value="1.登录以及保持登录用session和redis缓存优化&#10;2.购物车用redis缓存优化&#10;  添加到购物车先添加到缓存（已完成），后期再保存到数据库（未完成）&#10;  查看购物车先查找缓存，若缓存没有再访问数据库&#10;3.写了一部分事件生产者和消费者模型（不一定用）" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.登录以及保持登录用session和redis缓存优化&#10;2.购物车用redis缓存优化&#10;  添加到购物车先添加到缓存（已完成），后期再保存到数据库（未完成）&#10;  查看购物车先查找缓存，若缓存没有再访问数据库&#10;3.写了一部分事件生产者和消费者模型（不一定用）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -574,18 +782,6 @@
           <line>82</line>
           <properties />
           <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java</url>
-          <line>42</line>
-          <properties />
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java</url>
-          <line>26</line>
-          <properties />
-          <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -600,406 +796,121 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderItemModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/config/ContentSaleConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#882#883#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#997#998#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1107#1108#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1173#1174#0" expanded="true" />
-            <element signature="e#1221#1222#0" expanded="true" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1308#1309#0" expanded="true" />
-            <element signature="e#1347#1348#0" expanded="true" />
-            <element signature="e#1415#1416#0" expanded="true" />
-            <element signature="e#1471#1472#0" expanded="true" />
-            <element signature="e#1507#1508#0" expanded="true" />
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1587#1588#0" expanded="true" />
-            <element signature="e#1627#1628#0" expanded="true" />
-            <element signature="e#1668#1669#0" expanded="true" />
-            <element signature="e#1701#1702#0" expanded="true" />
-            <element signature="e#1757#1758#0" expanded="true" />
-            <element signature="e#1801#1802#0" expanded="true" />
-            <element signature="e#1836#1837#0" expanded="true" />
-            <element signature="e#1869#1870#0" expanded="true" />
-            <element signature="e#1919#1920#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/ItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/haveNotBought.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/settleAccount.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/FinanceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="79" selection-start-line="14" selection-start-column="79" selection-end-line="14" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/SequenceDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="28" column="40" lean-forward="true" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dao/SequenceDOMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/UserUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/CartModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/FinanceUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/ItemUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
+        <state relative-caret-position="220">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/OrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/ItemModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.0.9.RELEASE/spring-tx-5.0.9.RELEASE.jar!/org/springframework/transaction/annotation/Transactional.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.9.RELEASE/spring-aop-5.0.9.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="517" selection-start-line="517" selection-end-line="517" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/UserDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CartUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/OrderDO.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dao/OrderDOMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderDOMapper.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderItemDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="82" column="21" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderAllDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="54" column="125" selection-start-line="54" selection-start-column="125" selection-end-line="54" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/ItemDOMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="55" column="11" lean-forward="true" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/OrderAllModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#536#537#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log4j.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/contentsale/AppTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/contentsale/TestLog.java" />
-    <entry file="uml://MAVEN/com.contentsale:contentsale:1.0-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>com.contentsale:contentsale:1.0-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="" y="">com.contentsale:contentsale:1.0-SNAPSHOT</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.10.0/org.apache.logging.log4j:log4j-api:jar:2.10.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.0.5.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.springframework:spring-core:jar:5.0.9.RELEASE/org.springframework:spring-jcl:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter:jar:2.0.5.RELEASE/org.yaml:snakeyaml:jar:1.19</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.core:jackson-databind:jar:2.9.6/com.fasterxml.jackson.core:jackson-core:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-json:jar:2.0.5.RELEASE/com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-el:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-starter-tomcat:jar:2.0.5.RELEASE/org.apache.tomcat.embed:tomcat-embed-websocket:jar:8.5.34</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.hibernate.validator:hibernate-validator:jar:6.0.12.Final</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-web:jar:5.0.9.RELEASE/org.springframework:spring-beans:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-aop:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-context:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-web:jar:2.0.5.RELEASE/org.springframework:spring-webmvc:jar:5.0.9.RELEASE/org.springframework:spring-expression:jar:5.0.9.RELEASE</node>
-            <node x="" y="">mysql:mysql-connector-java:jar:5.1.41</node>
-            <node x="" y="">com.alibaba:druid:jar:1.1.3</node>
-            <node x="" y="">com.alibaba:druid:jar:1.1.3/com.alibaba:jconsole:jar:1.8.0</node>
-            <node x="" y="">com.alibaba:druid:jar:1.1.3/com.alibaba:tools:jar:1.8.0</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/com.zaxxer:HikariCP:jar:2.7.9</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.5.RELEASE/org.springframework:spring-jdbc:jar:5.0.9.RELEASE/org.springframework:spring-tx:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:1.3.1</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis:mybatis:jar:3.4.5</node>
-            <node x="" y="">org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:1.3.1/org.mybatis:mybatis-spring:jar:1.3.1</node>
-            <node x="" y="">junit:junit:jar:4.11</node>
-            <node x="" y="">junit:junit:jar:4.11/org.hamcrest:hamcrest-core:jar:1.3</node>
-            <node x="" y="">org.mybatis.generator:mybatis-generator-core:jar:1.3.5</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE/org.freemarker:freemarker:jar:2.3.28</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-freemarker:jar:2.0.5.RELEASE/org.springframework:spring-context-support:jar:5.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE/org.attoparser:attoparser:jar:2.0.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.thymeleaf:thymeleaf:jar:3.0.9.RELEASE/org.unbescape:unbescape:jar:1.1.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf:thymeleaf-spring5:jar:3.0.9.RELEASE/org.slf4j:slf4j-api:jar:1.7.25</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-thymeleaf:jar:2.0.5.RELEASE/org.thymeleaf.extras:thymeleaf-extras-java8time:jar:3.0.1.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-devtools:jar:2.0.5.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.0.5.RELEASE</node>
-            <node x="" y="">org.apache.commons:commons-lang3:jar:3.7</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/javax.validation:validation-api:jar:2.0.1.Final</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/org.jboss.logging:jboss-logging:jar:3.3.2.Final</node>
-            <node x="" y="">org.hibernate.validator:hibernate-validator:jar:6.0.9.Final/com.fasterxml:classmate:jar:1.3.4</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.squareup.okhttp3:okhttp:jar:3.2.0</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.squareup.okhttp3:okhttp:jar:3.2.0/com.squareup.okio:okio:jar:1.6.0</node>
-            <node x="" y="">com.qiniu:qiniu-java-sdk:jar:7.1.1/com.google.code.gson:gson:jar:2.8.5</node>
-            <node x="" y="">com.alibaba:fastjson:jar:1.2.50</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0834793491864831" x="2677.0" y="379.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>All</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/TestLog.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="156" column="38" selection-start-line="156" selection-start-column="38" selection-end-line="156" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="938">
-          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="33" column="52" lean-forward="true" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+        <state relative-caret-position="616">
+          <caret line="139" column="27" selection-start-line="139" selection-start-column="15" selection-end-line="139" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/header.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="67" column="1" lean-forward="true" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
+        <state relative-caret-position="242">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.9.RELEASE/spring-web-5.0.9.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/ItemUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/2.8.0/jedis-2.8.0.jar!/redis/clients/jedis/JedisPool.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/2.8.0/jedis-2.8.0.jar!/redis/clients/jedis/JedisCommands.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="57" column="53" lean-forward="true" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="45" column="100" selection-start-line="45" selection-start-column="100" selection-end-line="45" selection-end-column="100" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="127" column="77" selection-start-line="127" selection-start-column="77" selection-end-line="127" selection-end-column="77" />
+        <state relative-caret-position="210">
+          <caret line="128" column="30" selection-start-line="128" selection-start-column="19" selection-end-line="128" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="506">
+          <caret line="44" column="46" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        <state relative-caret-position="468">
+          <caret line="79" column="36" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1008,59 +919,293 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-147">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="31" />
+        <state relative-caret-position="352">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/UserDOMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="-528" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/SequenceDOMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderItemDOMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/OrderAllDOMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-660" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/ItemDOMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1452" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/FinanceDOMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1914" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/CartDOMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="25" column="37" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dao/CartDOMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.50/fastjson-1.2.50.jar!/com/alibaba/fastjson/JSON.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="332" column="21" selection-start-line="332" selection-start-column="21" selection-end-line="332" selection-end-column="21" />
+          <folding>
+            <element signature="e#12939#12940#0" expanded="true" />
+            <element signature="e#12986#12987#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/contentsale/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/contentsale/JedisTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/viewobject/UserVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CartUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dataobject/CartDO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-704">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/model/CartModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/2.8.0/jedis-2.8.0.jar!/redis/clients/jedis/Jedis.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="90" column="18" selection-start-line="90" selection-start-column="11" selection-end-line="90" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="60" column="44" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="118" column="49" selection-start-line="118" selection-start-column="49" selection-end-line="118" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/error/BusinessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="30" column="44" lean-forward="true" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/controller/CartController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1316">
-          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+        <state relative-caret-position="-316">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/handler/OrderHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="278">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        <state relative-caret-position="462">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/header.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventProducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+        <state relative-caret-position="388">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/mystyle.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        <state relative-caret-position="498">
+          <caret line="208" column="5" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/async/EventConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

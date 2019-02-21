@@ -7,8 +7,6 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-examplle-navbar-collapse-1">
-            <span>${(session.getAttribute("ticket"))!}</span>
-
 
             <!-- user不为空，已登录 -->
             <#if user??>

@@ -14,5 +14,4 @@ public interface UserService {
     //通过用户ID获取用户对象的方法
     UserModel gerUserById(Integer id);
     UserModel validateLogin(String username, String password) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException;
-    void logout(String ticket);
 }

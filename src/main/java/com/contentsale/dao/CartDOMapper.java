@@ -38,7 +38,7 @@ public interface CartDOMapper {
      */
     CartDO selectByPrimaryKey(Integer id);
 
-    CartDO selectByItemId(Integer itemId);
+    CartDO selectByItemIdAndUserId(Integer itemId, Integer userId);
 
     List<CartDO> listItem(Integer userId);
 

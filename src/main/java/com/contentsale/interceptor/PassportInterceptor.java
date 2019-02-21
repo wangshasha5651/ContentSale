@@ -1,5 +1,6 @@
 package com.contentsale.interceptor;
 
+import com.contentsale.common.Const;
 import com.contentsale.controller.viewobject.FinanceVO;
 import com.contentsale.controller.viewobject.UserVO;
 import com.contentsale.dao.*;
@@ -8,8 +9,11 @@ import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.model.FinanceModel;
 import com.contentsale.service.model.UserModel;
 import com.contentsale.utils.FinanceUtils;
+import com.contentsale.utils.JedisAdapter;
+import com.contentsale.utils.RedisKeyUtil;
 import com.contentsale.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,9 +38,6 @@ import java.util.Map;
 public class PassportInterceptor implements HandlerInterceptor {
 
     @Autowired
-    private LoginTicketDOMapper loginTicketDOMapper;
-
-    @Autowired
     private UserDOMapper userDOMapper;
 
     @Autowired
@@ -47,63 +49,49 @@ public class PassportInterceptor implements HandlerInterceptor {
     @Autowired
     private HostHolder hostHolder;
 
+    @Autowired
+    private JedisAdapter jedisAdapter;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String ticket = null;
+        HttpSession session = request.getSession(false);
 
-        // 查找客户端请求中是否包含ticket
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (cookie.getName().equals("ticket")) {
-                    ticket = cookie.getValue();
-                    break;
+        if(session != null && session.getAttribute(Const.CURRENT_USER) != null){
+
+            UserVO user = UserUtils.convertVOFromModel((UserModel)session.getAttribute(Const.CURRENT_USER));
+
+            //验证缓存中session信息
+            String loginSessionId = jedisAdapter.get(RedisKeyUtil.getLoginKey(user.getId()));
+            if(loginSessionId != null && loginSessionId.equals(session.getId())){
+
+                // 保存用户到线程本地变量中
+                hostHolder.setUsers(user);
+
+                // 每个买家已买的商品集合
+                if(user.getType() == 1){
+                    List<FinanceDO> buyerFinanceDOList = financeDOMapper.listItem(user.getId());
+                    if(buyerFinanceDOList != null && buyerFinanceDOList.size() != 0){
+                        List<Integer> buyerItemIdList = FinanceUtils.getItemIDListFromDOList(buyerFinanceDOList);
+                        hostHolder.setItemBoughtList(buyerItemIdList);
+                    }
+                    // 买家所有商品购买时的价格map
+                    Map<String, BigDecimal> priceMap = new HashMap<>();
+                    for(FinanceDO financeDO : buyerFinanceDOList){
+                        priceMap.put(financeDO.getItemId().toString(), new BigDecimal(financeDO.getEachPrice()));
+                    }
+                    hostHolder.setPriceMap(priceMap);
+                }else{
+                    // 每个卖家已卖的商品集合
+                    List<FinanceDO> sellerFinanceDOList = financeDOMapper.listItemBySeller(user.getId());
+                    if(sellerFinanceDOList != null && sellerFinanceDOList.size() != 0){
+                        List<Integer> sellerItemIdList = FinanceUtils.getItemIDListFromDOList(sellerFinanceDOList);
+                        hostHolder.setItemSoldList(sellerItemIdList);
+                    }
                 }
+
             }
         }
-
-
-        // 若包含，则验证是否在服务端数据库中有对应ticket
-        if(ticket != null){
-            LoginTicketDO loginTicket = loginTicketDOMapper.selectByTicket(ticket);
-
-            // 如果tciket无效
-            if(loginTicket == null || loginTicket.getExpired().before(new Date()) || loginTicket.getStatus() != 0){
-                return true;
-            }
-
-            // 如果tciket有效
-
-            UserDO userDO = userDOMapper.selectByPrimaryKey(loginTicket.getUserId());
-            UserPasswordDO userPasswordDO = userPasswordDOMapper.selectByUserId(loginTicket.getUserId());
-            UserModel userModel = UserUtils.convertFromDataObject(userDO, userPasswordDO);
-            UserVO user = UserUtils.convertVOFromModel(userModel);
-            // 保存用户到线程本地变量中
-            hostHolder.setUsers(user);
-
-            // 每个买家已买的商品集合
-            if(userDO.getType() == 1){
-                List<FinanceDO> buyerFinanceDOList = financeDOMapper.listItem(loginTicket.getUserId());
-                if(buyerFinanceDOList != null && buyerFinanceDOList.size() != 0){
-                    List<Integer> buyerItemIdList = FinanceUtils.getItemIDListFromDOList(buyerFinanceDOList);
-                    hostHolder.setItemBoughtList(buyerItemIdList);
-                }
-                // 买家所有商品购买时的价格map
-                Map<String, BigDecimal> priceMap = new HashMap<>();
-                for(FinanceDO financeDO : buyerFinanceDOList){
-                    priceMap.put(financeDO.getItemId().toString(), new BigDecimal(financeDO.getEachPrice()));
-                }
-                hostHolder.setPriceMap(priceMap);
-            }else{
-                // 每个卖家已卖的商品集合
-                List<FinanceDO> sellerFinanceDOList = financeDOMapper.listItemBySeller(loginTicket.getUserId());
-                if(sellerFinanceDOList != null && sellerFinanceDOList.size() != 0){
-                    List<Integer> sellerItemIdList = FinanceUtils.getItemIDListFromDOList(sellerFinanceDOList);
-                    hostHolder.setItemSoldList(sellerItemIdList);
-                }
-            }
-        }
-
         return true;
     }
 

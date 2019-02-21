@@ -14,7 +14,7 @@ import java.util.Map;
 public interface CartService {
 
     //添加到购物车
-    CartModel addToCart(CartModel cartModel);
+    Boolean addToCart(CartModel cartModel);
 
     List<CartModel> listCartItem(Integer userId);
 
