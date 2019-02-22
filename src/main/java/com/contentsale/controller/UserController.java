@@ -1,5 +1,6 @@
 package com.contentsale.controller;
 
+
 import com.contentsale.common.Const;
 import com.contentsale.controller.viewobject.UserVO;
 import com.contentsale.common.error.BusinessException;
@@ -7,6 +8,8 @@ import com.contentsale.common.error.EmBusinessError;
 import com.contentsale.common.responese.CommonReturnType;
 import com.contentsale.dao.UserDOMapper;
 import com.contentsale.dao.UserPasswordDOMapper;
+import com.contentsale.interceptor.model.HostHolder;
+import com.contentsale.service.CartService;
 import com.contentsale.service.UserService;
 import com.contentsale.service.model.UserModel;
 import com.contentsale.utils.JedisAdapter;
@@ -21,10 +24,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 /**
  * Created by wss on 2019/1/9.
@@ -49,6 +55,13 @@ public class UserController extends BaseController {
 
     @Autowired
     private JedisAdapter jedisAdapter;
+
+    @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private HostHolder hostHolder;
+
 
 
     @RequestMapping(value="/user/login",method = {RequestMethod.POST})
@@ -75,8 +88,15 @@ public class UserController extends BaseController {
 
         session.setAttribute(Const.CURRENT_USER, userModel);
 
+        //向缓存中存储具有一定有效期LOGIN_EXPIRE_TIME的token
         String loginKey = RedisKeyUtil.getLoginKey(userModel.getId());
         jedisAdapter.setex(loginKey, Const.LOGIN_EXPIRE_TIME, session.getId());
+
+        //清除购物车残留缓存
+        Boolean resultFlush = cartService.flushCache(RedisKeyUtil.getCartKey(userModel.getId()));
+        if(resultFlush.equals(Boolean.FALSE)){
+            throw new BusinessException(EmBusinessError.CART_CACHE_ERROR);
+        }
 
         UserVO userVO = UserUtils.convertVOFromModel(userModel);
         modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(userVO));
@@ -85,13 +105,27 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value="/user/logout",method = {RequestMethod.GET})
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session) throws BusinessException {
         UserVO user = UserUtils.convertVOFromModel((UserModel)session.getAttribute(Const.CURRENT_USER));
         session.removeAttribute(Const.CURRENT_USER);
-        jedisAdapter.del(RedisKeyUtil.getLoginKey(user.getId()));
+
+        Integer userId = user.getId();
+        jedisAdapter.del(RedisKeyUtil.getLoginKey(userId));
+
+        //清除购物车缓存
+        Boolean resultFlush = cartService.flushCache(RedisKeyUtil.getCartKey(userId));
+        if(resultFlush.equals(Boolean.FALSE)){
+            throw new BusinessException(EmBusinessError.CART_CACHE_ERROR);
+        }
+
+        //清除用户主页缓存
+        jedisAdapter.del(RedisKeyUtil.getHomeKey());
+        Const.afterLoginCacheFlag = false;
+
+        hostHolder.clear();
+
         return "redirect:/login";
     }
-
 }
 
 

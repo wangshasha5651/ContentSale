@@ -20,5 +20,15 @@ public interface CartService {
 
     Boolean deleteCartItem(List<OrderItemModel> orderItemModelList) throws BusinessException;
 
+    Boolean updateCacheToDb(Integer userId);
+
+    Boolean updateDbToCache(Integer userId);
+
+    List<CartModel> getCartModelListFromCache(String cartKey);
+
+    List<CartModel> getCartModelListFromDb(String cartKey);
+
+    Boolean flushCache(String cartKey);
+
     CartModel getCartItemById(Integer id);
 }

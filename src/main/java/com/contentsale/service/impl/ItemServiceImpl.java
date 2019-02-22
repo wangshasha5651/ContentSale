@@ -1,14 +1,19 @@
 package com.contentsale.service.impl;
 
+import com.contentsale.common.Const;
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.common.error.EmBusinessError;
+import com.contentsale.controller.viewobject.ItemVO;
 import com.contentsale.dao.ItemDOMapper;
 import com.contentsale.dataobject.ItemDO;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.ItemService;
 import com.contentsale.service.model.ItemModel;
 import com.contentsale.service.model.OrderItemModel;
+import com.contentsale.utils.CreateHtmlUtils;
 import com.contentsale.utils.ItemUtils;
+import com.contentsale.utils.JedisAdapter;
+import com.contentsale.utils.RedisKeyUtil;
 import com.contentsale.validator.ValidationResult;
 import com.contentsale.validator.ValidatorImpl;
 import org.apache.commons.lang3.StringUtils;
@@ -18,8 +23,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.jar.JarEntry;
 import java.util.stream.Collectors;
 
 /**
@@ -37,6 +44,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private JedisAdapter jedisAdapter;
 
 
     @Override
@@ -71,13 +81,12 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemModel> listNotBoughtItem() {
+    public List<ItemModel> listNotBoughtItem(List<Integer> itemBoughtIdList) {
 
         List<ItemDO> itemDOAllList = itemDOMapper.listItem();
 
         List<ItemModel> itemModelNotBoughtList = new ArrayList<>();
         for(ItemDO itemDO: itemDOAllList){
-            List<Integer> itemBoughtIdList = hostHolder.getItemBoughtList();
             // 如果已购买的商品id集合中不包含
             if(!itemBoughtIdList.contains(itemDO.getId())){
                 ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
@@ -157,6 +166,34 @@ public class ItemServiceImpl implements ItemService {
         }
 
         return Boolean.TRUE;
+    }
+
+    @Override
+    public String getIndexHtmlTextNotLogin() throws Exception {
+        List<ItemModel> itemModelList = listItem();
+
+        List<ItemVO> itemVOList = ItemUtils.convertVOListFromModelList(itemModelList);
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("itemList", itemVOList);
+
+        String htmltext = CreateHtmlUtils.createHtml(Const.INDEX_FILE_NAME, map);
+
+        return htmltext;
+    }
+
+    @Override
+    public String getIndexHtmlTextIfLogined(Map<String, Object> map) throws Exception {
+        List<ItemModel> itemModelList = listItem();
+
+        List<ItemVO> itemVOList = ItemUtils.convertVOListFromModelList(itemModelList);
+
+        map.put("itemList", itemVOList);
+
+        String htmltext = CreateHtmlUtils.createHtml(Const.INDEX_FILE_NAME, map);
+
+        return htmltext;
     }
 
 

@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.sql.BatchUpdateException;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/cart")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true")
 public class CartController extends BaseController {
-
 
     @Autowired
     private HostHolder hostHolder;
@@ -55,6 +55,7 @@ public class CartController extends BaseController {
         cartModel.setUserId(hostHolder.getUser().getId());
         cartModel.setQuantity(quantity);
         cartModel.setCurrentPrice(currentPrice);
+        cartModel.setCreateTime(new Date());
 
         Boolean result = cartService.addToCart(cartModel);
         if(result.equals(Boolean.FALSE)){

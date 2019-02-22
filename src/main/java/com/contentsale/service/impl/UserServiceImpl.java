@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 /**
  * Created by wss on 2019/1/9.
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
         }
 
         return userModel;
-
     }
+
 
 }

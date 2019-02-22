@@ -51,6 +51,12 @@ public class BaseController {
                 return "redirect:/";
             }
 
+            // 若错误代码是以6开头，则为商品详情异常
+            if(String.valueOf(businessException.getErrCode()).startsWith("6")) {
+                logger.error("商品异常：" + businessException.getMessage());
+                return "redirect:/";
+            }
+
         }else{ // 如果是其他异常
 
             GeneralException generalException = new GeneralException(EmBusinessError.UNKNOWN_ERROR.getErrCode(), EmBusinessError.UNKNOWN_ERROR.getErrMsg());

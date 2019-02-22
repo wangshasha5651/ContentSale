@@ -5,6 +5,7 @@ import com.contentsale.service.model.ItemModel;
 import com.contentsale.service.model.OrderItemModel;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -20,7 +21,7 @@ public interface ItemService {
     List<ItemModel> listItem();
 
     // 未购买商品的列表浏览
-    List<ItemModel> listNotBoughtItem();
+    List<ItemModel> listNotBoughtItem(List<Integer> itemBoughtIdList);
 
     // 获取商品详情
     ItemModel getItemById(Integer id);
@@ -33,5 +34,11 @@ public interface ItemService {
 
     // 删除商品
     Boolean deleteItem(Integer id) throws BusinessException;
+
+    //未登录时 获取主页静态页面
+    String getIndexHtmlTextNotLogin() throws Exception;
+
+    //已登录后 获取主页静态页面
+    String getIndexHtmlTextIfLogined(Map<String, Object> map) throws Exception;
 
 }

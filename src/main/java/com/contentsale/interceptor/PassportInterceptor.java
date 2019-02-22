@@ -8,10 +8,8 @@ import com.contentsale.dataobject.*;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.model.FinanceModel;
 import com.contentsale.service.model.UserModel;
-import com.contentsale.utils.FinanceUtils;
-import com.contentsale.utils.JedisAdapter;
-import com.contentsale.utils.RedisKeyUtil;
-import com.contentsale.utils.UserUtils;
+import com.contentsale.utils.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
@@ -55,6 +53,12 @@ public class PassportInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        // 当访问的非主页时，清除主页页面缓存
+        String url = request.getRequestURI();
+        if(!StringUtils.equals(url, "/")){
+            jedisAdapter.del(RedisKeyUtil.getHomeKey());
+        }
+
         HttpSession session = request.getSession(false);
 
         if(session != null && session.getAttribute(Const.CURRENT_USER) != null){
@@ -65,30 +69,10 @@ public class PassportInterceptor implements HandlerInterceptor {
             String loginSessionId = jedisAdapter.get(RedisKeyUtil.getLoginKey(user.getId()));
             if(loginSessionId != null && loginSessionId.equals(session.getId())){
 
+                //若用户存在正确登录信息
+
                 // 保存用户到线程本地变量中
                 hostHolder.setUsers(user);
-
-                // 每个买家已买的商品集合
-                if(user.getType() == 1){
-                    List<FinanceDO> buyerFinanceDOList = financeDOMapper.listItem(user.getId());
-                    if(buyerFinanceDOList != null && buyerFinanceDOList.size() != 0){
-                        List<Integer> buyerItemIdList = FinanceUtils.getItemIDListFromDOList(buyerFinanceDOList);
-                        hostHolder.setItemBoughtList(buyerItemIdList);
-                    }
-                    // 买家所有商品购买时的价格map
-                    Map<String, BigDecimal> priceMap = new HashMap<>();
-                    for(FinanceDO financeDO : buyerFinanceDOList){
-                        priceMap.put(financeDO.getItemId().toString(), new BigDecimal(financeDO.getEachPrice()));
-                    }
-                    hostHolder.setPriceMap(priceMap);
-                }else{
-                    // 每个卖家已卖的商品集合
-                    List<FinanceDO> sellerFinanceDOList = financeDOMapper.listItemBySeller(user.getId());
-                    if(sellerFinanceDOList != null && sellerFinanceDOList.size() != 0){
-                        List<Integer> sellerItemIdList = FinanceUtils.getItemIDListFromDOList(sellerFinanceDOList);
-                        hostHolder.setItemSoldList(sellerItemIdList);
-                    }
-                }
 
             }
         }
@@ -97,15 +81,10 @@ public class PassportInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
         //在渲染前将已登录的用户传给页面
         if(modelAndView != null && hostHolder.getUser() != null){
             modelAndView.addObject("user", hostHolder.getUser());
-            if(hostHolder.getUser().getType() == 1){ // 如果是买家
-                modelAndView.addObject("boughtList", hostHolder.getItemBoughtList());
-                modelAndView.addObject("priceMap", hostHolder.getPriceMap());
-            }else{
-                modelAndView.addObject("soldList", hostHolder.getItemSoldList());
-            }
         }
     }
 

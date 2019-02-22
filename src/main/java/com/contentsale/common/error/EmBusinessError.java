@@ -35,7 +35,11 @@ public enum EmBusinessError implements CommonError{
 
     // 50000开头为购物车错误
     ADD_TO_CART_ERROR(50001, "添加购物车失败"),
-    CHECK_CART_ERROR(50002, "查看购物车失败");
+    CHECK_CART_ERROR(50002, "查看购物车失败"),
+    CART_CACHE_ERROR(50002, "购物车缓存操作失败"),
+
+    //60000开头为商品详情错误
+    SHOW_DETAIL_ERROR(60001, "查看商品详情错误");
 
 
     private int errCode;

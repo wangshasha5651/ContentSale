@@ -1,15 +1,19 @@
 package com.contentsale.controller;
 
+import com.contentsale.common.Const;
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.common.error.EmBusinessError;
 import com.contentsale.common.responese.CommonReturnType;
 import com.contentsale.controller.viewobject.ItemVO;
+import com.contentsale.controller.viewobject.UserVO;
+import com.contentsale.dataobject.FinanceDO;
 import com.contentsale.dataobject.ItemDO;
 import com.contentsale.interceptor.model.HostHolder;
+import com.contentsale.service.FinanceService;
 import com.contentsale.service.ItemService;
 import com.contentsale.service.impl.CloudServiceImpl;
 import com.contentsale.service.model.ItemModel;
-import com.contentsale.utils.ItemUtils;
+import com.contentsale.utils.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -43,6 +49,13 @@ public class ItemController extends BaseController {
 
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private JedisAdapter jedisAdapter;
+
+    @Autowired
+    private FinanceService financeService;
+
 
     // 创建商品
     @RequestMapping(value="/item/create",method = {RequestMethod.POST})
@@ -105,6 +118,67 @@ public class ItemController extends BaseController {
     }
 
 
+    // 商品列表浏览(主页浏览)
+    @RequestMapping(value="/", method = {RequestMethod.GET}, produces="text/html;charset=UTF-8")
+    @ResponseBody
+    public String listItem(Integer type, ModelAndView modelAndView) throws Exception {
+
+        UserVO user = hostHolder.getUser();
+
+        // 浏览所有商品
+        if(type == null){
+
+            String htmltext = null;
+            if(user  == null){
+                //清除之前残余
+                jedisAdapter.del(RedisKeyUtil.getHomeKey());
+
+                //当缓存中没有主页静态页面时，重新访问数据库，并加载到缓存
+                if(!jedisAdapter.exists(RedisKeyUtil.getHomeKey())) {
+
+                    htmltext = itemService.getIndexHtmlTextNotLogin();
+
+                    jedisAdapter.setex(RedisKeyUtil.getHomeKey(), Const.INDEX_CACHE_EXPIRE_TIME,htmltext);
+
+                    return htmltext;
+
+                }else{
+                    return jedisAdapter.get(RedisKeyUtil.getHomeKey());
+                }
+            }else{ //用户已登录
+
+                //若刚登陆，需刷新该用户的对应商品到缓存
+                if(Const.afterLoginCacheFlag.equals(Boolean.FALSE)){
+                    Const.afterLoginCacheFlag = true;
+                    return createIndexCache();
+                }else{
+                    //已登录，但缓存过期
+                    if(!jedisAdapter.exists(RedisKeyUtil.getHomeKey())) {
+                        return createIndexCache();
+                    }
+                    return jedisAdapter.get(RedisKeyUtil.getHomeKey());
+                }
+            }
+
+        }
+
+        // 浏览未购买的商品
+        if(type == 1){
+            List<ItemModel> itemNotBoughtModelList = itemService.listNotBoughtItem(financeService.getBoughtIdList(user.getId()));
+            List<ItemVO> itemNotBoughtVOList = ItemUtils.convertVOListFromModelList(itemNotBoughtModelList);
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("user", user);
+            map.put("itemList", itemNotBoughtVOList);
+
+            String htmltext = CreateHtmlUtils.createHtml(Const.NOTBOUGHT_FILE_NAME, map);
+
+            return htmltext;
+        }
+
+        return "";
+    }
+
     //单独上传图片
     @RequestMapping(value="/item/uploadImage", method = {RequestMethod.POST})
     @ResponseBody
@@ -123,52 +197,33 @@ public class ItemController extends BaseController {
 
     // 显示商品详情
     @RequestMapping(value="/showDetail", method = {RequestMethod.GET})
-    public ModelAndView show(@RequestParam("id") Integer id, ModelAndView modelAndView){
+    public ModelAndView show(@RequestParam("id") Integer id, ModelAndView modelAndView) throws BusinessException {
 
         try{
             ItemModel itemModel = itemService.getItemById(id);
 
             ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
 
-            modelAndView.addObject("item", itemVO);
+            UserVO user = hostHolder.getUser();
+            if(user != null){
+                List<Integer> boughtList = financeService.getBoughtIdList(user.getId());
+                Map<String, BigDecimal> priceMap = financeService.getBoughtPriceMap(user.getId());
 
+                modelAndView.addObject("boughtList", boughtList);
+                modelAndView.addObject("priceMap", priceMap);
+            }
+
+
+            modelAndView.addObject("item", itemVO);
             modelAndView.setViewName("showDetail");
         }catch (Exception e){
-            logger.error("查看商品详情异常：" + e.getMessage());
+            throw new BusinessException(EmBusinessError.SHOW_DETAIL_ERROR);
         }
 
         return modelAndView;
     }
 
-    // 商品列表浏览
-    @RequestMapping(value="/", method = {RequestMethod.GET})
-    @ResponseBody
-    public ModelAndView listItem(Integer type, ModelAndView modelAndView){
 
-        // 浏览所有商品
-        if(type == null){
-            List<ItemModel> itemModelList = itemService.listItem();
-
-            // 使用stream api将list内的itemModel转化为itemVO
-            List<ItemVO> itemVOList = ItemUtils.convertVOListFromModelList(itemModelList);
-
-            modelAndView.addObject("itemList", itemVOList);
-            modelAndView.setViewName("index");
-
-            return modelAndView;
-        }
-
-        // 浏览未购买的商品
-        if(type == 1){
-            List<ItemModel> itemNotBoughtModelList = itemService.listNotBoughtItem();
-            List<ItemVO> itemNotBoughtVOList = ItemUtils.convertVOListFromModelList(itemNotBoughtModelList);
-
-            modelAndView.addObject("itemList", itemNotBoughtVOList);
-            modelAndView.setViewName("haveNotBought");
-            return modelAndView;
-        }
-        return modelAndView;
-    }
 
     // 获取商品信息发至编辑页
     @RequestMapping(value="/edit", method = {RequestMethod.GET})
@@ -262,4 +317,36 @@ public class ItemController extends BaseController {
 
         return "success";
     }
+
+
+    //获取登录用户的主页缓存
+    private String createIndexCache() throws Exception {
+        UserVO user = hostHolder.getUser();
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", user);
+
+
+        Integer userId = user.getId();
+        // 每个买家已买的商品集合
+        if(user.getType() == 1){
+            List<Integer> boughtIdList = financeService.getBoughtIdList(userId);
+            map.put("boughtList", boughtIdList);
+
+            Map<String, BigDecimal> priceMap = financeService.getBoughtPriceMap(userId);
+            map.put("priceMap", boughtIdList);
+
+        }else{
+            // 每个卖家已卖的商品集合
+            List<Integer> soldList = financeService.getSoldIdList(userId);
+            map.put("soldList", soldList);
+        }
+
+        String htmltext = itemService.getIndexHtmlTextIfLogined(map);
+
+        jedisAdapter.setex(RedisKeyUtil.getHomeKey(), Const.INDEX_CACHE_EXPIRE_TIME,htmltext);
+
+        return htmltext;
+    }
+
 }

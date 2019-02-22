@@ -1,6 +1,7 @@
 package com.contentsale.service.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by wss on 2019/1/19.
@@ -24,6 +25,9 @@ public class CartModel {
 
     // 商品当前单价
     private BigDecimal currentPrice;
+
+    // 创建时间
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -71,5 +75,13 @@ public class CartModel {
 
     public void setCurrentPrice(BigDecimal currentPrice) {
         this.currentPrice = currentPrice;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

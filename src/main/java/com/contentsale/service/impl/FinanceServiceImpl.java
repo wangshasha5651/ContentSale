@@ -20,10 +20,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -92,5 +89,41 @@ public class FinanceServiceImpl implements FinanceService {
         List<FinanceModel> financeModelList = FinanceUtils.convertModelListFromDOList(financeDOList);
 
         return financeModelList;
+    }
+
+    //获得所有用户已买商品id列表
+    @Override
+    public List<Integer> getBoughtIdList(Integer userId) {
+        List<FinanceDO> buyerFinanceDOList = financeDOMapper.listItem(userId);
+        if(buyerFinanceDOList != null && buyerFinanceDOList.size() != 0) {
+            return FinanceUtils.getItemIDListFromDOList(buyerFinanceDOList);
+        }
+        return null;
+    }
+
+    @Override
+    public Map<String, BigDecimal> getBoughtPriceMap(Integer userId) {
+        List<FinanceDO> buyerFinanceDOList = financeDOMapper.listItem(userId);
+
+        if(buyerFinanceDOList != null && buyerFinanceDOList.size() != 0) {
+            Map<String, BigDecimal> priceMap = new HashMap<>();
+            for(FinanceDO financeDO : buyerFinanceDOList){
+                priceMap.put(financeDO.getItemId().toString(), new BigDecimal(financeDO.getEachPrice()));
+            }
+            return priceMap;
+        }
+        return null;
+    }
+
+    @Override
+    public List<Integer> getSoldIdList(Integer userId) {
+
+        List<FinanceDO> sellerFinanceDOList = financeDOMapper.listItemBySeller(userId);
+
+        if(sellerFinanceDOList != null && sellerFinanceDOList.size() != 0){
+            List<Integer> soldList = FinanceUtils.getItemIDListFromDOList(sellerFinanceDOList);
+            return soldList;
+        }
+        return null;
     }
 }

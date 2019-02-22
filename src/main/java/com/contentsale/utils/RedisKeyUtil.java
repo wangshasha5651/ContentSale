@@ -13,6 +13,8 @@ public class RedisKeyUtil {
 
     private static String EVENT_PREFIX = "EVENT";
 
+    private static String HOME_KEY = "homeHtml";
+
 
     public static String getLoginKey(Integer userId){
         return LOGIN_PREFIX + SPLIT + userId;
@@ -25,5 +27,9 @@ public class RedisKeyUtil {
     public static String getEventQueueKey(){
 
         return EVENT_PREFIX;
+    }
+
+    public static String getHomeKey(){
+        return HOME_KEY;
     }
 }
