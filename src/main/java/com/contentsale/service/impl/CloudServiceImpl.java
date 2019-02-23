@@ -2,11 +2,14 @@ package com.contentsale.service.impl;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.contentsale.controller.ItemController;
 import com.contentsale.utils.ItemUtils;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +26,8 @@ import java.util.UUID;
 
 @Service
 public class CloudServiceImpl {
+
+    private static final Logger logger = LoggerFactory.getLogger(CloudServiceImpl.class);
 
     //设置云账号的ACCESS_KEY和SECRET_KEY
     private static String ACCESS_KEY = "I-kDiP23nMXnb5lOS9mAoMW8pmSrWk0JHsqocOzR";
@@ -64,6 +69,7 @@ public class CloudServiceImpl {
             return finalUrl;
         } catch (QiniuException e) {
             // 请求失败时打印的异常的信息
+            logger.error("上传图片异常：" + e.getMessage());
             return null;
         }
     }

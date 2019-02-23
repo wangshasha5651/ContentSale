@@ -24,13 +24,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
+
 
 /**
  * Created by wss on 2019/1/9.
@@ -46,12 +45,6 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserDOMapper userDOMapper;
-
-    @Autowired
-    private UserPasswordDOMapper userPasswordDOMapper;
 
     @Autowired
     private JedisAdapter jedisAdapter;

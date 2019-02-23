@@ -51,6 +51,10 @@
                                                    <td><button type="button" class="btn-add-cart btn btn-default btn-buy" onclick="showConfirmDialog()">加入购物车</button></td>
                                                </tr>
                                            </#if>
+                                       <#else>
+                                           <tr>
+                                               <td><button type="button" class="btn-add-cart btn btn-default btn-buy" onclick="showConfirmDialog()">加入购物车</button></td>
+                                           </tr>
                                        </#if>
                                    <#elseif (user.getType())! == 0>
                                        <tr>

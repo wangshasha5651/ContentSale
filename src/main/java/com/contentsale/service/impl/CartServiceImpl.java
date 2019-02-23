@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @Service
 public class CartServiceImpl implements CartService {
 
-    private static final Logger logger = LoggerFactory.getLogger(FinanceController.class);
+    private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 
     @Autowired
     private CartDOMapper cartDOMapper;

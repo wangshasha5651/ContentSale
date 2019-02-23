@@ -14,6 +14,7 @@ import com.contentsale.service.ItemService;
 import com.contentsale.service.impl.CloudServiceImpl;
 import com.contentsale.service.model.ItemModel;
 import com.contentsale.utils.*;
+import com.sun.tools.internal.xjc.reader.dtd.bindinfo.BIUserConversion;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -69,50 +71,24 @@ public class ItemController extends BaseController {
                              RedirectAttributesModelMap modelMap,
                              ModelAndView modelAndView) throws BusinessException {
 
-        try{
-            //入参校验
-            if(StringUtils.isEmpty(title)){
-                throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
-            }
-            if(StringUtils.isEmpty(summary)){
-                throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
-            }
-            if(StringUtils.isEmpty(imgUrl)){
-                throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
-            }
-            if(StringUtils.isEmpty(description)){
-                throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
-            }
-            if(price == null){
-                throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
-            }
 
-            if(singleRadio == 1){
-                //当客户端传来的是图片的URL时，下载图片
-                String cloudUrl = cloudService.downloadImageByUrl(imgUrl);
-                if(cloudUrl != null){
-                    imgUrl = cloudUrl;
-                }
-            }
-
-            // 封装service请求用来创建商品
-            ItemModel itemModel = new ItemModel();
-            itemModel.setTitle(title);
-            itemModel.setSummary(summary);
-            itemModel.setImgUrl(imgUrl);
-            itemModel.setDescription(description);
-            itemModel.setPrice(price);
-            itemModel.setSellerId(hostHolder.getUser().getId());
-
-            ItemModel itemModelForReturn = itemService.createItem(itemModel);
-            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModelForReturn);
-
-            modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(itemVO));
-            modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
-            modelAndView.setViewName("publishSubmit");
-        }catch(Exception e){
-            logger.error("发布商品异常：" + e.getMessage());
+        // 获得用来创建商品的对象
+        ItemModel itemModel = getItemModel(title, summary, imgUrl, description, price, singleRadio);
+        if(itemModel == null){
+            throw new BusinessException(EmBusinessError.ITEM_CREATE_ERROR);
         }
+
+        ItemModel itemModelForReturn = itemService.createItem(itemModel);
+
+        if(itemModelForReturn == null){
+            throw new BusinessException(EmBusinessError.ITEM_CREATE_ERROR);
+        }
+
+        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModelForReturn);
+
+        modelMap.addFlashAttribute("viewInfo", CommonReturnType.create(itemVO));
+        modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
+        modelAndView.setViewName("publishSubmit");
 
         return modelAndView;
     }
@@ -123,76 +99,82 @@ public class ItemController extends BaseController {
     @ResponseBody
     public String listItem(Integer type, ModelAndView modelAndView) throws Exception {
 
-        UserVO user = hostHolder.getUser();
+        try{
+            UserVO user = hostHolder.getUser();
 
-        // 浏览所有商品
-        if(type == null){
+            // 浏览所有商品
+            if(type == null){
+                String htmltext = null;
+                if(user  == null){
+                    //清除之前残余
+                    jedisAdapter.del(RedisKeyUtil.getHomeKey());
 
-            String htmltext = null;
-            if(user  == null){
-                //清除之前残余
-                jedisAdapter.del(RedisKeyUtil.getHomeKey());
-
-                //当缓存中没有主页静态页面时，重新访问数据库，并加载到缓存
-                if(!jedisAdapter.exists(RedisKeyUtil.getHomeKey())) {
-
-                    htmltext = itemService.getIndexHtmlTextNotLogin();
-
-                    jedisAdapter.setex(RedisKeyUtil.getHomeKey(), Const.INDEX_CACHE_EXPIRE_TIME,htmltext);
-
-                    return htmltext;
-
-                }else{
-                    return jedisAdapter.get(RedisKeyUtil.getHomeKey());
-                }
-            }else{ //用户已登录
-
-                //若刚登陆，需刷新该用户的对应商品到缓存
-                if(Const.afterLoginCacheFlag.equals(Boolean.FALSE)){
-                    Const.afterLoginCacheFlag = true;
-                    return createIndexCache();
-                }else{
-                    //已登录，但缓存过期
+                    //当缓存中没有主页静态页面时，重新访问数据库，并加载到缓存
                     if(!jedisAdapter.exists(RedisKeyUtil.getHomeKey())) {
-                        return createIndexCache();
+
+                        htmltext = itemService.getIndexHtmlTextNotLogin();
+                        if(!StringUtils.equals(htmltext, "") || htmltext != null){
+
+                            jedisAdapter.setex(RedisKeyUtil.getHomeKey(), Const.INDEX_CACHE_EXPIRE_TIME,htmltext);
+
+                            return htmltext;
+                        }
+                    }else{
+                        return jedisAdapter.get(RedisKeyUtil.getHomeKey());
                     }
-                    return jedisAdapter.get(RedisKeyUtil.getHomeKey());
+                }else{ //用户已登录
+
+                    //若刚登陆，需刷新该用户的对应商品到缓存
+                    if(Const.afterLoginCacheFlag.equals(Boolean.FALSE)){
+                        Const.afterLoginCacheFlag = true;
+                        htmltext = createIndexCache();
+                        if(!StringUtils.equals(htmltext, "") || htmltext != null){
+                            return htmltext;
+                        }
+                    }else{
+                        //已登录，但缓存过期
+                        if(!jedisAdapter.exists(RedisKeyUtil.getHomeKey())) {
+                            htmltext = createIndexCache();
+                            if(!StringUtils.equals(htmltext, "") || htmltext != null){
+                                return htmltext;
+                            }
+                        }
+                        return jedisAdapter.get(RedisKeyUtil.getHomeKey());
+                    }
                 }
+
             }
 
+            // 浏览未购买的商品
+            if(type == 1){
+                List<ItemModel> itemNotBoughtModelList = itemService.listNotBoughtItem(financeService.getBoughtIdList(user.getId()));
+                List<ItemVO> itemNotBoughtVOList = ItemUtils.convertVOListFromModelList(itemNotBoughtModelList);
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("user", user);
+                map.put("itemList", itemNotBoughtVOList);
+
+                String htmltext = CreateHtmlUtils.createHtml(Const.NOTBOUGHT_FILE_NAME, map);
+
+                return htmltext;
+            }
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessError.INDEX_SHOW_ERROR);
         }
-
-        // 浏览未购买的商品
-        if(type == 1){
-            List<ItemModel> itemNotBoughtModelList = itemService.listNotBoughtItem(financeService.getBoughtIdList(user.getId()));
-            List<ItemVO> itemNotBoughtVOList = ItemUtils.convertVOListFromModelList(itemNotBoughtModelList);
-
-            Map<String, Object> map = new HashMap<>();
-            map.put("user", user);
-            map.put("itemList", itemNotBoughtVOList);
-
-            String htmltext = CreateHtmlUtils.createHtml(Const.NOTBOUGHT_FILE_NAME, map);
-
-            return htmltext;
-        }
-
-        return "";
+        return "redirect:/";
     }
 
     //单独上传图片
     @RequestMapping(value="/item/uploadImage", method = {RequestMethod.POST})
     @ResponseBody
-    public String uploadImage(@RequestParam("image") MultipartFile file){
-        try{
-            String fileUrl = cloudService.saveImage(file);
-            if(fileUrl == null){
-                return "";
-            }
-            return fileUrl;
-        }catch(Exception e){
-            logger.error("发布商品时，上传图片异常：" + e.getMessage());
-            return "";
+    public String uploadImage(@RequestParam("image") MultipartFile file) throws BusinessException, IOException {
+
+        String fileUrl = cloudService.saveImage(file);
+        if(fileUrl == null){
+            throw new BusinessException(EmBusinessError.DOWNLOAD_IMG_FAIL);
         }
+        return fileUrl;
+
     }
 
     // 显示商品详情
@@ -224,7 +206,6 @@ public class ItemController extends BaseController {
     }
 
 
-
     // 获取商品信息发至编辑页
     @RequestMapping(value="/edit", method = {RequestMethod.GET})
     @ResponseBody
@@ -254,50 +235,22 @@ public class ItemController extends BaseController {
                            @RequestParam("price") BigDecimal priceToEdit,
                            @RequestParam("singleRadio") Integer singleRadio,
                            ModelAndView modelAndView) throws BusinessException {
-        try{
-            //入参校验
-            if(StringUtils.isEmpty(titleToEdit)){
-                throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
-            }
-            if(StringUtils.isEmpty(summaryToEdit)){
-                throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
-            }
-            if(StringUtils.isEmpty(imgUrlToEdit)){
-                throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
-            }
-            if(StringUtils.isEmpty(descriptionToEdit)){
-                throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
-            }
-            if(priceToEdit == null){
-                throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
-            }
 
-            if(singleRadio == 1){
-                //当客户端传来的是图片的URL时，下载图片
-                String cloudUrl = cloudService.downloadImageByUrl(imgUrlToEdit);
-                if(cloudUrl != null){
-                    imgUrlToEdit = cloudUrl;
-                }
-            }
-
-            // 封装service请求用来编辑商品
-            ItemModel itemModel = new ItemModel();
-            itemModel.setId(Integer.valueOf(id));
-            itemModel.setTitle(titleToEdit);
-            itemModel.setSummary(summaryToEdit);
-            itemModel.setImgUrl(imgUrlToEdit);
-            itemModel.setDescription(descriptionToEdit);
-            itemModel.setPrice(priceToEdit);
-            itemModel.setSellerId(hostHolder.getUser().getId());
-
-            itemService.editItem(itemModel);
-            ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
-
-            modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
-            modelAndView.setViewName("editSubmit");
-        }catch (Exception e){
-            logger.error("编辑商品异常：" + e.getMessage());
+        // 获得用来修改后商品的对象
+        ItemModel itemModel = getItemModel(titleToEdit, summaryToEdit, imgUrlToEdit, descriptionToEdit, priceToEdit, singleRadio);
+        if(itemModel == null){
+            throw new BusinessException(EmBusinessError.ITEM_EDIT_ERROR);
         }
+
+        Boolean res = itemService.editItem(itemModel);
+        if(res.equals(Boolean.FALSE)){
+            throw new BusinessException(EmBusinessError.ITEM_EDIT_ERROR);
+        }
+
+        ItemVO itemVO = ItemUtils.convertVOFromModel(itemModel);
+
+        modelAndView.addObject("viewInfo", CommonReturnType.create(itemVO));
+        modelAndView.setViewName("editSubmit");
 
         return modelAndView;
     }
@@ -312,7 +265,7 @@ public class ItemController extends BaseController {
                 return "fail";
             }
         }catch (Exception e){
-            logger.error("删除商品异常：" + e.getMessage());
+            throw new BusinessException(EmBusinessError.ITEM_DELETE_ERROR);
         }
 
         return "success";
@@ -348,5 +301,52 @@ public class ItemController extends BaseController {
 
         return htmltext;
     }
+
+    private Boolean parameterCheck(String title, String summary, String imgUrl, String description, BigDecimal price) throws BusinessException {
+
+        //入参校验
+        if(StringUtils.isEmpty(title)){
+            throw new BusinessException(EmBusinessError.ITEM_TITLE_EMPTY);
+        }
+        if(StringUtils.isEmpty(summary)){
+            throw new BusinessException(EmBusinessError.ITEM_SUMMARY_EMPTY);
+        }
+        if(StringUtils.isEmpty(imgUrl)){
+            throw new BusinessException(EmBusinessError.ITEM_IMG_EMPTY);
+        }
+        if(StringUtils.isEmpty(description)){
+            throw new BusinessException(EmBusinessError.ITEM_DESCRIPTION_EMPTY);
+        }
+        if(price == null){
+            throw new BusinessException(EmBusinessError.ITEM_PRICE_EMPTY);
+        }
+
+        return true;
+    }
+
+    private ItemModel getItemModel(String title, String summary, String imgUrl, String description, BigDecimal price, Integer singleRadio) throws BusinessException {
+        //入参校验
+        parameterCheck(title, summary, imgUrl, description, price);
+
+        if(singleRadio == 1){
+            //当客户端传来的是图片的URL时，下载图片
+            String cloudUrl = cloudService.downloadImageByUrl(imgUrl);
+            if(cloudUrl != null){
+                imgUrl = cloudUrl;
+            }
+        }
+
+        ItemModel itemModel = new ItemModel();
+        itemModel.setTitle(title);
+        itemModel.setSummary(summary);
+        itemModel.setImgUrl(imgUrl);
+        itemModel.setDescription(description);
+        itemModel.setPrice(price);
+        itemModel.setSellerId(hostHolder.getUser().getId());
+
+        return itemModel;
+    }
+
+
 
 }

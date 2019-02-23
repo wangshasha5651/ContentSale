@@ -17,6 +17,8 @@ import com.contentsale.utils.RedisKeyUtil;
 import com.contentsale.validator.ValidationResult;
 import com.contentsale.validator.ValidatorImpl;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -36,123 +38,148 @@ import java.util.stream.Collectors;
 @Service
 public class ItemServiceImpl implements ItemService {
 
+    private static final Logger logger = LoggerFactory.getLogger(ItemServiceImpl.class);
+
     @Autowired
     private ValidatorImpl validator;
 
     @Autowired
     private ItemDOMapper itemDOMapper;
 
-    @Autowired
-    private HostHolder hostHolder;
-
-    @Autowired
-    private JedisAdapter jedisAdapter;
-
-
     @Override
     @Transactional // 在事务中进行
-    public ItemModel createItem(ItemModel itemModel) throws BusinessException {
+    public ItemModel createItem(ItemModel itemModel){
 
-        // 入参校验
-        ValidationResult result = validator.validate(itemModel);
-        if(result.isHasError()){
-            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, result.getErrMsg());
+        try{
+            // 入参校验
+            ValidationResult result = validator.validate(itemModel);
+            if(result.isHasError()){
+                return null;
+            }
+
+            // 转化itemmodel->dataobject
+            ItemDO itemDO = ItemUtils.convertItemDOFromItemModel(itemModel);
+
+            // 写入数据库
+            itemDOMapper.insertSelective(itemDO);
+            itemModel.setId(itemDO.getId());
+
+            // 返回创建完成的对象
+            return this.getItemById(itemModel.getId());
+        }catch (Exception e){
+            logger.error("创建商品服务层发生异常：" + e.getMessage());
+            return null;
         }
 
-        // 转化itemmodel->dataobject
-        ItemDO itemDO = ItemUtils.convertItemDOFromItemModel(itemModel);
-
-        // 写入数据库
-        itemDOMapper.insertSelective(itemDO);
-        itemModel.setId(itemDO.getId());
-
-        // 返回创建完成的对象
-        return this.getItemById(itemModel.getId());
     }
 
 
     @Override
     public List<ItemModel> listItem() {
-        List<ItemDO> itemDOList = itemDOMapper.listItem();
+        try{
+            List<ItemDO> itemDOList = itemDOMapper.listItem();
 
-        List<ItemModel> itemModelList = ItemUtils.convertModelListFromDOList(itemDOList);
+            List<ItemModel> itemModelList = ItemUtils.convertModelListFromDOList(itemDOList);
 
-        return itemModelList;
+            return itemModelList;
+        }catch (Exception e){
+            logger.error("查看所有商品服务层发生异常：" + e.getMessage());
+            return null;
+        }
+
     }
 
     @Override
     public List<ItemModel> listNotBoughtItem(List<Integer> itemBoughtIdList) {
+        try{
+            List<ItemDO> itemDOAllList = itemDOMapper.listItem();
 
-        List<ItemDO> itemDOAllList = itemDOMapper.listItem();
-
-        List<ItemModel> itemModelNotBoughtList = new ArrayList<>();
-        for(ItemDO itemDO: itemDOAllList){
-            // 如果已购买的商品id集合中不包含
-            if(!itemBoughtIdList.contains(itemDO.getId())){
-                ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
-                itemModelNotBoughtList.add(itemModel);
+            List<ItemModel> itemModelNotBoughtList = new ArrayList<>();
+            for(ItemDO itemDO: itemDOAllList){
+                // 如果已购买的商品id集合中不包含
+                if(!itemBoughtIdList.contains(itemDO.getId())){
+                    ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
+                    itemModelNotBoughtList.add(itemModel);
+                }
             }
-        }
 
-        return itemModelNotBoughtList;
+            return itemModelNotBoughtList;
+        }catch (Exception e){
+            logger.error("查看未购买商品服务层发生异常：" + e.getMessage());
+            return null;
+        }
     }
 
     @Override
     public ItemModel getItemById(Integer id) {
-        ItemDO itemDO = itemDOMapper.selectByPrimaryKey(id);
-        if(itemDO == null){
+        try{
+            ItemDO itemDO = itemDOMapper.selectByPrimaryKey(id);
+            if(itemDO == null){
+                return null;
+            }
+
+            ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
+
+            return itemModel;
+        }catch (Exception e){
+            logger.error("获得商品模型服务层发生异常：" + e.getMessage());
             return null;
         }
-
-        ItemModel itemModel = ItemUtils.convertModelFromDataObject(itemDO);
-
-        return itemModel;
     }
 
     @Override
     public Boolean editItem(ItemModel itemModel) throws BusinessException {
-
-        // 入参校验
-        ValidationResult result = validator.validate(itemModel);
-        if(result.isHasError()){
-            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, result.getErrMsg());
-        }
-
-        // 转化itemmodel->dataobject
-        ItemDO itemDO = ItemUtils.convertItemDOFromItemModel(itemModel);
-
         try{
-            // update数据库
-            itemDOMapper.updateByPrimaryKeySelective(itemDO);
-            itemModel.setId(itemDO.getId());
-        }catch (Exception e){
-            throw new BusinessException(EmBusinessError.SQL_ERROR);
-        }
+            // 入参校验
+            ValidationResult result = validator.validate(itemModel);
+            if(result.isHasError()){
+                throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, result.getErrMsg());
+            }
 
-        // 返回结果标识
-        return Boolean.TRUE;
+            // 转化itemmodel->dataobject
+            ItemDO itemDO = ItemUtils.convertItemDOFromItemModel(itemModel);
+
+            try{
+                // update数据库
+                itemDOMapper.updateByPrimaryKeySelective(itemDO);
+                itemModel.setId(itemDO.getId());
+            }catch (Exception e){
+
+            }
+
+            // 返回结果标识
+            return true;
+        }catch (Exception e){
+            logger.error("编辑商品服务层发生异常：" + e.getMessage());
+            return false;
+        }
     }
 
     @Override
     @Transactional(propagation = Propagation.NESTED)  //在SettleAccount的子事务中进行
     public Boolean changeSales(List<OrderItemModel> orderItemModelList) throws BusinessException {
+        try{
+            for(OrderItemModel orderItemModel : orderItemModelList){
 
-        for(OrderItemModel orderItemModel : orderItemModelList){
+                Integer itemId = orderItemModel.getItemId();
+                Integer quantity = orderItemModel.getQuantity();
 
-            Integer itemId = orderItemModel.getItemId();
-            Integer quantity = orderItemModel.getQuantity();
+                try{
+                    ItemDO itemDO = itemDOMapper.selectByPrimaryKey(itemId);
+                    itemDO.setSales(itemDO.getSales() + quantity);
 
-            try{
-                ItemDO itemDO = itemDOMapper.selectByPrimaryKey(itemId);
-                itemDO.setSales(itemDO.getSales() + quantity);
-
-                itemDOMapper.updateByPrimaryKeySelective(itemDO);
-            }catch (Exception e){
-                throw new BusinessException(EmBusinessError.SQL_ERROR);
+                    itemDOMapper.updateByPrimaryKeySelective(itemDO);
+                }catch (Exception e){
+                    throw new BusinessException(EmBusinessError.SQL_ERROR);
+                }
             }
+
+            return Boolean.TRUE;
+        }catch (Exception e){
+            logger.error("更改销量服务层发生异常：" + e.getMessage());
+            return false;
         }
 
-        return Boolean.TRUE;
     }
 
     @Override
@@ -161,11 +188,11 @@ public class ItemServiceImpl implements ItemService {
 
         try{
             itemDOMapper.deleteByPrimaryKey(id);
+            return Boolean.TRUE;
         }catch(Exception e){
-            throw new BusinessException(EmBusinessError.SQL_ERROR);
+            logger.error("删除商品服务层发生异常：" + e.getMessage());
+            return false;
         }
-
-        return Boolean.TRUE;
     }
 
     @Override

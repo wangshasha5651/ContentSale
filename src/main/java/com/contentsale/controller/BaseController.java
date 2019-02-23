@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
     //定义ExceptionHandler解决未被controller层吸收的exception
     @ExceptionHandler(Exception.class)
@@ -54,6 +54,18 @@ public class BaseController {
             // 若错误代码是以6开头，则为商品详情异常
             if(String.valueOf(businessException.getErrCode()).startsWith("6")) {
                 logger.error("商品异常：" + businessException.getMessage());
+                return "redirect:/";
+            }
+
+            // 若错误代码是以7开头，则为财务异常
+            if(String.valueOf(businessException.getErrCode()).startsWith("7")) {
+                logger.error("财务异常：" + businessException.getMessage());
+                return "redirect:/";
+            }
+
+            // 若错误代码是以8开头，则为主页异常
+            if(String.valueOf(businessException.getErrCode()).startsWith("8")) {
+                logger.error("主页异常：" + businessException.getMessage());
                 return "redirect:/";
             }
 

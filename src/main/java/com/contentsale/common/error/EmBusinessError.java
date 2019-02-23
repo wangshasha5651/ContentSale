@@ -23,7 +23,10 @@ public enum EmBusinessError implements CommonError{
     ITEM_IMG_EMPTY(30003,"商品图片不为空"),
     ITEM_DESCRIPTION_EMPTY(30004,"商品正文不为空"),
     ITEM_PRICE_EMPTY(30005,"商品价格不为空"),
-    DOWNLOAD_IMG_FAIL(30003,"图片下载失败"),
+    DOWNLOAD_IMG_FAIL(30006,"图片下载失败"),
+    ITEM_CREATE_ERROR(30007,"创建商品模型异常"),
+    ITEM_EDIT_ERROR(30008,"编辑商品模型异常"),
+    ITEM_DELETE_ERROR(30008,"编辑商品模型异常"),
 
 
     // 40000开头为创建order相关错误定义
@@ -39,7 +42,15 @@ public enum EmBusinessError implements CommonError{
     CART_CACHE_ERROR(50002, "购物车缓存操作失败"),
 
     //60000开头为商品详情错误
-    SHOW_DETAIL_ERROR(60001, "查看商品详情错误");
+    SHOW_DETAIL_ERROR(60001, "查看商品详情错误"),
+
+
+    //70000开头为财务页面错误
+    LIST_FINANCE_ERROR(70001, "查看财务项目错误"),
+
+    //80000开头为主页错误
+    INDEX_SHOW_ERROR(70001, "查看财务项目错误");
+
 
 
     private int errCode;

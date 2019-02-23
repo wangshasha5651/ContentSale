@@ -1,5 +1,7 @@
 package com.contentsale.controller;
 
+import com.contentsale.common.error.BusinessException;
+import com.contentsale.common.error.EmBusinessError;
 import com.contentsale.controller.viewobject.FinanceVO;
 import com.contentsale.dataobject.FinanceDO;
 import com.contentsale.interceptor.model.HostHolder;
@@ -28,8 +30,6 @@ import java.util.stream.Collectors;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true")
 public class FinanceController {
 
-    private static final Logger logger = LoggerFactory.getLogger(FinanceController.class);
-
     @Autowired
     private FinanceService financeService;
 
@@ -39,10 +39,14 @@ public class FinanceController {
     // 查看财务所有项目
     @RequestMapping(value="/show", method = {RequestMethod.GET})
     @ResponseBody
-    public ModelAndView listFinance(ModelAndView modelAndView){
+    public ModelAndView listFinance(ModelAndView modelAndView) throws BusinessException {
 
         try{
             List<FinanceModel> financeModelList = financeService.listFinanceItem(hostHolder.getUser().getId());
+
+            if(financeModelList == null || financeModelList.size() == 0){
+                return modelAndView;
+            }
 
             List<FinanceVO> financeVOList = FinanceUtils.convertVOListFromModelList(financeModelList);
 
@@ -60,7 +64,7 @@ public class FinanceController {
 
             modelAndView.setViewName("itemBought");
         }catch (Exception e){
-            logger.error("查看财务项目异常：" + e.getMessage());
+            throw new BusinessException(EmBusinessError.LIST_FINANCE_ERROR);
         }
 
         return modelAndView;

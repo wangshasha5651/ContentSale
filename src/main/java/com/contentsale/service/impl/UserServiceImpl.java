@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserModel validateLogin(String username, String password) throws BusinessException, UnsupportedEncodingException, NoSuchAlgorithmException {
+    public UserModel validateLogin(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         // 通过用户名获取用户信息
         UserDO userDO = userDOMapper.selectByName(username);
         if(userDO == null){
