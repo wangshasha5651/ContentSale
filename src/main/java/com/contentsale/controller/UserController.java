@@ -5,9 +5,7 @@ import com.contentsale.common.Const;
 import com.contentsale.controller.viewobject.UserVO;
 import com.contentsale.common.error.BusinessException;
 import com.contentsale.common.error.EmBusinessError;
-import com.contentsale.common.responese.CommonReturnType;
-import com.contentsale.dao.UserDOMapper;
-import com.contentsale.dao.UserPasswordDOMapper;
+import com.contentsale.common.response.CommonReturnType;
 import com.contentsale.interceptor.model.HostHolder;
 import com.contentsale.service.CartService;
 import com.contentsale.service.UserService;
@@ -16,8 +14,6 @@ import com.contentsale.utils.JedisAdapter;
 import com.contentsale.utils.RedisKeyUtil;
 import com.contentsale.utils.UserUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -39,8 +35,6 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("/")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true") //Access-Control-Allow-Origin
 public class UserController extends BaseController {
-
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
     @Autowired

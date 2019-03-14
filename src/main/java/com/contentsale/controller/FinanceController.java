@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Controller("/finance")
 @RequestMapping("/finance")
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "true")
-public class FinanceController {
+public class FinanceController extends BaseController {
 
     @Autowired
     private FinanceService financeService;

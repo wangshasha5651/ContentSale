@@ -50,7 +50,7 @@ public class OrderController extends BaseController {
     @RequestMapping(value="/buy", method = {RequestMethod.POST})
     @ResponseBody
     @Transactional
-    public String SettleAccount(@RequestBody JSONObject json, RedirectAttributesModelMap modelMap) throws BusinessException {
+    public String settleAccount(@RequestBody JSONObject json, RedirectAttributesModelMap modelMap) throws BusinessException {
 
 
         List<Map<String, String>> paramList = json.getObject("cartList", List.class);

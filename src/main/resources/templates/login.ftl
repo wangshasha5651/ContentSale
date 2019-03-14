@@ -28,7 +28,7 @@
                         <tr>
                             <td class="td-login" align="right"><span class="span-login">密码:</span></td>
                             <td class="td-login">
-                                <input name="password" type="text" class="input-login form-control" placeholder="" aria-describedby="basic-addon1">
+                                <input name="password" type="password" class="input-login form-control" placeholder="" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>

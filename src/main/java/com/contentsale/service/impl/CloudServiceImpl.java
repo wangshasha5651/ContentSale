@@ -33,14 +33,15 @@ public class CloudServiceImpl {
     private static String ACCESS_KEY = "I-kDiP23nMXnb5lOS9mAoMW8pmSrWk0JHsqocOzR";
     private static String SECRET_KEY = "paCWAnMayEVC1dLe2eyWwlthjh3Wk6GJJLyX1wCQ";
     //要上传的空间
-    private static String bucketname = "contentsale";
+    private static String bucketname = "contentsale1";
 
     //密钥配置
     private static Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
     //创建上传对象
     private static UploadManager uploadManager = new UploadManager();
 
-    private static String QINIU_IMAGE_DOMAIN = "http://plitybg9g.bkt.clouddn.com/";
+    private static String QINIU_IMAGE_DOMAIN = "http://pocmp65a1.bkt.clouddn.com/";
+
 
 
     //简单上传，使用默认策略，需设置上传的空间名

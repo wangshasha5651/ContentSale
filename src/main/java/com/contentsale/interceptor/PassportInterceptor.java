@@ -1,12 +1,10 @@
 package com.contentsale.interceptor;
 
 import com.contentsale.common.Const;
-import com.contentsale.controller.viewobject.FinanceVO;
 import com.contentsale.controller.viewobject.UserVO;
 import com.contentsale.dao.*;
-import com.contentsale.dataobject.*;
 import com.contentsale.interceptor.model.HostHolder;
-import com.contentsale.service.model.FinanceModel;
+
 import com.contentsale.service.model.UserModel;
 import com.contentsale.utils.*;
 import org.apache.commons.lang3.StringUtils;
@@ -15,18 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
-import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 /**
  * Created by wss on 2019/1/15.
@@ -34,15 +25,6 @@ import java.util.Map;
 
 @Component
 public class PassportInterceptor implements HandlerInterceptor {
-
-    @Autowired
-    private UserDOMapper userDOMapper;
-
-    @Autowired
-    private UserPasswordDOMapper userPasswordDOMapper;
-
-    @Autowired
-    private FinanceDOMapper financeDOMapper;
 
     @Autowired
     private HostHolder hostHolder;

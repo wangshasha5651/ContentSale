@@ -1,4 +1,4 @@
-package com.contentsale.common.responese;
+package com.contentsale.common.response;
 
 /**
  * Created by wss on 2019/1/10.
