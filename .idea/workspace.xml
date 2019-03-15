@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f40194b2-e576-4f3f-b796-105566a41539" name="Default Changelist" comment="代码一些细节的调整">
+    <list default="true" id="f40194b2-e576-4f3f-b796-105566a41539" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/CommonError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/CommonError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/common/responese/CommonReturnType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/common/response/CommonReturnType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CloudServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CloudServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/common/responese/CommonReturnType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/contentsale/controller/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/contentsale/controller/BaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,96 +22,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/UserUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+            <state relative-caret-position="198">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/model/HostHolder.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="33" column="39" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-374">
+              <caret line="19" column="23" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CartUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CreateHtmlUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/ItemUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="17" column="22" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/FinanceUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="16" column="44" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="44" />
-              <folding>
-                <element signature="e#850#851#0" expanded="true" />
-                <element signature="e#893#894#0" expanded="true" />
-              </folding>
+              <caret line="18" column="25" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-317">
-              <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="594">
+              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/CartService.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/Const.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="13" column="28" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CartServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/CloudServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/FinanceServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="29" column="31" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1679">
-              <caret line="92" column="44" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/OrderServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="30" column="29" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="29" />
+            <state relative-caret-position="506">
+              <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -145,7 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>publish</find>
       <find>selectPic</find>
       <find>/item/showDetail</find>
       <find>/item/edit</find>
@@ -175,6 +162,7 @@
       <find>DOWNLOAD_IMG_FAIL</find>
       <find>editItem</find>
       <find>private static final Logger logger</find>
+      <find>TEMPLATE_PATH</find>
     </findStrings>
     <dirStrings>
       <dir>D:\JetBrains\Idea Workplace\contentsale</dir>
@@ -229,7 +217,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/BaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/ItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/EmBusinessError.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/model/HostHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/service/ItemService.java" />
@@ -240,6 +227,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/controller/FinanceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/common/error/CommonError.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -336,6 +324,16 @@
               <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="common" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ContentSale-master" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="contentsale" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="contentsale" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -364,7 +362,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552557074877" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552615808657" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -541,7 +539,7 @@
       <workItem from="1550885894374" duration="6088000" />
       <workItem from="1551772241431" duration="143000" />
       <workItem from="1552009472711" duration="5262000" />
-      <workItem from="1552465605007" duration="20264000" />
+      <workItem from="1552465605007" duration="22951000" />
     </task>
     <task id="LOCAL-00001" summary="first commit: 初始化项目&#10;1.前端: 使用bootstrap初始化写了大致的几个页面&#10;2.后端: &#10;  1) 写了 UserService中的login接口&#10;  2) 为登录功能创建了拦截器interceptor进而HostHolder，用于在有效时间内记住用户&#10;  3) 使用逆向工程 mybatis generate创建DO mapper&#10;  4) 创建通用的ExceptionHandler&#10;  5) 使用ViewObject、Model、DAO、DO的结构来为不同层提供数据&#10;  6) 定义了CommonReturnType和枚举类型的错误信息标识，用于向返回结构一致的数据">
       <created>1547562110221</created>
@@ -613,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550890103707</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="代码一些细节的调整">
+      <created>1552557091074</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1552557091074</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -649,7 +654,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="471730000" />
+    <option name="totallyTimeSpent" value="474417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -715,7 +720,8 @@
     <MESSAGE value="1.登录以及保持登录用session和redis缓存优化&#10;2.购物车用redis缓存优化&#10;  添加到购物车先添加到缓存（已完成），后期再保存到数据库（未完成）&#10;  查看购物车先查找缓存，若缓存没有再访问数据库&#10;3.写了一部分事件生产者和消费者模型（不一定用）" />
     <MESSAGE value="1.完成购物车缓存的优化&#10;2.增加主页页面缓存&#10;3.增加已购买/已售物品的标记优化" />
     <MESSAGE value="重复代码的优化，检查完善异常处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="重复代码的优化，检查完善异常处理" />
+    <MESSAGE value="代码一些细节的调整" />
+    <option name="LAST_COMMIT_MESSAGE" value="代码一些细节的调整" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -740,13 +746,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3696">
-          <caret line="168" column="34" selection-start-line="168" selection-start-column="34" selection-end-line="168" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/dao/CartDOMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -845,61 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/ItemUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CartUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CreateHtmlUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/FinanceUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/UserUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/validator/ValidatorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -918,13 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -974,13 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/Const.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="73" selection-start-line="25" selection-start-column="73" selection-end-line="25" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -1053,7 +983,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/interceptor/PassportInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-317">
-          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1117,8 +1047,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+        <state relative-caret-position="704">
+          <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/UserUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CartUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/FinanceUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/CreateHtmlUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/ItemUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/JedisAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/OrderUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/utils/RedisKeyUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/contentsale/common/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
         </state>
       </provider>
     </entry>
